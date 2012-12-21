@@ -14,17 +14,31 @@ import javax.mail.internet.MimeMessage;
 
 public class SendMail {
 
-	private final static String username = "michael.charland@gmail.com";
-	private final static String password = "";
-	private final static String todoistProject = "project.100179962@todoist.net";
 	private static Session session;
 
 	public static void main(String[] args) {
 		List<String> tasks = getTasks();
-		sendTasks(tasks);
+		new SendMail().sendTasks(tasks);
 	}
 
-	private static void sendTasks(List<String> tasks) {
+	private static List<String> getTasks() {
+		List<String> tasks = new ArrayList<String>();
+		tasks.add("http://www.everydiet.org/diet/80-10-10-diet (80 10 10 Diet)");
+		return tasks;
+	}
+
+	private String username;
+	private String todoistProject;
+	private String password;
+	
+	SendMail() {
+		LoadProperties load = new LoadProperties();
+		username = load.getUser();
+		todoistProject = load.getProject();
+		password = load.getPassword();
+	}
+
+	private void sendTasks(List<String> tasks) {
 		for (String task : tasks) {
 			sendEmail(task, "");
 			try {
@@ -35,13 +49,8 @@ public class SendMail {
 		}
 	}
 
-	private static List<String> getTasks() {
-		List<String> tasks = new ArrayList<String>();
-		tasks.add("http://foodnsport.com/blog/articles/801010-Athlete-Freelee.php (FoodnSport | 80/10/10 Athlete Freelee");
-		return tasks;
-	}
 
-	private static void sendEmail(String subject, String note) {
+	private void sendEmail(String subject, String note) {
 		try {
 
 			Message message = new MimeMessage(getSession());
@@ -60,7 +69,7 @@ public class SendMail {
 		}
 	}
 
-	private static Session getSession() {
+	private Session getSession() {
 		if (session == null) {
 			Properties props = new Properties();
 			props.put("mail.smtp.auth", "true");
@@ -70,6 +79,7 @@ public class SendMail {
 
 			session = Session.getInstance(props,
 					new javax.mail.Authenticator() {
+
 						protected PasswordAuthentication getPasswordAuthentication() {
 							return new PasswordAuthentication(username,
 									password);
