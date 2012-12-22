@@ -11,19 +11,30 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import ca.todoist.pocket.Link;
+import ca.todoist.pocket.PocketParser;
+import ca.todoist.util.LoadFile;
+import ca.todoist.util.LoadProperties;
+
 public class SendMail {
 
 	private static Session session;
 
 	public static void main(String[] args) {
-		List<String> tasks = TaskAdder.get();
+		String filename = args[0];
+		if(args.length == 0) {
+			throw new IllegalArgumentException("Specify the pocket file to load");
+		}
+		List<String> pocketLinks = LoadFile.load(filename);
+		List<Link> tasks = new PocketParser(pocketLinks).getOpenLinks();
+
 		new SendMail().sendTasks(tasks);
 	}
 
 	private String username;
 	private String password;
 	private String todoistProject;
-	
+
 	SendMail() {
 		LoadProperties load = new LoadProperties();
 		username = load.getUser();
@@ -31,11 +42,11 @@ public class SendMail {
 		password = load.getPassword();
 	}
 
-	private void sendTasks(List<String> tasks) {
+	private void sendTasks(List<Link> tasks) {
 		int x = 0;
-		for (String task : tasks) {
-			System.out.println("Sending task ["+x+"]: " + task);
-			sendEmail(task, "");
+		for (Link task : tasks) {
+			System.out.println("Sending task [" + x + "]: " + task);
+			sendEmail(task.toString(), "");
 			sleepForFiveSeconds();
 			x++;
 		}
@@ -48,7 +59,6 @@ public class SendMail {
 			e.printStackTrace();
 		}
 	}
-
 
 	private void sendEmail(String subject, String note) {
 		try {
@@ -80,6 +90,7 @@ public class SendMail {
 			session = Session.getInstance(props,
 					new javax.mail.Authenticator() {
 
+						@Override
 						protected PasswordAuthentication getPasswordAuthentication() {
 							return new PasswordAuthentication(username,
 									password);

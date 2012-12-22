@@ -1,4 +1,4 @@
-package ca.todoist.email;
+package ca.todoist.util;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,7 +9,7 @@ public class LoadProperties {
 	
 	private Properties properties;
 
-	LoadProperties() {
+	public LoadProperties() {
 		try {
 			properties = load();
 		} catch (IOException e) {
