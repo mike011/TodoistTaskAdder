@@ -1,6 +1,5 @@
 package ca.todoist.email;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -17,19 +16,13 @@ public class SendMail {
 	private static Session session;
 
 	public static void main(String[] args) {
-		List<String> tasks = getTasks();
+		List<String> tasks = TaskAdder.get();
 		new SendMail().sendTasks(tasks);
 	}
 
-	private static List<String> getTasks() {
-		List<String> tasks = new ArrayList<String>();
-		tasks.add("http://www.everydiet.org/diet/80-10-10-diet (80 10 10 Diet)");
-		return tasks;
-	}
-
 	private String username;
-	private String todoistProject;
 	private String password;
+	private String todoistProject;
 	
 	SendMail() {
 		LoadProperties load = new LoadProperties();
@@ -39,13 +32,20 @@ public class SendMail {
 	}
 
 	private void sendTasks(List<String> tasks) {
+		int x = 0;
 		for (String task : tasks) {
+			System.out.println("Sending task ["+x+"]: " + task);
 			sendEmail(task, "");
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			sleepForFiveSeconds();
+			x++;
+		}
+	}
+
+	private void sleepForFiveSeconds() {
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 
