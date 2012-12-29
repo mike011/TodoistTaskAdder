@@ -1,16 +1,15 @@
 package ca.todoist.pocket;
 
+import ca.todoist.Link;
 
-
-// li><a href="a" time_added="1355111437" tags="">x</a></li>
-public class Link {
+public class HTMLLink implements Link{
 
 	private static final String HREF = "href=\"";
 	private static final String TAGS = "tags=\"\">";
 	private String url;
 	private String name;
 	
-	public Link(String line) {
+	public HTMLLink(String line) {
 		setURL(line);
 		setName(line);
 	}

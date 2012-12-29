@@ -3,7 +3,6 @@ package ca.todoist;
 import java.util.List;
 
 import ca.todoist.email.SendMail;
-import ca.todoist.pocket.Link;
 import ca.todoist.pocket.PocketParser;
 import ca.todoist.util.LoadFile;
 
