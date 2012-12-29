@@ -12,37 +12,24 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import ca.todoist.pocket.Link;
-import ca.todoist.pocket.PocketParser;
-import ca.todoist.util.LoadFile;
 import ca.todoist.util.LoadProperties;
 
 public class SendMail {
 
 	private static Session session;
 
-	public static void main(String[] args) {
-		String filename = args[0];
-		if(args.length == 0) {
-			throw new IllegalArgumentException("Specify the pocket file to load");
-		}
-		List<String> pocketLinks = LoadFile.load(filename);
-		List<Link> tasks = new PocketParser(pocketLinks).getOpenLinks();
-
-		new SendMail().sendTasks(tasks);
-	}
-
 	private String username;
 	private String password;
 	private String todoistProject;
 
-	SendMail() {
+	public SendMail() {
 		LoadProperties load = new LoadProperties();
 		username = load.getUser();
 		todoistProject = load.getProject();
 		password = load.getPassword();
 	}
 
-	private void sendTasks(List<Link> tasks) {
+	public void sendTasks(List<Link> tasks) {
 		int x = 0;
 		for (Link task : tasks) {
 			System.out.println("Sending task [" + x + "]: " + task);
