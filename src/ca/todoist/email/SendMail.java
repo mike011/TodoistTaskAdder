@@ -1,5 +1,6 @@
 package ca.todoist.email;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 
@@ -22,8 +23,9 @@ public class SendMail {
 
 	public static void main(String[] args) {
 		String filename = args[0];
-		if(args.length == 0) {
-			throw new IllegalArgumentException("Specify the pocket file to load");
+		if (args.length == 0) {
+			throw new IllegalArgumentException(
+					"Specify the pocket file to load");
 		}
 		List<String> pocketLinks = LoadFile.load(filename);
 		List<Link> tasks = new PocketParser(pocketLinks).getOpenLinks();
@@ -43,13 +45,29 @@ public class SendMail {
 	}
 
 	private void sendTasks(List<Link> tasks) {
-		int x = 0;
-		for (Link task : tasks) {
-			System.out.println("Sending task [" + x + "]: " + task);
-			sendEmail(task.toString(), "");
-			sleepForFiveSeconds();
-			x++;
+		for (int x = 0; x < tasks.size(); x++) {
+			printMessage(tasks, x);
+			sendEmail(tasks.get(x).toString(), "");
+
+			if (notLastTask(tasks, x)) {
+				sleepForFiveSeconds();
+			}
 		}
+	}
+
+	private void printMessage(List<Link> tasks, int index) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("Sending task ");
+		stringBuilder.append(index);
+		stringBuilder.append(" of ");
+		stringBuilder.append(tasks.size());
+		stringBuilder.append(": ");
+		stringBuilder.append(tasks.get(index).getName());
+		System.out.println(stringBuilder.toString());
+	}
+
+	private boolean notLastTask(List<Link> tasks, int x) {
+		return x < tasks.size() - 1;
 	}
 
 	private void sleepForFiveSeconds() {
