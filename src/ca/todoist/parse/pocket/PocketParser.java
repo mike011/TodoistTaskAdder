@@ -1,9 +1,9 @@
-package ca.todoist.pocket;
+package ca.todoist.parse.pocket;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ca.todoist.Link;
+import ca.todoist.parse.Link;
 
 public class PocketParser {
 

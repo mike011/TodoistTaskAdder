@@ -1,6 +1,6 @@
-package ca.todoist.pocket;
+package ca.todoist.parse.pocket;
 
-import ca.todoist.Link;
+import ca.todoist.parse.Link;
 
 public class HTMLLink implements Link{
 

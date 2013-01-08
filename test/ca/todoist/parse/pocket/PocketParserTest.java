@@ -1,4 +1,4 @@
-package ca.todoist.pocket;
+package ca.todoist.parse.pocket;
 
 import static org.junit.Assert.*;
 
@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import ca.todoist.Link;
-import ca.todoist.pocket.PocketParser;
+import ca.todoist.parse.Link;
+import ca.todoist.parse.pocket.PocketParser;
 
 /**
  * @author tron

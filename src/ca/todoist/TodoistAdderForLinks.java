@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.todoist.email.SendMail;
+import ca.todoist.parse.Link;
 
 public class TodoistAdderForLinks {
 

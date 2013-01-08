@@ -1,4 +1,4 @@
-package ca.todoist;
+package ca.todoist.parse;
 
 public interface Link {
 	String toString();

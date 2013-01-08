@@ -4,7 +4,8 @@ import java.io.File;
 import java.util.List;
 
 import ca.todoist.email.SendMail;
-import ca.todoist.pocket.PocketParser;
+import ca.todoist.parse.Link;
+import ca.todoist.parse.pocket.PocketParser;
 import ca.todoist.util.LoadFile;
 
 public class TodoistAdderForPocketFiles {

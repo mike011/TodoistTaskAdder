@@ -1,10 +1,10 @@
-package ca.todoist.pocket;
+package ca.todoist.parse.pocket;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import ca.todoist.pocket.HTMLLink;
+import ca.todoist.parse.pocket.HTMLLink;
 
 public class LinkTest {
 
