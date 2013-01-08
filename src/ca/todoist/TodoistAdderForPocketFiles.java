@@ -1,5 +1,6 @@
 package ca.todoist;
 
+import java.io.File;
 import java.util.List;
 
 import ca.todoist.email.SendMail;
@@ -17,6 +18,12 @@ public class TodoistAdderForPocketFiles {
 		List<Link> tasks = new PocketParser(pocketLinks).getOpenLinks();
 
 		new SendMail().sendTasks(tasks);
+		
+		deleteFile(filename);
+	}
+
+	private static void deleteFile(String file) {
+		new File(file).delete();
 	}
 	
 }
