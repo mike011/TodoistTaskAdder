@@ -3,6 +3,8 @@ package ca.todoist.pocket;
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.todoist.Link;
+
 public class PocketParser {
 
 	static final String UL = "<ul>";
@@ -24,7 +26,7 @@ public class PocketParser {
 				read = false;
 			}
 			if (read && line.contains("<li><a href=")) {
-				openLinks.add(new Link(line));
+				openLinks.add(new HTMLLink(line));
 			}
 			if (line.contains(UNREAD)) {
 				read = true;
