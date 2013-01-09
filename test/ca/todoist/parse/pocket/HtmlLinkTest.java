@@ -10,8 +10,20 @@ public class HtmlLinkTest {
 
 	private static final String EXPECTED_URL = "www.google.com";
 	private static final String EXPECTED_NAME = "Google";
-	static final String LINK = "<li><a href=\"" + EXPECTED_URL
-			+ "\" time_added=\"1355111437\" tags=\"\">" + EXPECTED_NAME + "</a></li>";
+	static final String LINK = getLink("");
+
+	private static String getLink(String tags) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("<li><a href=\"");
+		stringBuilder.append(EXPECTED_URL);
+		stringBuilder.append("\" time_added=\"1355111437\"");
+		stringBuilder.append("tags=\"");
+		stringBuilder.append(tags);
+		stringBuilder.append("\">");
+		stringBuilder.append(EXPECTED_NAME);
+		stringBuilder.append("</a></li>");
+		return stringBuilder.toString();
+	}
 	private static final String EXPECTED_LINK_STRING = EXPECTED_URL + " (" + EXPECTED_NAME +")";
 	
 	@Test
@@ -20,9 +32,31 @@ public class HtmlLinkTest {
 		assertEquals(EXPECTED_URL, link.getURL());
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void badLeftSide() {
+		new HtmlLink("BLA");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void badRightSide() {
+		new HtmlLink("<li><a href=\"lin");
+	}
+	
+	@Test
+	public void testGetTags() {
+		HtmlLink link = new HtmlLink(LINK);
+		assertEquals(0, link.getTags().size());
+	}
+	
 	@Test
 	public void testGetName() {
 		HtmlLink link = new HtmlLink(LINK);
+		assertEquals(EXPECTED_NAME, link.getName());
+	}
+	
+	@Test
+	public void testGetNameWithTags() {
+		HtmlLink link = new HtmlLink(getLink("Cycling"));
 		assertEquals(EXPECTED_NAME, link.getName());
 	}
 	
