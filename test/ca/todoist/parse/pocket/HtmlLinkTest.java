@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import ca.todoist.parse.pocket.HTMLLink;
+import ca.todoist.parse.pocket.HtmlLink;
 
-public class LinkTest {
+public class HtmlLinkTest {
 
 	private static final String EXPECTED_URL = "www.google.com";
 	private static final String EXPECTED_NAME = "Google";
@@ -16,19 +16,19 @@ public class LinkTest {
 	
 	@Test
 	public void testGetURL() {
-		HTMLLink link = new HTMLLink(LINK);
+		HtmlLink link = new HtmlLink(LINK);
 		assertEquals(EXPECTED_URL, link.getURL());
 	}
 	
 	@Test
 	public void testGetName() {
-		HTMLLink link = new HTMLLink(LINK);
+		HtmlLink link = new HtmlLink(LINK);
 		assertEquals(EXPECTED_NAME, link.getName());
 	}
 	
 	@Test
 	public void testToString() {
-		HTMLLink link = new HTMLLink(LINK);
+		HtmlLink link = new HtmlLink(LINK);
 		assertEquals(EXPECTED_LINK_STRING, link.toString());
 	}
 

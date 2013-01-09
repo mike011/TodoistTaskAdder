@@ -26,7 +26,7 @@ public class PocketParser {
 				read = false;
 			}
 			if (read && line.contains("<li><a href=")) {
-				openLinks.add(new HTMLLink(line));
+				openLinks.add(new HtmlLink(line));
 			}
 			if (line.contains(UNREAD)) {
 				read = true;

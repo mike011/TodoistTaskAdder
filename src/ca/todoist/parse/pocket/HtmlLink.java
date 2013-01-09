@@ -2,14 +2,14 @@ package ca.todoist.parse.pocket;
 
 import ca.todoist.parse.Link;
 
-public class HTMLLink implements Link{
+public class HtmlLink implements Link{
 
 	private static final String HREF = "href=\"";
 	private static final String TAGS = "tags=\"\">";
 	private String url;
 	private String name;
 	
-	public HTMLLink(String line) {
+	public HtmlLink(String line) {
 		setURL(line);
 		setName(line);
 	}
