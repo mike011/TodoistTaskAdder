@@ -25,6 +25,7 @@ public class TodoistAdderForPocketFiles {
 
 	private static void deleteFile(String file) {
 		new File(file).delete();
+		System.out.println("File deleted: " + file);
 	}
 	
 }

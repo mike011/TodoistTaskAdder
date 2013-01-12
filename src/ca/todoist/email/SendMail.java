@@ -1,6 +1,8 @@
 package ca.todoist.email;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -16,23 +18,25 @@ import ca.todoist.util.LoadProperties;
 
 public class SendMail {
 
+	private static final String DEFAULT_PROJECT_NAME = "default";
 	private static Session session;
 
-	private String username;
-	private String password;
-	private String todoistProject;
+	private final String username;
+	private final String password;
+	private final Map<String,String> todoistProjects;
 
 	public SendMail() {
 		LoadProperties load = new LoadProperties();
 		username = load.getUser();
-		todoistProject = load.getProject();
 		password = load.getPassword();
+		todoistProjects = load.getProjects();
 	}
 
 	public void sendTasks(List<Link> tasks) {
 		for (int x = 0; x < tasks.size(); x++) {
 			printMessage(tasks, x);
-			sendEmail(tasks.get(x).toString(), "");
+			Link task = tasks.get(x);
+			sendEmail(getTo(task), task.toString(), "");
 
 			if (notLastTask(tasks, x)) {
 				sleepForFiveSeconds();
@@ -40,19 +44,37 @@ public class SendMail {
 		}
 	}
 
+	private String getTo(Link task) {
+		String firstTag = getFirstTag(task);
+		String to = todoistProjects.get(firstTag);
+		if(to == null) {
+			System.err.println("Could not find project (" + firstTag + ") setting project as default.");
+			to = todoistProjects.get(DEFAULT_PROJECT_NAME);
+		}
+		return to;
+	}
+
+	private String getFirstTag(Link task) {
+		ArrayList<String> tags = task.getTags();
+		String firstTag = tags.get(0);
+		String lowerCase = firstTag.toLowerCase();
+		return lowerCase;
+	}
+
 	private void printMessage(List<Link> tasks, int index) {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("Sending task ");
-		stringBuilder.append(index);
-		stringBuilder.append(" of ");
-		stringBuilder.append(tasks.size());
-		stringBuilder.append(" with tags ");
 		Link link = tasks.get(index);
-		stringBuilder.append(link.getTags());
 		
-		stringBuilder.append(": ");
-		stringBuilder.append(link.getName());
-		System.out.println(stringBuilder.toString());
+		StringBuilder message = new StringBuilder();
+		message.append("Sending task ");
+		message.append(index);
+		message.append(" of ");
+		message.append(tasks.size());
+		message.append(" with tags ");
+		message.append(link.getTags());
+		
+		message.append(": ");
+		message.append(link.getName());
+		System.out.println(message.toString());
 	}
 
 	private boolean notLastTask(List<Link> tasks, int x) {
@@ -67,13 +89,13 @@ public class SendMail {
 		}
 	}
 
-	private void sendEmail(String subject, String note) {
+	private void sendEmail(String to, String subject, String note) {
 		try {
 
 			Message message = new MimeMessage(getSession());
 			message.setFrom(new InternetAddress(username));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(todoistProject));
+					InternetAddress.parse(to));
 			message.setSubject(subject);
 			message.setText(note);
 

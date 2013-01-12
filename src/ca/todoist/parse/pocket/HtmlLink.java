@@ -1,7 +1,6 @@
 package ca.todoist.parse.pocket;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import ca.todoist.parse.Link;
 
