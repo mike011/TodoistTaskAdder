@@ -43,9 +43,15 @@ public class HtmlLinkTest {
 	}
 	
 	@Test
-	public void testGetTags() {
+	public void testGetTags_Empty() {
 		HtmlLink link = new HtmlLink(LINK);
 		assertEquals(0, link.getTags().size());
+	}
+	
+	@Test
+	public void testGetTags() {
+		HtmlLink link = new HtmlLink(getLink("Cycling"));
+		assertEquals(1, link.getTags().size());
 	}
 	
 	@Test

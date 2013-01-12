@@ -7,15 +7,14 @@ import ca.todoist.parse.Link;
 
 public class HtmlLink implements Link {
 
-	private static final String TAGS = "tags=\"\">";
 	private String url;
 	private String name;
-	private ArrayList<String> arrayList;
+	private ArrayList<String> tags;
 
 	public HtmlLink(String line) {
 		setURL(line);
 		setName(line);
-		arrayList = new ArrayList<String>();
+		setTags(line);
 	}
 
 	private void setURL(String line) {
@@ -32,19 +31,36 @@ public class HtmlLink implements Link {
 		String rightSide = "</a></li>";
 		name = parseElement(line, leftSide, offset, rightSide);
 	}
+	
+	private void setTags(String line) {
+		tags = new ArrayList<String>();
+		
+		String leftSide = "tags=\"";
+		String offset = "";
+		String rightSide = "\">";
+		String parseElement = parseElement(line, leftSide, offset, rightSide);
+		if(parseElement.length() > 0) {
+			tags.add(parseElement);
+		}
+		
+	}
 
 	private String parseElement(String line, String leftSide, String offset,
 			String rightSide) {
 		int leftSideIndex = line.indexOf(leftSide, offset.length())
 				+ leftSide.length();
 		if(leftSideIndex < leftSide.length()) {
-			throw new IllegalArgumentException("Could not find left side index: " +  leftSide + " for line : " + line);
+			throwException("left", line, leftSide);
 		}
 		int rightSideIndex = line.indexOf(rightSide);
 		if(rightSideIndex < 0) {
-			throw new IllegalArgumentException("Could not find right side index: " +  rightSide + " for line : " + line);
+			throwException("right", line, rightSide);
 		}
 		return line.substring(leftSideIndex, rightSideIndex);
+	}
+
+	private void throwException(String name, String line, String side) {
+		throw new IllegalArgumentException("Could not find "+ name + " side index: " +  side + " for line : " + line);
 	}
 
 	public String getURL() {
@@ -52,8 +68,7 @@ public class HtmlLink implements Link {
 	}
 
 	public List<String> getTags() {
-
-		return arrayList;
+		return tags;
 	}
 
 	@Override
