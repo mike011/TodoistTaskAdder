@@ -28,11 +28,21 @@ public class LoadPropertiesTest {
 	}
 	
 	@Test
-	public void testGetProjects() {
+	public void testGetProjectsFirst() {
 		Map<String, String> projects = properties.getProjects();
 		assertFalse(projects.isEmpty());
 		assertEquals("a@b.com", projects.get("read"));
+	}
+	
+	@Test
+	public void testGetProjectsSecond() {
+		Map<String, String> projects = properties.getProjects();
 		assertEquals("b@c.ca", projects.get("solar masses"));
+	}
+	
+	@Test
+	public void testGetProjectsThird() {
+		Map<String, String> projects = properties.getProjects();
 		assertEquals("342234@adfafda.org", projects.get("cats"));
 	}
 
