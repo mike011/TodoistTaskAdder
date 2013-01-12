@@ -46,8 +46,12 @@ public class SendMail {
 		stringBuilder.append(index);
 		stringBuilder.append(" of ");
 		stringBuilder.append(tasks.size());
+		stringBuilder.append(" with tags ");
+		Link link = tasks.get(index);
+		stringBuilder.append(link.getTags());
+		
 		stringBuilder.append(": ");
-		stringBuilder.append(tasks.get(index).getName());
+		stringBuilder.append(link.getName());
 		System.out.println(stringBuilder.toString());
 	}
 

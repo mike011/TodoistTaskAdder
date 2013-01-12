@@ -67,7 +67,8 @@ public class HtmlLink implements Link {
 		return url;
 	}
 
-	public List<String> getTags() {
+	@Override
+	public ArrayList<String> getTags() {
 		return tags;
 	}
 
