@@ -23,7 +23,7 @@ public class SendMail {
 
 	private final String username;
 	private final String password;
-	private final Map<String,String> todoistProjects;
+	private final Map<String, String> todoistProjects;
 
 	public SendMail() {
 		LoadProperties load = new LoadProperties();
@@ -47,8 +47,9 @@ public class SendMail {
 	private String getTo(Link task) {
 		String firstTag = getFirstTag(task);
 		String to = todoistProjects.get(firstTag);
-		if(to == null) {
-			System.err.println("Could not find project (" + firstTag + ") setting project as default.");
+		if (to == null) {
+			System.err.println("Could not find project (" + firstTag
+					+ ") setting project as default.");
 			to = todoistProjects.get(DEFAULT_PROJECT_NAME);
 		}
 		return to;
@@ -63,15 +64,15 @@ public class SendMail {
 
 	private void printMessage(List<Link> tasks, int index) {
 		Link link = tasks.get(index);
-		
+
 		StringBuilder message = new StringBuilder();
 		message.append("Sending task ");
-		message.append(index);
+		message.append(index + 1);
 		message.append(" of ");
 		message.append(tasks.size());
 		message.append(" with tags ");
 		message.append(link.getTags());
-		
+
 		message.append(": ");
 		message.append(link.getName());
 		System.out.println(message.toString());
@@ -101,7 +102,7 @@ public class SendMail {
 
 			Transport.send(message);
 
-			System.out.println("Done");
+			System.out.println("Email Sending Done");
 
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
