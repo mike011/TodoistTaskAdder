@@ -2,15 +2,15 @@ package ca.todoist.parse.pocket;
 
 import java.util.ArrayList;
 
-import ca.todoist.parse.Link;
+import ca.todoist.adder.Task;
 
-public class HtmlLink implements Link {
+public class HtmlTask implements Task {
 
 	private String url;
 	private String name;
 	private ArrayList<String> tags;
 
-	public HtmlLink(String line) {
+	public HtmlTask(String line) {
 		setURL(line);
 		setName(line);
 		setTags(line);

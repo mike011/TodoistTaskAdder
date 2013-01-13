@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import ca.todoist.parse.pocket.HtmlLink;
+import ca.todoist.parse.pocket.HtmlTask;
 
-public class HtmlLinkTest {
+public class HtmlTaskTest {
 
 	private static final String EXPECTED_URL = "www.google.com";
 	private static final String EXPECTED_NAME = "Google";
@@ -28,47 +28,47 @@ public class HtmlLinkTest {
 	
 	@Test
 	public void testGetURL() {
-		HtmlLink link = new HtmlLink(LINK);
+		HtmlTask link = new HtmlTask(LINK);
 		assertEquals(EXPECTED_URL, link.getURL());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void badLeftSide() {
-		new HtmlLink("BLA");
+		new HtmlTask("BLA");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void badRightSide() {
-		new HtmlLink("<li><a href=\"lin");
+		new HtmlTask("<li><a href=\"lin");
 	}
 	
 	@Test
 	public void testGetTags_Empty() {
-		HtmlLink link = new HtmlLink(LINK);
+		HtmlTask link = new HtmlTask(LINK);
 		assertEquals(0, link.getTags().size());
 	}
 	
 	@Test
 	public void testGetTags() {
-		HtmlLink link = new HtmlLink(getLink("Cycling"));
+		HtmlTask link = new HtmlTask(getLink("Cycling"));
 		assertEquals(1, link.getTags().size());
 	}
 	
 	@Test
 	public void testGetName() {
-		HtmlLink link = new HtmlLink(LINK);
+		HtmlTask link = new HtmlTask(LINK);
 		assertEquals(EXPECTED_NAME, link.getName());
 	}
 	
 	@Test
 	public void testGetNameWithTags() {
-		HtmlLink link = new HtmlLink(getLink("Cycling"));
+		HtmlTask link = new HtmlTask(getLink("Cycling"));
 		assertEquals(EXPECTED_NAME, link.getName());
 	}
 	
 	@Test
 	public void testToString() {
-		HtmlLink link = new HtmlLink(LINK);
+		HtmlTask link = new HtmlTask(LINK);
 		assertEquals(EXPECTED_LINK_STRING, link.toString());
 	}
 

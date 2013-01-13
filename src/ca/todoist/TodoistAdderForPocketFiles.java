@@ -3,8 +3,8 @@ package ca.todoist;
 import java.io.File;
 import java.util.List;
 
-import ca.todoist.email.SendMail;
-import ca.todoist.parse.Link;
+import ca.todoist.adder.Task;
+import ca.todoist.adder.email.SendMail;
 import ca.todoist.parse.pocket.PocketParser;
 import ca.todoist.util.LoadFile;
 
@@ -16,7 +16,7 @@ public class TodoistAdderForPocketFiles {
 		}
 		String filename = args[0];
 		List<String> pocketLinks = LoadFile.load(filename);
-		List<Link> tasks = new PocketParser(pocketLinks).getOpenLinks();
+		List<Task> tasks = new PocketParser(pocketLinks).getOpenLinks();
 
 		new SendMail().sendTasks(tasks);
 		
