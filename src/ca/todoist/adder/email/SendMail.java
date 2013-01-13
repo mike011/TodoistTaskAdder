@@ -1,6 +1,5 @@
 package ca.todoist.adder.email;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -36,7 +35,7 @@ public class SendMail {
 		for (int x = 0; x < tasks.size(); x++) {
 			printMessage(tasks, x);
 			Task task = tasks.get(x);
-			sendEmail(getTo(task), task.toString(), "");
+			sendEmail(getTo(task), task.get(), "");
 
 			if (notLastTask(tasks, x)) {
 				sleepForFiveSeconds();
@@ -56,8 +55,7 @@ public class SendMail {
 	}
 
 	private String getFirstTag(Task task) {
-		ArrayList<String> tags = task.getTags();
-		String firstTag = tags.get(0);
+		String firstTag = task.getFirstTag();
 		String lowerCase = firstTag.toLowerCase();
 		return lowerCase;
 	}

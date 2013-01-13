@@ -67,9 +67,9 @@ public class HtmlTaskTest {
 	}
 	
 	@Test
-	public void testToString() {
+	public void testGet() {
 		HtmlTask link = new HtmlTask(LINK);
-		assertEquals(EXPECTED_LINK_STRING, link.toString());
+		assertEquals(EXPECTED_LINK_STRING, link.get());
 	}
 
 }

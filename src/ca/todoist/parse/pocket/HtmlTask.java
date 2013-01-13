@@ -70,6 +70,11 @@ public class HtmlTask implements Task {
 	public ArrayList<String> getTags() {
 		return tags;
 	}
+	
+	@Override
+	public String getFirstTag() {
+		return tags.get(0);
+	}
 
 	@Override
 	public String getName() {
@@ -77,7 +82,7 @@ public class HtmlTask implements Task {
 	}
 
 	@Override
-	public String toString() {
+	public String get() {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(url);
 		buffer.append(" (");

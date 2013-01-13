@@ -2,7 +2,7 @@ package ca.todoist.adder;
 
 import java.util.ArrayList;
 
-public class ItemTask implements Task{
+public class ItemTask implements Task {
 
 	private final String name;
 	private final String tag;
@@ -10,9 +10,8 @@ public class ItemTask implements Task{
 	public ItemTask(String name, String tag) {
 		this.name = name;
 		this.tag = tag;
-		
 	}
-	
+
 	@Override
 	public String getName() {
 		return name;
@@ -20,7 +19,18 @@ public class ItemTask implements Task{
 
 	@Override
 	public ArrayList<String> getTags() {
-		return null;
+		ArrayList<String> tags = new ArrayList<String>();
+		tags.add(tag);
+		return tags;
 	}
 
+	@Override
+	public String getFirstTag() {
+		return tag;
+	}
+
+	@Override
+	public String get() {
+		return name;
+	}
 }
