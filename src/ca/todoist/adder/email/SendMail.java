@@ -1,4 +1,4 @@
-package ca.todoist.email;
+package ca.todoist.adder.email;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import ca.todoist.parse.Link;
+import ca.todoist.adder.Task;
 import ca.todoist.util.LoadProperties;
 
 public class SendMail {
@@ -32,10 +32,10 @@ public class SendMail {
 		todoistProjects = load.getProjects();
 	}
 
-	public void sendTasks(List<Link> tasks) {
+	public void sendTasks(List<Task> tasks) {
 		for (int x = 0; x < tasks.size(); x++) {
 			printMessage(tasks, x);
-			Link task = tasks.get(x);
+			Task task = tasks.get(x);
 			sendEmail(getTo(task), task.toString(), "");
 
 			if (notLastTask(tasks, x)) {
@@ -44,7 +44,7 @@ public class SendMail {
 		}
 	}
 
-	private String getTo(Link task) {
+	private String getTo(Task task) {
 		String firstTag = getFirstTag(task);
 		String to = todoistProjects.get(firstTag);
 		if (to == null) {
@@ -55,15 +55,15 @@ public class SendMail {
 		return to;
 	}
 
-	private String getFirstTag(Link task) {
+	private String getFirstTag(Task task) {
 		ArrayList<String> tags = task.getTags();
 		String firstTag = tags.get(0);
 		String lowerCase = firstTag.toLowerCase();
 		return lowerCase;
 	}
 
-	private void printMessage(List<Link> tasks, int index) {
-		Link link = tasks.get(index);
+	private void printMessage(List<Task> tasks, int index) {
+		Task link = tasks.get(index);
 
 		StringBuilder message = new StringBuilder();
 		message.append("Sending task ");
@@ -78,7 +78,7 @@ public class SendMail {
 		System.out.println(message.toString());
 	}
 
-	private boolean notLastTask(List<Link> tasks, int x) {
+	private boolean notLastTask(List<Task> tasks, int x) {
 		return x < tasks.size() - 1;
 	}
 

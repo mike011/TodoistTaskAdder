@@ -3,7 +3,7 @@ package ca.todoist.parse.pocket;
 import java.util.ArrayList;
 import java.util.List;
 
-import ca.todoist.parse.Link;
+import ca.todoist.adder.Task;
 
 public class PocketParser {
 
@@ -17,8 +17,8 @@ public class PocketParser {
 		lines = contents;
 	}
 
-	public List<Link> getOpenLinks() {
-		List<Link> openLinks = new ArrayList<Link>();
+	public List<Task> getOpenLinks() {
+		List<Task> openLinks = new ArrayList<Task>();
 		boolean read = false;
 		for (int x = 0; x < lines.size(); x++) {
 			String line = lines.get(x);

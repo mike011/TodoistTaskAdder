@@ -9,6 +9,9 @@ import java.util.List;
 
 public class LoadFile {
 
+	/**
+	 * Loads an entire file line by line.
+	 */
 	public static List<String> load(String filename) {
 		List<String> lines = new ArrayList<String>();
 		try {
