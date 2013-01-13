@@ -14,7 +14,7 @@ public class LoadPropertiesTest {
 
 	@Before
 	public void setup() {
-		properties = new LoadProperties("/test/user.properties");
+		properties = new LoadProperties("/test/test.properties");
 	}
 	
 	@Test
