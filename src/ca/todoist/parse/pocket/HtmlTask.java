@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import ca.todoist.adder.Task;
 
-public class HtmlLink implements Task {
+public class HtmlTask implements Task {
 
 	private String url;
 	private String name;
 	private ArrayList<String> tags;
 
-	public HtmlLink(String line) {
+	public HtmlTask(String line) {
 		setURL(line);
 		setName(line);
 		setTags(line);

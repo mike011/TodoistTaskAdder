@@ -25,7 +25,7 @@ public class PocketParserTest {
 	@Test
 	public void testGetOpenLinksNotEmpty() {
 		ArrayList<String> contents = getValidStartOfContents();
-		contents.add(HtmlLinkTest.LINK);
+		contents.add(HtmlTaskTest.LINK);
 		PocketParser pp = new PocketParser(contents);
 		List<Task> openLinks = pp.getOpenLinks();
 		assertNotNull(openLinks);
@@ -35,7 +35,7 @@ public class PocketParserTest {
 	@Test
 	public void testGetOpenLinksUL() {
 		ArrayList<String> contents = getValidStartOfContents();
-		contents.add(HtmlLinkTest.LINK);
+		contents.add(HtmlTaskTest.LINK);
 		PocketParser pp = new PocketParser(contents);
 		List<Task> openLinks = pp.getOpenLinks();
 		assertNotNull(openLinks);
@@ -45,8 +45,8 @@ public class PocketParserTest {
 	@Test
 	public void testGetOpenLinksTwo() {
 		ArrayList<String> contents = getValidStartOfContents();
-		contents.add(HtmlLinkTest.LINK);
-		contents.add(HtmlLinkTest.LINK);
+		contents.add(HtmlTaskTest.LINK);
+		contents.add(HtmlTaskTest.LINK);
 		PocketParser pp = new PocketParser(contents);
 		List<Task> openLinks = pp.getOpenLinks();
 		assertEquals(2, openLinks.size());
@@ -55,7 +55,7 @@ public class PocketParserTest {
 	@Test
 	public void testGetOpenLinksClose() {
 		ArrayList<String> contents = getValidStartOfContents();
-		contents.add(HtmlLinkTest.LINK);
+		contents.add(HtmlTaskTest.LINK);
 		contents.add(PocketParser.READ_ARCHIVE);
 		PocketParser pp = new PocketParser(contents);
 		List<Task> openLinks = pp.getOpenLinks();
