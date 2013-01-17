@@ -44,7 +44,7 @@ public class SendMail {
 	}
 
 	private String getTo(Task task) {
-		String firstTag = getFirstTag(task);
+		String firstTag = task.getFirstTag();
 		String to = todoistProjects.get(firstTag);
 		if (to == null) {
 			System.err.println("Could not find project (" + firstTag
@@ -52,12 +52,6 @@ public class SendMail {
 			to = todoistProjects.get(DEFAULT_PROJECT_NAME);
 		}
 		return to;
-	}
-
-	private String getFirstTag(Task task) {
-		String firstTag = task.getFirstTag();
-		String lowerCase = firstTag.toLowerCase();
-		return lowerCase;
 	}
 
 	private void printMessage(List<Task> tasks, int index) {
