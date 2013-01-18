@@ -2,3 +2,4 @@ bin/
 .git/
 *~
 src/user.properties
+target
