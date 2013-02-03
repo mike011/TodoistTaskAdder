@@ -1,5 +1,6 @@
 package ca.todoist.parse.pocket;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import ca.todoist.adder.Task;
@@ -8,12 +9,14 @@ public class HtmlTask implements Task {
 
 	private String url;
 	private String name;
+	private String timeAdded;
 	private ArrayList<String> tags;
 
 	public HtmlTask(String fullLine) {
 		String line = fullLine.trim();
 		setURL(line);
 		setName(line);
+		setTime(line);
 		setTags(line);
 	}
 
@@ -30,6 +33,19 @@ public class HtmlTask implements Task {
 		String offset = "<li>";
 		String rightSide = "</a></li>";
 		name = parseElement(line, leftSide, offset, rightSide);
+	}
+
+	private void setTime(String line) {
+		String leftSide = "time_added=\"";
+		String offset = "<li>";
+		String rightSide = "\"";
+		if (line.contains("tags")) {
+			rightSide += " tags";
+		} else {
+			rightSide += ">";
+		}
+		timeAdded = parseElement(line, leftSide, offset, rightSide);
+
 	}
 
 	private void setTags(String line) {
@@ -78,7 +94,7 @@ public class HtmlTask implements Task {
 
 	@Override
 	public String getFirstTag() {
-		if(!tags.isEmpty()) {
+		if (!tags.isEmpty()) {
 			return tags.get(0).toLowerCase();
 		}
 		return "";
@@ -93,9 +109,14 @@ public class HtmlTask implements Task {
 	public String get() {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(url);
-		buffer.append(" (");
-		buffer.append(name);
-		buffer.append(")");
+		buffer.append(" (").append(name).append(")");
+		buffer.append(" at ").append(getTimeAdded());
 		return buffer.toString();
+	}
+
+	public String getTimeAdded() {
+		SimpleDateFormat date = new SimpleDateFormat(
+				"MMM dd yyyy hh:mm:ss a");
+		return date.format(Long.parseLong(timeAdded + "000"));
 	}
 }
