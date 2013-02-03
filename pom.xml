@@ -32,6 +32,7 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+<<<<<<< HEAD
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -55,4 +56,8 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+<<<<<<< HEAD
 </project>
+=======
+</project>
+>>>>>>> 823ccb28a31f6118f32a7b513e3124edf6a09b65
