@@ -1,9 +1,8 @@
 package ca.todoist.parse.pocket;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ public class PocketParserTest {
 	@Test
 	public void testPocketParser() {
 		PocketParser pp = new PocketParser(null);
-		assertNotNull(pp);
+		assertThat(pp, is(notNullValue()));
 	}
 
 	@Test
@@ -26,8 +25,8 @@ public class PocketParserTest {
 		contents.add(HtmlTaskTest.LINK);
 		PocketParser pp = new PocketParser(contents);
 		List<Task> openLinks = pp.getOpenLinks();
-		assertNotNull(openLinks);
-		assertFalse(openLinks.isEmpty());
+		assertThat(openLinks, is(notNullValue()));
+		assertThat(openLinks.isEmpty(), is(false));
 	}
 
 	@Test
@@ -36,10 +35,10 @@ public class PocketParserTest {
 		contents.add(HtmlTaskTest.LINK);
 		PocketParser pp = new PocketParser(contents);
 		List<Task> openLinks = pp.getOpenLinks();
-		assertNotNull(openLinks);
-		assertFalse(openLinks.isEmpty());
+		assertThat(openLinks, is(notNullValue()));
+		assertThat(openLinks.isEmpty(), is(false));
 	}
-	
+
 	@Test
 	public void testGetOpenLinksTwo() {
 		ArrayList<String> contents = getValidStartOfContents();
@@ -47,7 +46,7 @@ public class PocketParserTest {
 		contents.add(HtmlTaskTest.LINK);
 		PocketParser pp = new PocketParser(contents);
 		List<Task> openLinks = pp.getOpenLinks();
-		assertEquals(2, openLinks.size());
+		assertThat(openLinks.size(), is(2));
 	}
 
 	@Test
@@ -57,17 +56,17 @@ public class PocketParserTest {
 		contents.add(PocketParser.READ_ARCHIVE);
 		PocketParser pp = new PocketParser(contents);
 		List<Task> openLinks = pp.getOpenLinks();
-		assertEquals(1, openLinks.size());
+		assertThat(openLinks.size(), is(1));
 	}
 
 	@Test
 	public void testGetOpenInvalidLinke() {
 		ArrayList<String> contents = getValidStartOfContents();
 		contents.add("bla bla bla");
-		
+
 		PocketParser pp = new PocketParser(contents);
 		List<Task> openLinks = pp.getOpenLinks();
-		assertTrue(openLinks.isEmpty());
+		assertThat(openLinks.isEmpty(), is(true));
 	}
 
 	private ArrayList<String> getValidStartOfContents() {
@@ -76,5 +75,5 @@ public class PocketParserTest {
 		contents.add(PocketParser.UL);
 		return contents;
 	}
-	
+
 }

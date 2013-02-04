@@ -1,7 +1,7 @@
 package ca.todoist.util;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 import java.util.Map;
 
@@ -16,34 +16,34 @@ public class LoadPropertiesTest {
 	public void setup() {
 		properties = new LoadProperties("/test/test.properties");
 	}
-	
+
 	@Test
 	public void testGetUser() {
-		assertEquals("User Name", properties.getUser());
+		assertThat(properties.getUser(), is("User Name"));
 	}
 
 	@Test
 	public void testGetPassword() {
-		assertEquals("Super Secret", properties.getPassword());
+		assertThat(properties.getPassword(), is("Super Secret"));
 	}
-	
+
 	@Test
 	public void testGetProjectsFirst() {
 		Map<String, String> projects = properties.getProjects();
-		assertFalse(projects.isEmpty());
-		assertEquals("a@b.com", projects.get("read"));
+		assertThat(projects.isEmpty(), is(false));
+		assertThat(projects.get("read"), is("a@b.com"));
 	}
-	
+
 	@Test
 	public void testGetProjectsSecond() {
 		Map<String, String> projects = properties.getProjects();
-		assertEquals("b@c.ca", projects.get("solar masses"));
+		assertThat(projects.get("solar masses"), is("b@c.ca"));
 	}
-	
+
 	@Test
 	public void testGetProjectsThird() {
 		Map<String, String> projects = properties.getProjects();
-		assertEquals("342234@adfafda.org", projects.get("cats"));
+		assertThat(projects.get("cats"), is("342234@adfafda.org"));
 	}
 
 }
