@@ -12,14 +12,14 @@ public class ItemTaskTest {
 		ItemTask task = new ItemTask(name, "");
 		assertEquals(name, task.getName());
 	}
-	
+
 	@Test
 	public void testGetTags() {
 		String tag = "cycling";
 		ItemTask task = new ItemTask("", tag);
 		assertEquals(1, task.getTags().size());
 	}
-	
+
 	@Test
 	public void testGetFirstTag() {
 		String tag = "cycling";
@@ -27,4 +27,10 @@ public class ItemTaskTest {
 		assertEquals(tag, task.getFirstTag());
 	}
 
+	@Test
+	public void testDueDate() {
+		String name = "cycling";
+		ItemTask task = new ItemTask(name, "", "mar 25");
+		assertEquals(name + " <date mar 25>", task.get());
+	}
 }
