@@ -54,5 +54,15 @@
 			<version>4.8.2</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
+<<<<<<< HEAD
 </project>
+=======
+</project>
+>>>>>>> 6e33ffc4a828da8da296207f6c62fd0f4f78326a
