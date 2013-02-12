@@ -104,14 +104,8 @@ public class HtmlTaskTest {
 	}
 
 	@Test
-<<<<<<< HEAD
-	public void testWithTabAtStartOfLine() {
-		HtmlTask link = new HtmlTask("			<li><a href=\"http://rss.slashdot.org/~r/Slashdot/slashdot/~3/cYei53QV4d8/story01.htm\" time_added=\"1358361088\" tags=\"astronomy\">Curiosity Finds Evidence of Ancient Surface Water</a></li>");
-		assertEquals("Curiosity Finds Evidence of Ancient Surface Water", link.getName());
-=======
 	public void testTimeAddedWithTag() {
 		HtmlTask link = new HtmlTask(getLink("tag"));
 		assertThat(link.getTimeAdded(), is(EXPECTED_TIME_ADDED));
->>>>>>> 6e33ffc4a828da8da296207f6c62fd0f4f78326a
 	}
 }

@@ -32,6 +32,6 @@ public class ItemTaskTest {
 	public void testDueDate() {
 		String name = "cycling";
 		ItemTask task = new ItemTask(name, "", "mar 25");
-		assertEquals(name + " <date mar 25>", task.get());
+		assertThat(task.get(), is(name + " <date mar 25>"));
 	}
 }
