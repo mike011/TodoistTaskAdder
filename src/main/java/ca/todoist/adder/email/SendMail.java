@@ -35,7 +35,7 @@ public class SendMail {
 		for (int x = 0; x < tasks.size(); x++) {
 			printMessage(tasks, x);
 			Task task = tasks.get(x);
-			sendEmail(getTo(task), task.get(), "");
+			sendEmail(getTo(task), task.getDescription(), task.getNote());
 
 			if (notLastTask(tasks, x)) {
 				sleepForFiveSeconds();

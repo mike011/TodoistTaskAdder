@@ -7,6 +7,7 @@ public class ItemTask implements Task {
 	private final String name;
 	private final String tag;
 	private String dueDate;
+	private String note;
 
 	public ItemTask(String name, String tag) {
 		this(name, tag, "");
@@ -16,6 +17,11 @@ public class ItemTask implements Task {
 		this.name = name;
 		this.tag = tag;
 		this.dueDate = dueDate;
+	}
+
+	public ItemTask(String name, String tag, String dueDate, String note) {
+		this(name, tag, dueDate);
+		this.note = note;
 	}
 
 	@Override
@@ -36,11 +42,16 @@ public class ItemTask implements Task {
 	}
 
 	@Override
-	public String get() {
+	public String getDescription() {
 		return name + getDueDate();
 	}
 
 	private String getDueDate() {
 		return " <date " + dueDate + ">";
+	}
+	
+	@Override 
+	public String getNote() {
+		return note;
 	}
 }

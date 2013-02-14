@@ -32,10 +32,10 @@ public class HtmlTaskTest {
 			+ EXPECTED_NAME + ") at " + EXPECTED_TIME_ADDED;
 
 	@Test
-	public void testGetURL() {
-		HtmlTask link = new HtmlTask(LINK);
-		assertThat(link.getURL(), is(EXPECTED_URL));
-	}
+		public void testGetDescriptionURL() {
+			HtmlTask link = new HtmlTask(LINK);
+			assertThat(link.getURL(), is(EXPECTED_URL));
+		}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void badLeftSide() {
@@ -48,46 +48,46 @@ public class HtmlTaskTest {
 	}
 
 	@Test
-	public void testGetTags_Empty() {
-		HtmlTask link = new HtmlTask(getLink(""));
-		assertThat(link.getTags().size(), is(0));
-	}
+		public void testGetDescriptionTags_Empty() {
+			HtmlTask link = new HtmlTask(getLink(""));
+			assertThat(link.getTags().size(), is(0));
+		}
 
 	@Test
-	public void testGetTags() {
-		HtmlTask link = new HtmlTask(getLink("Cycling"));
-		assertThat(link.getTags().size(), is(1));
-	}
+		public void testGetDescriptionTags() {
+			HtmlTask link = new HtmlTask(getLink("Cycling"));
+			assertThat(link.getTags().size(), is(1));
+		}
 
 	@Test
-	public void testGetNameWithTag() {
-		HtmlTask link = new HtmlTask(LINK);
-		assertThat(link.getName(), is(EXPECTED_NAME));
-	}
+		public void testGetDescriptionNameWithTag() {
+			HtmlTask link = new HtmlTask(LINK);
+			assertThat(link.getName(), is(EXPECTED_NAME));
+		}
 
 	@Test
-	public void testGetNameEmpty() {
-		HtmlTask link = new HtmlTask(getLink(""));
-		assertThat(link.getName(), is(EXPECTED_NAME));
-	}
+		public void testGetDescriptionNameEmpty() {
+			HtmlTask link = new HtmlTask(getLink(""));
+			assertThat(link.getName(), is(EXPECTED_NAME));
+		}
 
 	@Test
-	public void testGet() {
-		HtmlTask link = new HtmlTask(LINK);
-		assertThat(link.get(), is(EXPECTED_LINK_STRING));
-	}
+		public void testGetDescription() {
+			HtmlTask link = new HtmlTask(LINK);
+			assertThat(link.getDescription(), is(EXPECTED_LINK_STRING));
+		}
 
 	@Test
-	public void testGetFirstTag_Valid() {
-		HtmlTask link = new HtmlTask(LINK);
-		assertThat(link.getFirstTag(), is(equalToIgnoringCase(EXPECTED_TAG)));
-	}
+		public void testGetDescriptionFirstTag_Valid() {
+			HtmlTask link = new HtmlTask(LINK);
+			assertThat(link.getFirstTag(), is(equalToIgnoringCase(EXPECTED_TAG)));
+		}
 
 	@Test
-	public void testGetFirstTag_NotSet() {
-		HtmlTask link = new HtmlTask(getLink(""));
-		assertThat(link.getFirstTag(), is(""));
-	}
+		public void testGetDescriptionFirstTag_NotSet() {
+			HtmlTask link = new HtmlTask(getLink(""));
+			assertThat(link.getFirstTag(), is(""));
+		}
 
 	@Test
 	public void testWithTabAtStartOfLine() {

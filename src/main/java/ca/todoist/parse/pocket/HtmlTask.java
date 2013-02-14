@@ -106,7 +106,7 @@ public class HtmlTask implements Task {
 	}
 
 	@Override
-	public String get() {
+	public String getDescription() {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(url);
 		buffer.append(" (").append(name).append(")");
@@ -118,5 +118,10 @@ public class HtmlTask implements Task {
 		SimpleDateFormat date = new SimpleDateFormat(
 				"MMM dd yyyy hh:mm:ss a");
 		return date.format(Long.parseLong(timeAdded + "000"));
+	}
+
+	@Override
+	public String getNote() {
+		return "";
 	}
 }
