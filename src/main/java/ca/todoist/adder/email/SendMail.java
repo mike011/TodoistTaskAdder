@@ -48,8 +48,9 @@ public class SendMail {
 		String to = todoistProjects.get(firstTag);
 		if (to == null) {
 			System.err.println("Could not find project (" + firstTag
-					+ ") setting project as default.");
+					+ ") setting project as default. Adding note with project name");
 			to = todoistProjects.get(DEFAULT_PROJECT_NAME);
+			task.addNote(to + " not found.");
 		}
 		return to;
 	}

@@ -1,27 +1,29 @@
 package ca.todoist.adder;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ItemTask implements Task {
 
 	private final String name;
 	private final String tag;
 	private String dueDate;
-	private String note;
-
-	public ItemTask(String name, String tag) {
-		this(name, tag, "");
-	}
+	private List<String> notes;
 
 	public ItemTask(String name, String tag, String dueDate) {
 		this.name = name;
 		this.tag = tag;
 		this.dueDate = dueDate;
+		this.notes = new ArrayList<String>();
+	}
+	
+	public ItemTask(String name, String tag) {
+		this(name, tag, "");
 	}
 
 	public ItemTask(String name, String tag, String dueDate, String note) {
 		this(name, tag, dueDate);
-		this.note = note;
+		notes.add(note);
 	}
 
 	@Override
@@ -49,9 +51,21 @@ public class ItemTask implements Task {
 	private String getDueDate() {
 		return " <date " + dueDate + ">";
 	}
-	
-	@Override 
+
+	@Override
 	public String getNote() {
-		return note;
+		StringBuffer note = new StringBuffer();
+		for (int x = 0; x < notes.size(); x++) {
+			note.append(notes.get(x));
+			if (x < notes.size() - 1) {
+				note.append(", ");
+			}
+		}
+		return note.toString();
+	}
+
+	@Override
+	public void addNote(String string) {
+		notes.add(string);
 	}
 }

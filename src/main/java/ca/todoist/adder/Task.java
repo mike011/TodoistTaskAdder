@@ -8,4 +8,5 @@ public interface Task {
 	ArrayList<String> getTags();
 	String getFirstTag();
 	String getNote();
+	void addNote(String string);
 }

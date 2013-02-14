@@ -11,6 +11,7 @@ public class HtmlTask implements Task {
 	private String name;
 	private String timeAdded;
 	private ArrayList<String> tags;
+	private String note;
 
 	public HtmlTask(String fullLine) {
 		String line = fullLine.trim();
@@ -18,6 +19,7 @@ public class HtmlTask implements Task {
 		setName(line);
 		setTime(line);
 		setTags(line);
+		note = "";
 	}
 
 	private void setURL(String line) {
@@ -141,6 +143,11 @@ public class HtmlTask implements Task {
 	
 	@Override
 	public String getNote() {
-		return "";
+		return note;
+	}
+
+	@Override
+	public void addNote(String string) {
+		note = string;
 	}
 }
