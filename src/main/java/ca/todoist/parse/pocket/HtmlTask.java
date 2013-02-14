@@ -55,19 +55,15 @@ public class HtmlTask implements Task {
 		String offset = "";
 		String rightSide = "\">";
 		if (line.contains(leftSide)) {
-			String parseElement = parseElement(line, leftSide, offset,
-					rightSide);
+			String parseElement = parseElement(line, leftSide, offset, rightSide);
 			if (parseElement.length() > 0) {
 				tags.add(parseElement);
 			}
 		}
-
 	}
 
-	private String parseElement(String line, String leftSide, String offset,
-			String rightSide) {
-		int leftSideIndex = line.indexOf(leftSide, offset.length())
-				+ leftSide.length();
+	private String parseElement(String line, String leftSide, String offset, String rightSide) {
+		int leftSideIndex = line.indexOf(leftSide, offset.length()) + leftSide.length();
 		if (leftSideIndex < leftSide.length()) {
 			throwException("left", line, leftSide);
 		}
@@ -79,8 +75,7 @@ public class HtmlTask implements Task {
 	}
 
 	private void throwException(String name, String line, String side) {
-		throw new IllegalArgumentException("Could not find " + name
-				+ " side index: " + side + " for line : " + line);
+		throw new IllegalArgumentException("Could not find " + name + " side index: " + side + " for line : " + line);
 	}
 
 	public String getURL() {
@@ -107,6 +102,10 @@ public class HtmlTask implements Task {
 
 	@Override
 	public String getDescription() {
+		return getStringOfDescription() + getDueDate();
+	}
+
+	private String getStringOfDescription() {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(url);
 		buffer.append(" (").append(name).append(")");
@@ -114,12 +113,32 @@ public class HtmlTask implements Task {
 		return buffer.toString();
 	}
 
-	public String getTimeAdded() {
-		SimpleDateFormat date = new SimpleDateFormat(
-				"MMM dd yyyy hh:mm:ss a");
-		return date.format(Long.parseLong(timeAdded + "000"));
+	private String getDueDate() {
+		return " <date " + getFormatedTime(getAddedTimeInMilliseconds() + oneMonthInMilliseconds()) + ">";
+	}
+	
+	private String getFormatedTime(Long time) {
+		SimpleDateFormat date = new SimpleDateFormat("MMM dd yyyy");
+		return date.format(time);
 	}
 
+	private long oneMonthInMilliseconds() {
+		return (365 / 12) * 24 * 60 * 60 * 1000;
+	}
+
+	String getTimeAdded() {
+		return getTimeAdded(getAddedTimeInMilliseconds());
+	}
+
+	private long getAddedTimeInMilliseconds() {
+		return Long.parseLong(timeAdded + "000");
+	}
+
+	private String getTimeAdded(Long time) {
+		SimpleDateFormat date = new SimpleDateFormat("MMM dd yyyy hh:mm:ss a");
+		return date.format(time);
+	}
+	
 	@Override
 	public String getNote() {
 		return "";

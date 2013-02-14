@@ -14,6 +14,8 @@ public class HtmlTaskTest {
 	private static final String EXPECTED_NAME = "Google";
 	private static final String EXPECTED_TAG = "DOG";
 	private static final String EXPECTED_TIME_ADDED = "Feb 02 2013 01:19:56 PM";
+	private static final String EXPECTED_DUE_DATE = "<date Jan 13 2013>";
+	
 	static final String LINK = getLink(EXPECTED_TAG);
 
 	private static String getLink(String tags) {
@@ -29,7 +31,7 @@ public class HtmlTaskTest {
 	}
 
 	private static final String EXPECTED_LINK_STRING = EXPECTED_URL + " ("
-			+ EXPECTED_NAME + ") at " + EXPECTED_TIME_ADDED;
+			+ EXPECTED_NAME + ") at " + EXPECTED_TIME_ADDED + " " + EXPECTED_DUE_DATE;
 
 	@Test
 		public void testGetDescriptionURL() {
