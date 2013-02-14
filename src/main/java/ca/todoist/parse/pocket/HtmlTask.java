@@ -116,7 +116,7 @@ public class HtmlTask implements Task {
 	}
 
 	private String getDueDate() {
-		return " <date " + getFormatedTime(getAddedTimeInMilliseconds() + oneMonthInMilliseconds()) + ">";
+		return " <date " + getFormatedTime(getAddedTimeInMilliseconds() + getOneMonthInMilliseconds()) + ">";
 	}
 	
 	private String getFormatedTime(Long time) {
@@ -124,8 +124,8 @@ public class HtmlTask implements Task {
 		return date.format(time);
 	}
 
-	private long oneMonthInMilliseconds() {
-		return (365 / 12) * 24 * 60 * 60 * 1000;
+	static long getOneMonthInMilliseconds() {
+		return (365L / 12L) * 24L * 60L * 60L * 1000L;
 	}
 
 	String getTimeAdded() {

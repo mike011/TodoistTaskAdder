@@ -14,14 +14,13 @@ public class HtmlTaskTest {
 	private static final String EXPECTED_NAME = "Google";
 	private static final String EXPECTED_TAG = "DOG";
 	private static final String EXPECTED_TIME_ADDED = "Feb 02 2013 01:19:56 PM";
-	private static final String EXPECTED_DUE_DATE = "<date Jan 13 2013>";
-	
+	private static final String EXPECTED_DUE_DATE = "<date Mar 04 2013>";
+
 	static final String LINK = getLink(EXPECTED_TAG);
 
 	private static String getLink(String tags) {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("<li><a href=\"").append(EXPECTED_URL)
-				.append("\" ");
+		stringBuilder.append("<li><a href=\"").append(EXPECTED_URL).append("\" ");
 		stringBuilder.append("time_added=\"1359829196\"");
 		if (tags.length() != 0) {
 			stringBuilder.append(" tags=\"").append(tags).append("\"");
@@ -30,14 +29,13 @@ public class HtmlTaskTest {
 		return stringBuilder.toString();
 	}
 
-	private static final String EXPECTED_LINK_STRING = EXPECTED_URL + " ("
-			+ EXPECTED_NAME + ") at " + EXPECTED_TIME_ADDED + " " + EXPECTED_DUE_DATE;
+	private static final String EXPECTED_LINK_STRING = EXPECTED_URL + " (" + EXPECTED_NAME + ") at " + EXPECTED_TIME_ADDED + " " + EXPECTED_DUE_DATE;
 
 	@Test
-		public void testGetDescriptionURL() {
-			HtmlTask link = new HtmlTask(LINK);
-			assertThat(link.getURL(), is(EXPECTED_URL));
-		}
+	public void testGetDescriptionURL() {
+		HtmlTask link = new HtmlTask(LINK);
+		assertThat(link.getURL(), is(EXPECTED_URL));
+	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void badLeftSide() {
@@ -50,53 +48,52 @@ public class HtmlTaskTest {
 	}
 
 	@Test
-		public void testGetDescriptionTags_Empty() {
-			HtmlTask link = new HtmlTask(getLink(""));
-			assertThat(link.getTags().size(), is(0));
-		}
+	public void testGetDescriptionTags_Empty() {
+		HtmlTask link = new HtmlTask(getLink(""));
+		assertThat(link.getTags().size(), is(0));
+	}
 
 	@Test
-		public void testGetDescriptionTags() {
-			HtmlTask link = new HtmlTask(getLink("Cycling"));
-			assertThat(link.getTags().size(), is(1));
-		}
+	public void testGetDescriptionTags() {
+		HtmlTask link = new HtmlTask(getLink("Cycling"));
+		assertThat(link.getTags().size(), is(1));
+	}
 
 	@Test
-		public void testGetDescriptionNameWithTag() {
-			HtmlTask link = new HtmlTask(LINK);
-			assertThat(link.getName(), is(EXPECTED_NAME));
-		}
+	public void testGetDescriptionNameWithTag() {
+		HtmlTask link = new HtmlTask(LINK);
+		assertThat(link.getName(), is(EXPECTED_NAME));
+	}
 
 	@Test
-		public void testGetDescriptionNameEmpty() {
-			HtmlTask link = new HtmlTask(getLink(""));
-			assertThat(link.getName(), is(EXPECTED_NAME));
-		}
+	public void testGetDescriptionNameEmpty() {
+		HtmlTask link = new HtmlTask(getLink(""));
+		assertThat(link.getName(), is(EXPECTED_NAME));
+	}
 
 	@Test
-		public void testGetDescription() {
-			HtmlTask link = new HtmlTask(LINK);
-			assertThat(link.getDescription(), is(EXPECTED_LINK_STRING));
-		}
+	public void testGetDescription() {
+		HtmlTask link = new HtmlTask(LINK);
+		assertThat(link.getDescription(), is(EXPECTED_LINK_STRING));
+	}
 
 	@Test
-		public void testGetDescriptionFirstTag_Valid() {
-			HtmlTask link = new HtmlTask(LINK);
-			assertThat(link.getFirstTag(), is(equalToIgnoringCase(EXPECTED_TAG)));
-		}
+	public void testGetDescriptionFirstTag_Valid() {
+		HtmlTask link = new HtmlTask(LINK);
+		assertThat(link.getFirstTag(), is(equalToIgnoringCase(EXPECTED_TAG)));
+	}
 
 	@Test
-		public void testGetDescriptionFirstTag_NotSet() {
-			HtmlTask link = new HtmlTask(getLink(""));
-			assertThat(link.getFirstTag(), is(""));
-		}
+	public void testGetDescriptionFirstTag_NotSet() {
+		HtmlTask link = new HtmlTask(getLink(""));
+		assertThat(link.getFirstTag(), is(""));
+	}
 
 	@Test
 	public void testWithTabAtStartOfLine() {
 		HtmlTask link = new HtmlTask(
 				"			<li><a href=\"http://rss.slashdot.org/~r/Slashdot/slashdot/~3/cYei53QV4d8/story01.htm\" time_added=\"1358361088\" tags=\"astronomy\">Curiosity Finds Evidence of Ancient Surface Water</a></li>");
-		assertThat(link.getName(),
-				is("Curiosity Finds Evidence of Ancient Surface Water"));
+		assertThat(link.getName(), is("Curiosity Finds Evidence of Ancient Surface Water"));
 	}
 
 	@Test
@@ -109,5 +106,10 @@ public class HtmlTaskTest {
 	public void testTimeAddedWithTag() {
 		HtmlTask link = new HtmlTask(getLink("tag"));
 		assertThat(link.getTimeAdded(), is(EXPECTED_TIME_ADDED));
+	}
+
+	@Test
+	public void testGetOneMonthInMilliseconds() {
+		assertThat(HtmlTask.getOneMonthInMilliseconds(), is(2592000000L));
 	}
 }
