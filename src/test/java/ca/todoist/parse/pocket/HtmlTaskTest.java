@@ -112,4 +112,13 @@ public class HtmlTaskTest {
 	public void testGetOneMonthInMilliseconds() {
 		assertThat(HtmlTask.getOneMonthInMilliseconds(), is(2592000000L));
 	}
+	
+	@Test
+	public void testNote() {
+		HtmlTask link = new HtmlTask(LINK);
+		String note = "note";
+		link.addNote(note);
+		assertThat(link.getNote(), is(note));
+	}
+	
 }

@@ -2,13 +2,12 @@ package ca.todoist.util;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
 import java.util.Properties;
-import java.util.TreeMap;
 
 public class LoadProperties {
 
 	private Properties properties;
+	private Projects projects;
 
 	public LoadProperties() {
 		this("/user.properties");
@@ -20,6 +19,7 @@ public class LoadProperties {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		projects = new Projects();
 	}
 
 	public Properties load(String filename) throws IOException {
@@ -38,14 +38,9 @@ public class LoadProperties {
 		return properties.getProperty("password");
 	}
 
-	public Map<String, String> getProjects() {
-		TreeMap<String, String> projects = new TreeMap<String, String>();
+	public Projects getProjects() {
 		String property = properties.getProperty("projects");
-		String[] projectsAndEmails = property.split(",");
-		for (String projectAndEmail : projectsAndEmails) {
-			String[] split = projectAndEmail.split("=");
-			projects.put(split[0], split[1]);
-		}
+		projects.parse(property);		
 		return projects;
 	}
 

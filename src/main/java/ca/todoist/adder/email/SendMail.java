@@ -1,7 +1,6 @@
 package ca.todoist.adder.email;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -14,6 +13,7 @@ import javax.mail.internet.MimeMessage;
 
 import ca.todoist.adder.Task;
 import ca.todoist.util.LoadProperties;
+import ca.todoist.util.Projects;
 
 public class SendMail {
 
@@ -22,7 +22,7 @@ public class SendMail {
 
 	private final String username;
 	private final String password;
-	private final Map<String, String> todoistProjects;
+	private final Projects todoistProjects;
 
 	public SendMail() {
 		LoadProperties load = new LoadProperties();

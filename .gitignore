@@ -1,5 +1,5 @@
 bin/
 .git/
 *~
-src/user.properties
+src/main/java/user.properties
 target
