@@ -38,7 +38,18 @@ public class PocketParserTest {
 		assertThat(openLinks, is(notNullValue()));
 		assertThat(openLinks.isEmpty(), is(false));
 	}
-
+	
+	@Test
+	public void testGetOpenLinksWithNoDueDates() {
+		ArrayList<String> contents = getValidStartOfContents();
+		contents.add(HtmlTaskTest.LINK);
+		PocketParser pp = new PocketParser(contents);
+		List<Task> openLinks = pp.getOpenLinksWithNoDueDates();
+		assertThat(openLinks, is(notNullValue()));
+		assertThat(openLinks.isEmpty(), is(false));
+		assertThat(openLinks.get(0).getDescription().contains("<date"), is (false));
+	}
+	
 	@Test
 	public void testGetOpenLinksTwo() {
 		ArrayList<String> contents = getValidStartOfContents();

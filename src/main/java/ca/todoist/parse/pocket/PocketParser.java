@@ -17,7 +17,15 @@ public class PocketParser {
 		lines = contents;
 	}
 
+	public List<Task> getOpenLinksWithNoDueDates() {
+		return getOpenLinksFromFile(false);
+	}
+
 	public List<Task> getOpenLinks() {
+		return getOpenLinksFromFile(true);
+	}
+
+	private List<Task> getOpenLinksFromFile(boolean withDueDates) {
 		List<Task> openLinks = new ArrayList<Task>();
 		boolean read = false;
 		for (int x = 0; x < lines.size(); x++) {
@@ -26,7 +34,7 @@ public class PocketParser {
 				read = false;
 			}
 			if (read && line.contains("<li><a href=")) {
-				openLinks.add(new HtmlTask(line));
+				openLinks.add(new HtmlTask(line, withDueDates));
 			}
 			if (line.contains(UNREAD)) {
 				read = true;

@@ -29,7 +29,8 @@ public class HtmlTaskTest {
 		return stringBuilder.toString();
 	}
 
-	private static final String EXPECTED_LINK_STRING = EXPECTED_URL + " (" + EXPECTED_NAME + ") at " + EXPECTED_TIME_ADDED + " " + EXPECTED_DUE_DATE;
+	private static final String EXPECTED_LINK_NO_DUE_DATE = EXPECTED_URL + " (" + EXPECTED_NAME + ") at " + EXPECTED_TIME_ADDED;
+	private static final String EXPECTED_LINK = EXPECTED_LINK_NO_DUE_DATE + " " + EXPECTED_DUE_DATE;
 
 	@Test
 	public void testGetDescriptionURL() {
@@ -74,7 +75,13 @@ public class HtmlTaskTest {
 	@Test
 	public void testGetDescription() {
 		HtmlTask link = new HtmlTask(LINK);
-		assertThat(link.getDescription(), is(EXPECTED_LINK_STRING));
+		assertThat(link.getDescription(), is(EXPECTED_LINK));
+	}
+	
+	@Test
+	public void testNoDueDate() {
+		HtmlTask link = new HtmlTask(LINK, false);
+		assertThat(link.getDescription(), is(EXPECTED_LINK_NO_DUE_DATE));
 	}
 
 	@Test
@@ -112,7 +119,7 @@ public class HtmlTaskTest {
 	public void testGetOneMonthInMilliseconds() {
 		assertThat(HtmlTask.getOneMonthInMilliseconds(), is(2592000000L));
 	}
-	
+
 	@Test
 	public void testNote() {
 		HtmlTask link = new HtmlTask(LINK);
@@ -120,5 +127,4 @@ public class HtmlTaskTest {
 		link.addNote(note);
 		assertThat(link.getNote(), is(note));
 	}
-	
 }

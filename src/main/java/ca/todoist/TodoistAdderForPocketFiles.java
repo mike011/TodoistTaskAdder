@@ -16,7 +16,7 @@ public class TodoistAdderForPocketFiles {
 		}
 		String filename = args[0];
 		List<String> pocketLinks = LoadFile.load(filename);
-		List<Task> tasks = new PocketParser(pocketLinks).getOpenLinks();
+		List<Task> tasks = new PocketParser(pocketLinks).getOpenLinksWithNoDueDates();
 
 		new SendMail().sendTasks(tasks);
 		

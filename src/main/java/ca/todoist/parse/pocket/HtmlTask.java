@@ -12,14 +12,20 @@ public class HtmlTask implements Task {
 	private String timeAdded;
 	private ArrayList<String> tags;
 	private String note;
+	private boolean addDueDate;
 
 	public HtmlTask(String fullLine) {
+		this(fullLine, true);
+	}
+	
+	public HtmlTask(String fullLine, boolean addDueDate) {
 		String line = fullLine.trim();
 		setURL(line);
 		setName(line);
 		setTime(line);
 		setTags(line);
-		note = "";
+		this.note = "";
+		this.addDueDate = addDueDate;
 	}
 
 	private void setURL(String line) {
@@ -116,7 +122,10 @@ public class HtmlTask implements Task {
 	}
 
 	private String getDueDate() {
-		return " <date " + getFormatedTime(getAddedTimeInMilliseconds() + getOneMonthInMilliseconds()) + ">";
+		if(addDueDate) {
+			return " <date " + getFormatedTime(getAddedTimeInMilliseconds() + getOneMonthInMilliseconds()) + ">";
+		} 
+		return "";
 	}
 	
 	private String getFormatedTime(Long time) {

@@ -4,3 +4,4 @@ bin/
 src/main/java/user.properties
 target
 src/main/java/ca/todoist/TodoistAdderForLists.java
+src/user.properties
