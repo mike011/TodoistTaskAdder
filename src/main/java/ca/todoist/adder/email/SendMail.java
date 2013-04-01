@@ -17,7 +17,6 @@ import ca.todoist.util.Projects;
 
 public class SendMail {
 
-	private static final String DEFAULT_PROJECT_NAME = "default";
 	private static Session session;
 
 	private final String username;
@@ -32,10 +31,27 @@ public class SendMail {
 	}
 
 	public void sendTasks(List<Task> tasks) {
+		checkToMakeSureAllProjectsExist(tasks);
+		send(tasks);
+	}
+
+	private void checkToMakeSureAllProjectsExist(List<Task> tasks) {
+		for (Task task: tasks) {
+			String firstTag = task.getFirstTag();
+			String to = todoistProjects.get(firstTag);
+			if(isFirstTagNotSet(to)) {
+				throw new IllegalArgumentException("Could not find project: " + firstTag
+						+ " No emails sent.");
+			}
+		}
+	}
+
+	private void send(List<Task> tasks) {
 		for (int x = 0; x < tasks.size(); x++) {
 			printMessage(tasks, x);
 			Task task = tasks.get(x);
-			sendEmail(getTo(task), task.getDescription(), task.getNote());
+			String to = todoistProjects.get(task.getFirstTag());
+			sendEmail(to, task.getDescription(), task.getNote());
 
 			if (notLastTask(tasks, x)) {
 				sleepForFiveSeconds();
@@ -43,16 +59,8 @@ public class SendMail {
 		}
 	}
 
-	private String getTo(Task task) {
-		String firstTag = task.getFirstTag();
-		String to = todoistProjects.get(firstTag);
-		if (to == null) {
-			System.err.println("Could not find project (" + firstTag
-					+ ") setting project as default. Adding note with project name");
-			to = todoistProjects.get(DEFAULT_PROJECT_NAME);
-			task.addNote(firstTag + " not found.");
-		}
-		return to;
+	private boolean isFirstTagNotSet(String to) {
+		return to == null;
 	}
 
 	private void printMessage(List<Task> tasks, int index) {
