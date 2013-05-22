@@ -36,12 +36,11 @@ public class SendMail {
 	}
 
 	private void checkToMakeSureAllProjectsExist(List<Task> tasks) {
-		for (Task task: tasks) {
+		for (Task task : tasks) {
 			String firstTag = task.getFirstTag();
 			String to = todoistProjects.get(firstTag);
-			if(isFirstTagNotSet(to)) {
-				throw new IllegalArgumentException("Could not find project: " + firstTag
-						+ " No emails sent.");
+			if (isFirstTagNotSet(to)) {
+				throw new IllegalArgumentException("For task <" + task.getName() + "> could not find project: " + firstTag + " No emails sent.");
 			}
 		}
 	}
@@ -96,8 +95,7 @@ public class SendMail {
 
 			Message message = new MimeMessage(getSession());
 			message.setFrom(new InternetAddress(username));
-			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(to));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
 			message.setSubject(subject);
 			message.setText(note);
 
@@ -118,15 +116,13 @@ public class SendMail {
 			props.put("mail.smtp.host", "smtp.gmail.com");
 			props.put("mail.smtp.port", "587");
 
-			session = Session.getInstance(props,
-					new javax.mail.Authenticator() {
+			session = Session.getInstance(props, new javax.mail.Authenticator() {
 
-						@Override
-						protected PasswordAuthentication getPasswordAuthentication() {
-							return new PasswordAuthentication(username,
-									password);
-						}
-					});
+				@Override
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication(username, password);
+				}
+			});
 		}
 		return session;
 	}
