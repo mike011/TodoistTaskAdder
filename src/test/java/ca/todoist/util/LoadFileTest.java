@@ -4,6 +4,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
+import java.io.File;
+
 import org.junit.Test;
 
 public class LoadFileTest {
@@ -13,6 +15,7 @@ public class LoadFileTest {
 	private static String getValidFileName() {
 		final String dir = System.getProperty("user.dir");
 		String folderAndName = "\\src\\test\\java\\test\\test.properties";
+		folderAndName = folderAndName.replace("\\", File.separator);
 		return dir + folderAndName;
 	}
 
