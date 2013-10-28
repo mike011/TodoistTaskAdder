@@ -1,6 +1,5 @@
 package ca.todoist.adder.email;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -40,18 +39,24 @@ public class SendMail {
 		StringBuffer errs = new StringBuffer();
 		for (Task task : tasks) {
 			String firstTag = task.getFirstTag();
-			String to = todoistProjects.get(firstTag);
-			if (isFirstTagNotSet(to)) {
+			if(firstTag.length() == 0) {
 				errs.append("For task <");
 				errs.append(task.getName());
-				errs.append("> could not find project: ");
-				errs.append(firstTag);
-				errs.append('\n');
+				errs.append("> project not set\n");
+			} else {
+				String to = todoistProjects.get(firstTag);
+				if (isFirstTagNotSet(to)) {
+					errs.append("For task <");
+					errs.append(task.getName());
+					errs.append("> could not find project: ");
+					errs.append(firstTag);
+					errs.append('\n');
+					}
 			}
 		}
 		if(errs.length() > 0) {
 			errs.append(" No emails sent.");
-			throw new IllegalArgumentException(errs.toString());
+			throw new IllegalArgumentException("\n" + errs.toString());
 		}
 	}
 
