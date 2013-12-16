@@ -3,48 +3,59 @@ package ca.todoist;
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.todoist.adder.Task;
+import ca.todoist.adder.email.SendMail;
 import ca.todoist.parse.pocket.HtmlTask;
+import ca.todoist.parse.pocket.Link;
 
 public class MultipleWebPageParser {
 	
 	private List<WebPageParser> pages;
-	private List<Link> urls;
+	private List<Link> links;
 	
-	public MultipleWebPageParser(String url) throws Exception {
-		loadMultiplePages(url);
+	public MultipleWebPageParser(String url, String tag) throws Exception {
+		loadMultiplePages(url, tag);
 		loadListOrUrls();
 	}
 
-	private void loadMultiplePages(String url) throws Exception {
+	private void loadMultiplePages(String url, String tag) throws Exception {
 		pages = new ArrayList<WebPageParser>();
-		pages.add(new WebPageParser(url));
+		pages.add(new WebPageParser(url, tag));
 		for (int x = 2; x < 28; x++) {
-			pages.add(new WebPageParser(url + "/page" + x + '/'));
+			pages.add(new WebPageParser(url + "/page" + x + '/', tag));
 		}
 	}
 	
 	public void loadListOrUrls() {
-		urls = new ArrayList<Link>();
+		links = new ArrayList<Link>();
 		for(WebPageParser wpp : pages) {
-			urls.addAll(wpp.getParsedURLs());
+			links.addAll(wpp.getParsedURLs());
 		}
 	}
 	
-
 	public List<Link> getListOfAllUrls() {
-		return urls;
+		return links;
 	}
 
 	public List<WebPageParser> getPages() {
 		return pages;
 	}
 
-	public List<HtmlTask> getHTMLTasks() {
-		List<HtmlTask> tasks = new ArrayList<HtmlTask>();
-		for(Link url : urls) {
-			tasks.add(new HtmlTask(url.toString()));
+	public List<Task> getTasks() {
+		List<Task> tasks = new ArrayList<Task>();
+		for(Link link : links) {
+			tasks.add(new HtmlTask(link));
 		}
 		return tasks;
+	}
+	
+	public static void main(String args[]) throws Exception {
+		MultipleWebPageParser mwpp = new MultipleWebPageParser("http://blog.8thlight.com/", "8th");
+		
+		List<Task> tasks = mwpp.getTasks();
+		tasks = tasks.subList(1, 1);
+		new SendMail().sendTasks(tasks);
+		
 	}
 
 }

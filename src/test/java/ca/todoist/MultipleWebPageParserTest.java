@@ -15,7 +15,7 @@ public class MultipleWebPageParserTest {
 	
 	@Before
 	public void setup() throws Exception {
-		mwpp = new MultipleWebPageParser(URL);
+		mwpp = new MultipleWebPageParser(URL, "8th");
 	}
 	
 	@Test
@@ -31,6 +31,6 @@ public class MultipleWebPageParserTest {
 	
 	@Test
 	public void getHTMLLinks() throws Exception {
-		assertThat(mwpp.getHTMLTasks().size(), is(396));
+		assertThat(mwpp.getTasks().size(), is(396));
 	}
 }

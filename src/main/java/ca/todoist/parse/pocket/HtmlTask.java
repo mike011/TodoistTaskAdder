@@ -13,6 +13,14 @@ public class HtmlTask implements Task {
 	private ArrayList<String> tags;
 	private String note;
 	private boolean addDueDate;
+	
+	public HtmlTask(Link link) {
+		url = link.getLink();
+		name = link.getTitle();
+		tags = new ArrayList<String>();
+		tags.add(link.getTag());
+		note = "";
+	}
 
 	public HtmlTask(String fullLine) {
 		this(fullLine, true);
@@ -117,7 +125,9 @@ public class HtmlTask implements Task {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(url);
 		buffer.append(" (").append(name).append(")");
-		buffer.append(" at ").append(getTimeAdded());
+		if(timeAdded != null) {
+			buffer.append(" at ").append(getTimeAdded());
+		}
 		return buffer.toString();
 	}
 

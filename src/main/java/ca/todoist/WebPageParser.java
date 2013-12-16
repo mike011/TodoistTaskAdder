@@ -9,13 +9,17 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.todoist.parse.pocket.Link;
+
 public class WebPageParser {
 	
-	private String page;
 	private static final String ARTICLE = "<article>";
+	private String tag;
+	private String page;
 
-	public WebPageParser(String url) throws Exception {
+	public WebPageParser(String url, String tag) throws Exception {
 		page = readWebPage(url);
+		this.tag = tag;
 	}
 
 	private String readWebPage(String urlString) throws IOException {
@@ -51,19 +55,19 @@ public class WebPageParser {
 	}
 
 	public List<Link> getParsedURLs() {
-		ArrayList<Link> urls = new ArrayList<Link>();
+		ArrayList<Link> links = new ArrayList<Link>();
 		while(page.contains(ARTICLE)) {
-			urls.add(parsedUrl());
+			links.add(parsedLink());
 		}
-		return urls;
+		return links;
 	}
 
-	private Link parsedUrl() {
+	private Link parsedLink() {
 		removeEverythingBeforeArticle();
 		int ahref = page.indexOf("<a href");
 		String ahrefEnd = "</a>";
 		int ahrefEndIndex = page.indexOf(ahrefEnd, ahref);
-		return new Link(page.substring(ahref, ahrefEndIndex+ahrefEnd.length()));
+		return new Link(page.substring(ahref, ahrefEndIndex+ahrefEnd.length()), tag);
 	}
 
 	private void removeEverythingBeforeArticle() {
