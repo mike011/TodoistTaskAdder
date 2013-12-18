@@ -16,9 +16,11 @@ public class WebPageParser {
 	private static final String ARTICLE = "<article>";
 	private String tag;
 	private String page;
+	private String base;
 
-	public WebPageParser(String url, String tag) throws Exception {
-		page = readWebPage(url);
+	public WebPageParser(String base, String url, String tag) throws Exception {
+		this.base = base;
+		this.page = readWebPage(url);
 		this.tag = tag;
 	}
 
@@ -67,7 +69,7 @@ public class WebPageParser {
 		int ahref = page.indexOf("<a href");
 		String ahrefEnd = "</a>";
 		int ahrefEndIndex = page.indexOf(ahrefEnd, ahref);
-		return new Link(page.substring(ahref, ahrefEndIndex+ahrefEnd.length()), tag);
+		return new Link(base, page.substring(ahref, ahrefEndIndex+ahrefEnd.length()), tag);
 	}
 
 	private void removeEverythingBeforeArticle() {

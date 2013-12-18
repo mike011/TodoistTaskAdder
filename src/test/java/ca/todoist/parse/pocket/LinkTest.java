@@ -10,12 +10,13 @@ import org.junit.Test;
 
 public class LinkTest {
 
+	private static final String BASE = "http://blog.8thlight.com";
 	private static final String TEXT = "<a href=\"/patrick-gombert/2013/11/26/lispy-elixir.html\">Lispy Elixir</a>";
 	private Link link;
 	
 	@Before
 	public void setup() {
-		link = new Link(TEXT, "");
+		link = new Link(BASE, TEXT, "");
 	}
 	
 	@Test
@@ -25,7 +26,7 @@ public class LinkTest {
 	
 	@Test
 	public void getLink() {
-		assertThat(link.getLink(), is("/patrick-gombert/2013/11/26/lispy-elixir.html"));
+		assertThat(link.getLink(), is(BASE+"/patrick-gombert/2013/11/26/lispy-elixir.html"));
 	}
 	
 	@Test

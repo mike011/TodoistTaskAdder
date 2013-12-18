@@ -14,12 +14,12 @@ import ca.todoist.parse.pocket.Link;
 
 public class WebPageParserTest {
 
-	private static final String URL = "http://blog.8thlight.com/";
+	private static final String URL = "http://blog.8thlight.com";
 	private WebPageParser webPageParser;
 	
 	@Before
 	public void setup() throws Exception {
-		webPageParser = new WebPageParser(URL, "");
+		webPageParser = new WebPageParser(URL, URL, "");
 	}
 	
 	@Test
@@ -33,6 +33,7 @@ public class WebPageParserTest {
 		List<Link> urls = webPageParser.getParsedURLs();
 		assertFalse(urls.isEmpty());
 		assertThat(urls.size(), is(15));
+		assertThat(urls.get(0).getLink(), is ("http://blog.8thlight.com/uncle-bob/2013/12/10/Thankyou-Kent.html"));
 		assertThat(urls.get(0).getTitle(), is("Extreme Programming, a Reflection"));
 		assertThat(urls.get(1).getTitle(), is("Lispy Elixir"));
 	}

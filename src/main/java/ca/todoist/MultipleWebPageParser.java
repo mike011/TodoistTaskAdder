@@ -20,9 +20,9 @@ public class MultipleWebPageParser {
 
 	private void loadMultiplePages(String url, String tag) throws Exception {
 		pages = new ArrayList<WebPageParser>();
-		pages.add(new WebPageParser(url, tag));
+		pages.add(new WebPageParser(url, url, tag));
 		for (int x = 2; x < 28; x++) {
-			pages.add(new WebPageParser(url + "/page" + x + '/', tag));
+			pages.add(new WebPageParser(url, url + "/page" + x + '/', tag));
 		}
 	}
 	
@@ -53,9 +53,31 @@ public class MultipleWebPageParser {
 		MultipleWebPageParser mwpp = new MultipleWebPageParser("http://blog.8thlight.com/", "8th");
 		
 		List<Task> tasks = mwpp.getTasks();
-		tasks = tasks.subList(1, 1);
-		new SendMail().sendTasks(tasks);
-		
+		int index = 341;
+		int end = index+50;
+		while(!tasks.isEmpty()) {
+			System.out.println("index"+index+ " end"+end);
+			if(end > tasks.size()) {
+				end = tasks.size();
+			}
+			new SendMail().sendTasks(tasks.subList(index, end));
+			index+=50;
+			end+=50;
+			if(end >= tasks.size()) {
+				end = tasks.size();
+				break;
+			}
+			sleepForFiftySeconds();
+		}
+		new SendMail().sendTasks(tasks.subList(index, end));
+	}
+	
+	private static void sleepForFiftySeconds() {
+		try {
+			Thread.sleep(50000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

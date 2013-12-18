@@ -4,8 +4,10 @@ public class Link {
 
 	private String text;
 	private String tag;
+	private String base;
 
-	public Link(String substring, String tag) {
+	public Link(String base, String substring, String tag) {
+		this.base = base;
 		this.text = substring;
 		this.tag = tag;
 	}
@@ -14,7 +16,7 @@ public class Link {
 		String startString = "<a href=\"";
 		int ahref = text.indexOf(startString) + startString.length();
 		int closeBracket = text.indexOf("\">");
-		return text.substring(ahref, closeBracket);
+		return base + text.substring(ahref, closeBracket);
 	}
 	
 	public String getTitle() {
