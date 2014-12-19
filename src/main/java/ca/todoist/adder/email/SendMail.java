@@ -1,7 +1,10 @@
 package ca.todoist.adder.email;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
+import java.util.TreeMap;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -36,28 +39,46 @@ public class SendMail {
 	}
 
 	private void checkToMakeSureAllProjectsExist(List<Task> tasks) {
+		String errs = lookToSeeIfAnyProjectsAreMissingTags(tasks);
+		if (errs.length() > 0) {
+			errs += " No emails sent.";
+			throw new IllegalArgumentException("\n" + errs);
+		}
+	}
+
+	private String lookToSeeIfAnyProjectsAreMissingTags(List<Task> tasks) {
 		StringBuffer errs = new StringBuffer();
-		for (Task task : tasks) {
-			String firstTag = task.getFirstTag();
-			if(firstTag.length() == 0) {
-				errs.append("For task <");
-				errs.append(task.getName());
-				errs.append("> project not set\n");
-			} else {
-				String to = todoistProjects.get(firstTag);
-				if (isFirstTagNotSet(to)) {
-					errs.append("For task <");
-					errs.append(task.getName());
-					errs.append("> could not find project: ");
-					errs.append(firstTag);
-					errs.append('\n');
-					}
+		Map<String, ArrayList<Task>> missingTags = lookforMissingTags(tasks);
+
+		for (String tag : missingTags.keySet()) {
+			errs.append("For the folowing tasks the tag <" + tag + "> is missing: ");
+			for(Task t : missingTags.get(tag)) {
+				errs.append("\n\t").append(t.getName());			
 			}
 		}
-		if(errs.length() > 0) {
-			errs.append(" No emails sent.");
-			throw new IllegalArgumentException("\n" + errs.toString());
+		return errs.toString();
+	}
+
+	private Map<String, ArrayList<Task>> lookforMissingTags(List<Task> tasks) {
+		Map<String, ArrayList<Task>> missingTags = new TreeMap<String, ArrayList<Task>>();
+		for (Task task : tasks) {
+			String to = todoistProjects.get(task.getFirstTag());
+			if (isFirstTagNotSet(to)) {
+				String firstTag = task.getFirstTag();
+				String tag = firstTag;
+				if (firstTag.length() == 0) {
+					tag = "EMPTY";
+				}
+
+				ArrayList<Task> list = missingTags.get(tag);
+				if (list == null) {
+					list = new ArrayList<Task>();
+				}
+				list.add(task);
+				missingTags.put(tag, list);
+			}
 		}
+		return missingTags;
 	}
 
 	private void send(List<Task> tasks) {
