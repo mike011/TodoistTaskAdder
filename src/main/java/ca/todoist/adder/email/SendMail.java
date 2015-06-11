@@ -51,7 +51,7 @@ public class SendMail {
 		Map<String, ArrayList<Task>> missingTags = lookforMissingTags(tasks);
 
 		for (String tag : missingTags.keySet()) {
-			errs.append("For the folowing tasks the tag <" + tag + "> is missing: ");
+			errs.append("\nFor the folowing tasks the tag <" + tag + "> is missing: ");
 			for(Task t : missingTags.get(tag)) {
 				errs.append("\n\t").append(t.getName());			
 			}
@@ -146,10 +146,12 @@ public class SendMail {
 
 	private Session getSession() {
 		if (session == null) {
+			
 			Properties props = new Properties();
 			props.put("mail.smtp.auth", "true");
 			props.put("mail.smtp.starttls.enable", "true");
 			props.put("mail.smtp.host", "smtp.gmail.com");
+			props.put("mail.smtp.ssl.trust", "*");
 			props.put("mail.smtp.port", "587");
 
 			session = Session.getInstance(props, new javax.mail.Authenticator() {
