@@ -49,6 +49,9 @@ public class ItemTask implements Task {
 	}
 
 	private String getDueDate() {
+		if(dueDate.isEmpty()) {
+			return "";
+		}
 		return " <date " + dueDate + ">";
 	}
 
