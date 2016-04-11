@@ -2,11 +2,10 @@ package ca.todoist.parse.pocket;
 
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
-
-import ca.todoist.parse.pocket.HtmlTask;
 
 public class HtmlTaskTest {
 
@@ -33,7 +32,7 @@ public class HtmlTaskTest {
 	private static final String EXPECTED_LINK = EXPECTED_LINK_NO_DUE_DATE + " " + EXPECTED_DUE_DATE;
 
 	@Test
-	public void testGetDescriptionURL() {
+	public void testGetTitleURL() {
 		HtmlTask link = new HtmlTask(LINK);
 		assertThat(link.getURL(), is(EXPECTED_URL));
 	}
@@ -49,51 +48,39 @@ public class HtmlTaskTest {
 	}
 
 	@Test
-	public void testGetDescriptionTags_Empty() {
-		HtmlTask link = new HtmlTask(getLink(""));
-		assertThat(link.getTags().size(), is(0));
-	}
-
-	@Test
-	public void testGetDescriptionTags() {
-		HtmlTask link = new HtmlTask(getLink("Cycling"));
-		assertThat(link.getTags().size(), is(1));
-	}
-
-	@Test
-	public void testGetDescriptionNameWithTag() {
+	public void testGetTitleNameWithTag() {
 		HtmlTask link = new HtmlTask(LINK);
 		assertThat(link.getName(), is(EXPECTED_NAME));
 	}
 
 	@Test
-	public void testGetDescriptionNameEmpty() {
+	public void testGetTitleNameEmpty() {
 		HtmlTask link = new HtmlTask(getLink(""));
 		assertThat(link.getName(), is(EXPECTED_NAME));
 	}
 
 	@Test
-	public void testGetDescription() {
+	public void testGetTitle() {
 		HtmlTask link = new HtmlTask(LINK);
-		assertThat(link.getDescription(), is(EXPECTED_LINK));
+		assertThat(link.getTitle(), is(EXPECTED_LINK));
 	}
-	
+
 	@Test
 	public void testNoDueDate() {
 		HtmlTask link = new HtmlTask(LINK, false);
-		assertThat(link.getDescription(), is(EXPECTED_LINK_NO_DUE_DATE));
+		assertThat(link.getTitle(), is(EXPECTED_LINK_NO_DUE_DATE));
 	}
 
 	@Test
-	public void testGetDescriptionFirstTag_Valid() {
+	public void testGetTitleFirstTag_Valid() {
 		HtmlTask link = new HtmlTask(LINK);
-		assertThat(link.getFirstTag(), is(equalToIgnoringCase(EXPECTED_TAG)));
+		assertThat(link.getProject(), is(equalToIgnoringCase(EXPECTED_TAG)));
 	}
 
 	@Test
-	public void testGetDescriptionFirstTag_NotSet() {
+	public void testGetTitleFirstTag_NotSet() {
 		HtmlTask link = new HtmlTask(getLink(""));
-		assertThat(link.getFirstTag(), is(""));
+		assertThat(link.getProject(), is(""));
 	}
 
 	@Test
@@ -121,10 +108,47 @@ public class HtmlTaskTest {
 	}
 
 	@Test
-	public void testNote() {
+	public void getBody() {
 		HtmlTask link = new HtmlTask(LINK);
 		String note = "note";
 		link.addNote(note);
-		assertThat(link.getNote(), is(note));
+		assertThat(link.getBody(), is(note));
+	}
+	
+	@Test
+	public void getBodyWithLabel() throws Exception {
+		HtmlTask link = new HtmlTask(getLink("@tag,tag"));
+		assertThat(link.getBody(), is("@tag"));
+	}
+
+	@Test
+	public void getBodyWithNoteAndLabel() throws Exception {
+		HtmlTask link = new HtmlTask(getLink("@tag,tag"));
+		link.addNote("note");
+		assertThat(link.getBody(), is("note @tag"));
+	}
+
+	@Test
+	public void getProjectEmpty() {
+		HtmlTask link = new HtmlTask(getLink(""));
+		assertEquals("", link.getProject());
+	}
+
+	@Test
+	public void getProjectOneTag() {
+		HtmlTask link = new HtmlTask(getLink("tag"));
+		assertEquals("tag", link.getProject());
+	}
+
+	@Test
+	public void getProjectMultipleTags() {
+		HtmlTask link = new HtmlTask(getLink("tag,tag1"));
+		assertEquals("tag1", link.getProject());
+	}
+
+	@Test
+	public void getLabel() throws Exception {
+		HtmlTask link = new HtmlTask(getLink("@tag,tag"));
+		assertEquals("@tag", link.getLabels().get(0));
 	}
 }

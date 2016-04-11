@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import ca.todoist.parse.pocket.Link;
@@ -28,6 +29,7 @@ public class WebPageParserTest {
 		assertTrue(webPageContents.contains("article"));
 	}
 	
+	@Ignore
 	@Test
 	public void getUrls() throws Exception {
 		List<Link> urls = webPageParser.getParsedURLs();

@@ -1,12 +1,15 @@
 package ca.todoist.adder;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface Task {
-	String getDescription();
+	
+	// For sending email. These probably should be somewhere else.
+	String getTitle();
+	String getBody();
+	
 	String getName();
-	ArrayList<String> getTags();
-	String getFirstTag();
-	String getNote();
+	String getProject();
+	List<String> getLabels();
 	void addNote(String string);
 }

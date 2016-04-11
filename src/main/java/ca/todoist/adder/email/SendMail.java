@@ -62,9 +62,9 @@ public class SendMail {
 	private Map<String, ArrayList<Task>> lookforMissingTags(List<Task> tasks) {
 		Map<String, ArrayList<Task>> missingTags = new TreeMap<String, ArrayList<Task>>();
 		for (Task task : tasks) {
-			String to = todoistProjects.get(task.getFirstTag());
+			String to = todoistProjects.get(task.getProject());
 			if (isFirstTagNotSet(to)) {
-				String firstTag = task.getFirstTag();
+				String firstTag = task.getProject();
 				String tag = firstTag;
 				if (firstTag.length() == 0) {
 					tag = "EMPTY";
@@ -85,8 +85,8 @@ public class SendMail {
 		for (int x = 0; x < tasks.size(); x++) {
 			printMessage(tasks, x);
 			Task task = tasks.get(x);
-			String to = todoistProjects.get(task.getFirstTag());
-			sendEmail(to, task.getDescription(), task.getNote());
+			String to = todoistProjects.get(task.getProject());
+			sendEmail(to, task.getTitle(), task.getBody());
 
 			if (notLastTask(tasks, x)) {
 				sleepForFiveSeconds();
@@ -106,8 +106,8 @@ public class SendMail {
 		message.append(index + 1);
 		message.append(" of ");
 		message.append(tasks.size());
-		message.append(" with tags ");
-		message.append(link.getTags());
+		message.append(" with project ");
+		message.append(link.getProject());
 
 		message.append(": ");
 		message.append(link.getName());

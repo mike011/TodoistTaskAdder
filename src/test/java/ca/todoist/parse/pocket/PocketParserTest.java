@@ -47,7 +47,7 @@ public class PocketParserTest {
 		List<Task> openLinks = pp.getOpenLinksWithNoDueDates();
 		assertThat(openLinks, is(notNullValue()));
 		assertThat(openLinks.isEmpty(), is(false));
-		assertThat(openLinks.get(0).getDescription().contains("<date"), is (false));
+		assertThat(openLinks.get(0).getTitle().contains("<date"), is (false));
 	}
 	
 	@Test

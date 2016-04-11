@@ -2,6 +2,7 @@ package ca.todoist.parse.pocket;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import ca.todoist.adder.Task;
 
@@ -13,7 +14,7 @@ public class HtmlTask implements Task {
 	private ArrayList<String> tags;
 	private String note;
 	private boolean addDueDate;
-	
+
 	public HtmlTask(Link link) {
 		url = link.getLink();
 		name = link.getTitle();
@@ -25,7 +26,7 @@ public class HtmlTask implements Task {
 	public HtmlTask(String fullLine) {
 		this(fullLine, true);
 	}
-	
+
 	public HtmlTask(String fullLine, boolean addDueDate) {
 		String line = fullLine.trim();
 		setURL(line);
@@ -72,8 +73,8 @@ public class HtmlTask implements Task {
 		String rightSide = "\">";
 		if (line.contains(leftSide)) {
 			String parseElement = parseElement(line, leftSide, offset, rightSide);
-			if (parseElement.length() > 0) {
-				tags.add(parseElement);
+			for (String tag : parseElement.split(",")) {
+				tags.add(tag);
 			}
 		}
 	}
@@ -99,14 +100,9 @@ public class HtmlTask implements Task {
 	}
 
 	@Override
-	public ArrayList<String> getTags() {
-		return tags;
-	}
-
-	@Override
-	public String getFirstTag() {
+	public String getProject() {
 		if (!tags.isEmpty()) {
-			return tags.get(0).toLowerCase();
+			return tags.get(tags.size()-1).toLowerCase();
 		}
 		return "";
 	}
@@ -117,7 +113,7 @@ public class HtmlTask implements Task {
 	}
 
 	@Override
-	public String getDescription() {
+	public String getTitle() {
 		return getStringOfDescription() + getDueDate();
 	}
 
@@ -125,19 +121,19 @@ public class HtmlTask implements Task {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(url);
 		buffer.append(" (").append(name).append(")");
-		if(timeAdded != null) {
+		if (timeAdded != null) {
 			buffer.append(" at ").append(getTimeAdded());
 		}
 		return buffer.toString();
 	}
 
 	private String getDueDate() {
-		if(addDueDate) {
+		if (addDueDate) {
 			return " <date " + getFormatedTime(getAddedTimeInMilliseconds() + getOneMonthInMilliseconds()) + ">";
-		} 
+		}
 		return "";
 	}
-	
+
 	private String getFormatedTime(Long time) {
 		SimpleDateFormat date = new SimpleDateFormat("MMM dd yyyy");
 		return date.format(time);
@@ -159,14 +155,26 @@ public class HtmlTask implements Task {
 		SimpleDateFormat date = new SimpleDateFormat("MMM dd yyyy hh:mm:ss a");
 		return date.format(time);
 	}
-	
+
 	@Override
-	public String getNote() {
-		return note;
+	public String getBody() {
+		String body = note;
+		if(!body.isEmpty()) {
+			body += ' ';
+		}
+		for(String label: getLabels()) {
+			body += label + ' ';
+		}
+		return body.trim();
 	}
 
 	@Override
 	public void addNote(String string) {
 		note = string;
+	}
+
+	@Override
+	public List<String> getLabels() {
+		return tags.subList(0, tags.size()-1);
 	}
 }
