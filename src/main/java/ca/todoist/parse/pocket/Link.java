@@ -6,9 +6,9 @@ public class Link {
 	private String tag;
 	private String base;
 
-	public Link(String base, String substring, String tag) {
+	public Link(String base, String text, String tag) {
 		this.base = base;
-		this.text = substring;
+		this.text = text;
 		this.tag = tag;
 	}
 	
