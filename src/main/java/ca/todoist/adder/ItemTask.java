@@ -47,7 +47,7 @@ public class ItemTask implements Task {
 
 	@Override
 	public String getTitle() {
-		return name + getDueDate();
+		return getName() + getDueDate();
 	}
 
 	private String getDueDate() {

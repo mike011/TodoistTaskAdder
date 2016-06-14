@@ -142,7 +142,7 @@ public class HtmlTaskTest {
 
 	@Test
 	public void getProjectMultipleTags() {
-		HtmlTask link = new HtmlTask(getLink("tag,tag1"));
+		HtmlTask link = new HtmlTask(getLink("@tag,tag1"));
 		assertEquals("tag1", link.getProject());
 	}
 
@@ -150,5 +150,23 @@ public class HtmlTaskTest {
 	public void getLabel() throws Exception {
 		HtmlTask link = new HtmlTask(getLink("@tag,tag"));
 		assertEquals("@tag", link.getLabels().get(0));
+	}
+
+	@Test
+	public void testGetProject() throws Exception {
+		HtmlTask link = new HtmlTask(getLink("tag,@tag"));
+		assertThat(link.getProject(), is("tag"));
+	}
+
+	@Test
+	public void testGetLabels() throws Exception {
+		HtmlTask link = new HtmlTask(getLink("tag,@tag"));
+		assertThat(link.getLabels().get(0), is("@tag"));
+	}
+	
+	@Test
+	public void testGetLabelsReversed() throws Exception {
+		HtmlTask link = new HtmlTask(getLink("@tag,tag"));
+		assertThat(link.getLabels().get(0), is("@tag"));
 	}
 }

@@ -102,7 +102,11 @@ public class HtmlTask implements Task {
 	@Override
 	public String getProject() {
 		if (!tags.isEmpty()) {
-			return tags.get(tags.size()-1).toLowerCase();
+			for(String t : tags) {
+				if(!t.startsWith("@")) {
+					return t.toLowerCase();
+				}
+			}
 		}
 		return "";
 	}
@@ -175,6 +179,12 @@ public class HtmlTask implements Task {
 
 	@Override
 	public List<String> getLabels() {
-		return tags.subList(0, tags.size()-1);
+		List<String> labels = new ArrayList<String>();
+		for(String t : tags) {
+			if(t.startsWith("@")) {
+				labels.add(t);
+			}
+		}
+		return labels;
 	}
 }

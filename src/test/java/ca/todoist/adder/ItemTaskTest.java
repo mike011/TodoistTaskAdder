@@ -13,7 +13,7 @@ public class ItemTaskTest {
 		ItemTask task = new ItemTask(name, "");
 		assertThat(task.getName(), is(name));
 	}
-
+	
 	@Test
 	public void testGetTitleFirstTag() {
 		String tag = "cycling";
