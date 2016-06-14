@@ -3,6 +3,7 @@ package ca.todoist.parse.pocket;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimeZone;
 
 import ca.todoist.adder.Task;
 
@@ -157,6 +158,7 @@ public class HtmlTask implements Task {
 
 	private String getTimeAdded(Long time) {
 		SimpleDateFormat date = new SimpleDateFormat("MMM dd yyyy hh:mm:ss a");
+		date.setTimeZone(TimeZone.getTimeZone("GMT-5:00"));
 		return date.format(time);
 	}
 
