@@ -1,5 +1,6 @@
 package ca.todoist.util;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -24,9 +25,14 @@ public class LoadProperties {
 
 	public Properties load(String filename) throws IOException {
 		Properties prop = new Properties();
-		InputStream in = LoadProperties.class.getResourceAsStream(filename);
+		InputStream in = LoadProperties.class.getClass().getResourceAsStream(filename);
 		if (null == in) {
-			throw new IllegalArgumentException(filename + " not found.");
+			String r = "";
+			File file = new File(".");			
+			for(String f : file.list()) {
+				r+= f + " ";
+			}
+			throw new IllegalArgumentException(filename + " not found. Dir is " + file.getAbsolutePath() + " and files in dir are: " + r);
 		}
 		prop.load(in);
 		in.close();
