@@ -25,6 +25,9 @@ public class LoadProperties {
 	public Properties load(String filename) throws IOException {
 		Properties prop = new Properties();
 		InputStream in = getClass().getResourceAsStream(filename);
+		if (null == in) {
+			throw new IllegalArgumentException(filename + " not found.");
+		}
 		prop.load(in);
 		in.close();
 		return prop;
@@ -40,7 +43,7 @@ public class LoadProperties {
 
 	public Projects getProjects() {
 		String property = properties.getProperty("projects");
-		projects.parse(property);		
+		projects.parse(property);
 		return projects;
 	}
 
