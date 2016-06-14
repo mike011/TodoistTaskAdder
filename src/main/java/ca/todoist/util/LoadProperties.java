@@ -24,7 +24,7 @@ public class LoadProperties {
 
 	public Properties load(String filename) throws IOException {
 		Properties prop = new Properties();
-		InputStream in = getClass().getResourceAsStream(filename);
+		InputStream in = LoadProperties.class.getResourceAsStream(filename);
 		if (null == in) {
 			throw new IllegalArgumentException(filename + " not found.");
 		}
