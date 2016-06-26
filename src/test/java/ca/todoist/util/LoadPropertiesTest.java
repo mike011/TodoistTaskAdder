@@ -3,6 +3,8 @@ package ca.todoist.util;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.io.File;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,7 +14,13 @@ public class LoadPropertiesTest {
 
 	@Before
 	public void setup() {
-		properties = new LoadProperties("/test/test.properties");
+		String file = File.separator;
+		file += "src" + File.separator;
+		file += "test" + File.separator;
+		file += "java" + File.separator;
+		file += "test" + File.separator;
+		file += "test.properties";
+		properties = new LoadProperties(file);
 	}
 
 	@Test

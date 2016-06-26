@@ -11,7 +11,7 @@ public class LoadProperties {
 	private Projects projects;
 
 	public LoadProperties() {
-		this("/user.properties");
+		this("/src/main/java/user.properties");
 	}
 
 	public LoadProperties(String filename) {
@@ -26,13 +26,9 @@ public class LoadProperties {
 	public Properties load(String filename) throws IOException {
 		Properties prop = new Properties();
 		File base = new File(".");
-		String file = base.getCanonicalPath() + "/src/test/java/" + filename;
+		String file = base.getCanonicalPath() + filename;
 		if (!new File(file).exists()) {
-			String r = "";
-			for (String f : base.list()) {
-				r += f + " ";
-			}
-			throw new IllegalArgumentException(filename + " not found. Dir is " + base.getAbsolutePath() + " and files in dir are: " + r);
+			throw new IllegalArgumentException(file + " not found.");
 		}				
 		FileInputStream in = new FileInputStream(file);
 		prop.load(in);
