@@ -10,21 +10,23 @@ public class ItemTask implements Task {
 	private String dueDate;
 	private List<String> notes;
 	private List<String> labels;
+	private Priority priority;
 
-	public ItemTask(String name, String project, String dueDate) {
+	public ItemTask(String name, String project, String dueDate, Priority priority) {
 		this.name = name;
 		this.project = project;
 		this.dueDate = dueDate;
 		this.notes = new ArrayList<String>();
 		this.labels = new ArrayList<String>();
+		this.priority = priority;
 	}
 	
 	public ItemTask(String name, String project) {
-		this(name, project, "");
+		this(name, project, "", Priority.P4);
 	}
 
 	public ItemTask(String name, String project, String dueDate, String note) {
-		this(name, project, dueDate);
+		this(name, project, dueDate, Priority.P4);
 		notes.add(note);
 	}
 	
@@ -72,6 +74,7 @@ public class ItemTask implements Task {
 		for(String label : labels) {
 			body.append(label).append(' ');
 		}
+		body.append(priority.toString());
 		return body.toString().trim();
 	}
 

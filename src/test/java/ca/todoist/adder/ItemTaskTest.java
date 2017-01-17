@@ -24,7 +24,7 @@ public class ItemTaskTest {
 	@Test
 	public void testDueDate() {
 		String name = "cycling";
-		ItemTask task = new ItemTask(name, "", "mar 25");
+		ItemTask task = new ItemTask(name, "", "mar 25", Priority.P4);
 		assertThat(task.getTitle(), is(name + " <date mar 25>"));
 	}
 
@@ -85,6 +85,24 @@ public class ItemTaskTest {
 	public void getBodyWithNoteAndLabel() {
 		ItemTask it = new ItemTask("", "", "", "note", "@mucho");
 		assertThat(it.getBody(), is("note @mucho"));
+	}
+	
+	@Test
+	public void testPriorityP4AddsNothing() {
+		String name = "name";
+		String project = "project";
+		String dueDate = "dueDate";
+		ItemTask it = new ItemTask(name, project, dueDate, Priority.P4);
+		assertThat(it.getBody(), is(""));
+	}
+	
+	@Test
+	public void testPriorityP3() {
+		String name = "name";
+		String project = "project";
+		String dueDate = "dueDate";
+		ItemTask it = new ItemTask(name, project, dueDate, Priority.P3);
+		assertThat(it.getBody(), is("!!3"));
 	}
 
 }
