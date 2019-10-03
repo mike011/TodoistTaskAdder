@@ -38,7 +38,8 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # run tests!
-      - run: |
-        git branch
-        git status
+      - run:
+        command: |
+          git branch
+          git status
         #mvn integration-test
