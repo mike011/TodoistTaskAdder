@@ -39,7 +39,7 @@ jobs:
 
       # run tests!
       - run:
-        command: |
-          git branch
-          git status
+          command: |
+            git branch
+            git status
         #mvn integration-test
