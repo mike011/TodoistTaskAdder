@@ -40,6 +40,12 @@ jobs:
       # run tests!
       - run:
           command: |
-            git branch
-            git status
+            # Step 1: From your project repository, bring in the changes and test.            
+            git fetch origin
+            git merge master
+
+            # Step 2: Merge the changes and update on GitHub.
+            git checkout master
+            git merge --no-ff ${CIRCLE_BRANCH}
+            git push origin master
         #mvn integration-test
