@@ -124,8 +124,8 @@ public class HtmlTask implements Task {
 
 	private String getStringOfDescription() {
 		StringBuffer buffer = new StringBuffer();
-		buffer.append(url);
-		buffer.append(" (").append(name).append(")");
+		buffer.append("[").append(name).append("](");
+		buffer.append(url).append(")");
 		if (timeAdded != null) {
 			buffer.append(" at ").append(getTimeAdded());
 		}

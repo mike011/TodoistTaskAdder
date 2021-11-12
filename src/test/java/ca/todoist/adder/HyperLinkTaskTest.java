@@ -11,6 +11,6 @@ public class HyperLinkTaskTest {
 	@Test
 	public void getName() {
 		HyperLinkTask link = new HyperLinkTask("name", "link", "");
-		assertThat(link.getName(), is("link (name)"));
+		assertThat(link.getName(), is("[link](name)"));
 	}
 }

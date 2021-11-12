@@ -13,6 +13,7 @@ public class HyperLinkTask extends ItemTask {
 
 	@Override
 	public String getName() {
-		return link + " (" + name + ")";
+		return name;
+		//return "[" + link + "](" + name + ")";
 	}
 }

@@ -28,7 +28,7 @@ public class HtmlTaskTest {
 		return stringBuilder.toString();
 	}
 
-	private static final String EXPECTED_LINK_NO_DUE_DATE = EXPECTED_URL + " (" + EXPECTED_NAME + ") at " + EXPECTED_TIME_ADDED;
+	private static final String EXPECTED_LINK_NO_DUE_DATE = "[" + EXPECTED_NAME + "](" + EXPECTED_URL + ") at " + EXPECTED_TIME_ADDED;
 	private static final String EXPECTED_LINK = EXPECTED_LINK_NO_DUE_DATE + " " + EXPECTED_DUE_DATE;
 
 	@Test
