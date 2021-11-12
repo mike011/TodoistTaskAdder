@@ -9,7 +9,8 @@ Convert items stored in Pocket to Todoist
 - xml export is not longer supported so this is no long works.
 
 # 1.0 (Work Around)
- - Using https://github.com/mike011/TableViewWithREST (iOS App) download the current tasks from Todoist
+ - Using https://github.com/mike011/TableViewWithREST (iOS App) 
+ - Download the tasks from Pocket
  - Print pocket tasks in `TodoistAdderForLists` format
 
 # 1.1
