@@ -21,3 +21,4 @@ Convert items stored in Pocket to Todoist
 # 2.0
 - Convert Java task uploader to Swift
 - Use Todoist API to upload tasks
+- Delete items from Pocket
