@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10A00924F83B68EA97A95BE7 /* Pods_TodoistTaskAdder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A80E08BA7265CC0A18D1AE /* Pods_TodoistTaskAdder.framework */; };
 		4C18BA992324854D00436C29 /* GitHubOAuthKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BA982324854D00436C29 /* GitHubOAuthKeys.swift */; };
 		4C18BA9B2324858300436C29 /* MashapeAPIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BA9A2324858300436C29 /* MashapeAPIKeys.swift */; };
 		4C18BA9D232485A000436C29 /* DarkSkyAPIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BA9C232485A000436C29 /* DarkSkyAPIKeys.swift */; };
@@ -22,6 +21,11 @@
 		4C18BAB6233789CE00436C29 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BAB5233789CE00436C29 /* PersistenceManager.swift */; };
 		4C4A1BCB274186BB00FB7111 /* PocketOAuthKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A1BCA274186BB00FB7111 /* PocketOAuthKeys.swift */; };
 		4C4A1BCD274186D300FB7111 /* StravaOAuthKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A1BCC274186D300FB7111 /* StravaOAuthKeys.swift */; };
+		4C4A1BD027418AA200FB7111 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4A1BCF27418AA200FB7111 /* SwiftPackageProductDependency */; };
+		4C4A1BD327418B4600FB7111 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4A1BD227418B4600FB7111 /* SwiftPackageProductDependency */; };
+		4C4A1BD727418D4F00FB7111 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4A1BD627418D4F00FB7111 /* SwiftPackageProductDependency */; };
+		4C4A1BDA27418E1000FB7111 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4A1BD927418E1000FB7111 /* SwiftPackageProductDependency */; };
+		4C4A1BDD27418E8400FB7111 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4A1BDC27418E8400FB7111 /* SwiftPackageProductDependency */; };
 		4C5DBFBB230FF4250082BA48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5DBFBA230FF4250082BA48 /* AppDelegate.swift */; };
 		4C5DBFBD230FF4250082BA48 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5DBFBC230FF4250082BA48 /* MasterViewController.swift */; };
 		4C5DBFBF230FF4250082BA48 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5DBFBE230FF4250082BA48 /* DetailViewController.swift */; };
@@ -51,7 +55,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A5C9E5DEDC7EA05AB51C976 /* Pods-TableViewWithREST.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewWithREST.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TableViewWithREST/Pods-TableViewWithREST.debug.xcconfig"; sourceTree = "<group>"; };
 		4C18BA982324854D00436C29 /* GitHubOAuthKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubOAuthKeys.swift; path = OAuthKeys/GitHubOAuthKeys.swift; sourceTree = SOURCE_ROOT; };
 		4C18BA9A2324858300436C29 /* MashapeAPIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MashapeAPIKeys.swift; path = OAuthKeys/MashapeAPIKeys.swift; sourceTree = SOURCE_ROOT; };
 		4C18BA9C232485A000436C29 /* DarkSkyAPIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DarkSkyAPIKeys.swift; path = OAuthKeys/DarkSkyAPIKeys.swift; sourceTree = SOURCE_ROOT; };
@@ -94,10 +97,6 @@
 		4CCFF531273DEE3B00B0259A /* PocketMyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketMyList.swift; sourceTree = "<group>"; };
 		4CF266F627384801003E06B4 /* PocketAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketAPIManager.swift; sourceTree = "<group>"; };
 		4CF266F827384822003E06B4 /* PocketRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketRouter.swift; sourceTree = "<group>"; };
-		83DFAFE9C5C9674D24644390 /* Pods-TableViewWithREST.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewWithREST.release.xcconfig"; path = "Pods/Target Support Files/Pods-TableViewWithREST/Pods-TableViewWithREST.release.xcconfig"; sourceTree = "<group>"; };
-		94164294AA7FA539FB12D313 /* Pods-TodoistTaskAdder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoistTaskAdder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodoistTaskAdder/Pods-TodoistTaskAdder.debug.xcconfig"; sourceTree = "<group>"; };
-		D4A80E08BA7265CC0A18D1AE /* Pods_TodoistTaskAdder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoistTaskAdder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D77006952DEAA1A6BDE5BA12 /* Pods-TodoistTaskAdder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoistTaskAdder.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodoistTaskAdder/Pods-TodoistTaskAdder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +104,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C4A1BD727418D4F00FB7111 /* BuildFile in Frameworks */,
+				4C4A1BD327418B4600FB7111 /* BuildFile in Frameworks */,
+				4C4A1BD027418AA200FB7111 /* BuildFile in Frameworks */,
+				4C4A1BDD27418E8400FB7111 /* BuildFile in Frameworks */,
 				4C5DBFDF23192B760082BA48 /* SafariServices.framework in Frameworks */,
-				10A00924F83B68EA97A95BE7 /* Pods_TodoistTaskAdder.framework in Frameworks */,
+				4C4A1BDA27418E1000FB7111 /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,7 +188,6 @@
 			children = (
 				4C5DBFB9230FF4250082BA48 /* TodoistTaskAdder */,
 				4C5DBFB8230FF4250082BA48 /* Products */,
-				B10DCF25A54D446180310B98 /* Pods */,
 				7838BA0545CD7593C7F7285E /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -246,20 +248,8 @@
 			isa = PBXGroup;
 			children = (
 				4C5DBFDE23192B760082BA48 /* SafariServices.framework */,
-				D4A80E08BA7265CC0A18D1AE /* Pods_TodoistTaskAdder.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B10DCF25A54D446180310B98 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3A5C9E5DEDC7EA05AB51C976 /* Pods-TableViewWithREST.debug.xcconfig */,
-				83DFAFE9C5C9674D24644390 /* Pods-TableViewWithREST.release.xcconfig */,
-				94164294AA7FA539FB12D313 /* Pods-TodoistTaskAdder.debug.xcconfig */,
-				D77006952DEAA1A6BDE5BA12 /* Pods-TodoistTaskAdder.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,17 +259,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C5DBFCB230FF4250082BA48 /* Build configuration list for PBXNativeTarget "TodoistTaskAdder" */;
 			buildPhases = (
-				7EC8DC5F60019651BCAD95C8 /* [CP] Check Pods Manifest.lock */,
 				4C5DBFB3230FF4250082BA48 /* Sources */,
 				4C5DBFB4230FF4250082BA48 /* Frameworks */,
 				4C5DBFB5230FF4250082BA48 /* Resources */,
-				94474AFBCC136F5FA70CD447 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = TodoistTaskAdder;
+			packageProductDependencies = (
+				4C4A1BCF27418AA200FB7111 /* SwiftPackageProductDependency */,
+				4C4A1BD227418B4600FB7111 /* SwiftPackageProductDependency */,
+				4C4A1BD627418D4F00FB7111 /* SwiftPackageProductDependency */,
+				4C4A1BD927418E1000FB7111 /* SwiftPackageProductDependency */,
+				4C4A1BDC27418E8400FB7111 /* SwiftPackageProductDependency */,
+			);
 			productName = TableViewWithREST;
 			productReference = 4C5DBFB7230FF4250082BA48 /* TodoistTaskAdder.app */;
 			productType = "com.apple.product-type.application";
@@ -308,6 +303,13 @@
 				Base,
 			);
 			mainGroup = 4C5DBFAE230FF4250082BA48;
+			packageReferences = (
+				4C4A1BCE27418AA200FB7111 /* RemoteSwiftPackageReference */,
+				4C4A1BD127418B4600FB7111 /* RemoteSwiftPackageReference */,
+				4C4A1BD527418D4F00FB7111 /* RemoteSwiftPackageReference */,
+				4C4A1BD827418E1000FB7111 /* RemoteSwiftPackageReference */,
+				4C4A1BDB27418E8400FB7111 /* RemoteSwiftPackageReference */,
+			);
 			productRefGroup = 4C5DBFB8230FF4250082BA48 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -329,48 +331,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		7EC8DC5F60019651BCAD95C8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TodoistTaskAdder-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		94474AFBCC136F5FA70CD447 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TodoistTaskAdder/Pods-TodoistTaskAdder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TodoistTaskAdder/Pods-TodoistTaskAdder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TodoistTaskAdder/Pods-TodoistTaskAdder-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4C5DBFB3230FF4250082BA48 /* Sources */ = {
@@ -556,7 +516,6 @@
 		};
 		4C5DBFCC230FF4250082BA48 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 94164294AA7FA539FB12D313 /* Pods-TodoistTaskAdder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -575,7 +534,6 @@
 		};
 		4C5DBFCD230FF4250082BA48 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D77006952DEAA1A6BDE5BA12 /* Pods-TodoistTaskAdder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -614,6 +572,77 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4C4A1BCE27418AA200FB7111 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		4C4A1BD127418B4600FB7111 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:pinterest/PINRemoteImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		4C4A1BD527418D4F00FB7111 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:xmartlabs/XLForm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.0;
+			};
+		};
+		4C4A1BD827418E1000FB7111 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:trusk89/BRYXBanner.git";
+			requirement = {
+				branch = "SPM-Support";
+				kind = branch;
+			};
+		};
+		4C4A1BDB27418E8400FB7111 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/joaodforce/Locksmith";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4C4A1BCF27418AA200FB7111 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C4A1BCE27418AA200FB7111 /* RemoteSwiftPackageReference */;
+			productName = Alamofire;
+		};
+		4C4A1BD227418B4600FB7111 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C4A1BD127418B4600FB7111 /* RemoteSwiftPackageReference */;
+			productName = PINRemoteImage;
+		};
+		4C4A1BD627418D4F00FB7111 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C4A1BD527418D4F00FB7111 /* RemoteSwiftPackageReference */;
+			productName = XLForm;
+		};
+		4C4A1BD927418E1000FB7111 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C4A1BD827418E1000FB7111 /* RemoteSwiftPackageReference */;
+			productName = BRYXBanner;
+		};
+		4C4A1BDC27418E8400FB7111 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C4A1BDB27418E8400FB7111 /* RemoteSwiftPackageReference */;
+			productName = Locksmith;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4C5DBFAF230FF4250082BA48 /* Project object */;
 }

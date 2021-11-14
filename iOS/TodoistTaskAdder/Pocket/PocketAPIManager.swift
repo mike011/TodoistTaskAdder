@@ -215,14 +215,14 @@ class PocketAPIManager {
         AF.request(PocketRouter.get(token: oAuthToken, tagType: "_untagged_"))
                     .responseDecodable(of: UnTaggedPocketMyList.self) { response in
                         switch response.result {
-                        case .success(let response):
+                        case .success(let result):
                             var pis = [PocketedItem]()
-//                            if let items = response.pockedItems {
-//                                for item in items {
-//                                    let pi = PocketedItem(name: item.resolvedTitle, link: item.givenURL, tags: [String]())
-//                                    pis.append(pi)
-//                                }
-//                            }
+                            if let items = result.pockedItems?.values {
+                                for item in items {
+                                    let pi = PocketedItem(name: item.resolvedTitle, link: item.givenURL, tags: [String]())
+                                    pis.append(pi)
+                                }
+                            }
                             completionHandler(.success(pis))
 
                         case .failure(let failure):

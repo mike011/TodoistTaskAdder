@@ -1,0 +1,79 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Alamofire",
+        "repositoryURL": "git@github.com:Alamofire/Alamofire.git",
+        "state": {
+          "branch": "master",
+          "revision": "26b8c9a41aa03f0356f957ab62e9ca6b1068afe0",
+          "version": null
+        }
+      },
+      {
+        "package": "BRYXBanner",
+        "repositoryURL": "git@github.com:trusk89/BRYXBanner.git",
+        "state": {
+          "branch": "SPM-Support",
+          "revision": "d251c07a3a264766c1480900d39d9d9294b28254",
+          "version": null
+        }
+      },
+      {
+        "package": "libwebp",
+        "repositoryURL": "https://github.com/SDWebImage/libwebp-Xcode",
+        "state": {
+          "branch": null,
+          "revision": "2b3b43faaef54d1b897482428428357b7f7cd08b",
+          "version": "1.2.1"
+        }
+      },
+      {
+        "package": "Locksmith",
+        "repositoryURL": "https://github.com/joaodforce/Locksmith",
+        "state": {
+          "branch": "master",
+          "revision": "c2477484052857c20758a460493cd8c5d2564c07",
+          "version": null
+        }
+      },
+      {
+        "package": "PINCache",
+        "repositoryURL": "https://github.com/pinterest/PINCache.git",
+        "state": {
+          "branch": null,
+          "revision": "875c654984fb52b47ca65ae70d24852b0003ccd9",
+          "version": "3.0.3"
+        }
+      },
+      {
+        "package": "PINOperation",
+        "repositoryURL": "https://github.com/pinterest/PINOperation.git",
+        "state": {
+          "branch": null,
+          "revision": "44d8ca154a4e75a028a5548c31ff3a53b90cef15",
+          "version": "1.2.1"
+        }
+      },
+      {
+        "package": "PINRemoteImage",
+        "repositoryURL": "git@github.com:pinterest/PINRemoteImage.git",
+        "state": {
+          "branch": "master",
+          "revision": "0a3bf07f1437ec128cc787efb79b8f53b023f6be",
+          "version": null
+        }
+      },
+      {
+        "package": "XLForm",
+        "repositoryURL": "git@github.com:xmartlabs/XLForm.git",
+        "state": {
+          "branch": null,
+          "revision": "870afc56602fd518e33d0b271371a2d5acd410ea",
+          "version": "4.3.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
