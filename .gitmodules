@@ -1,0 +1,3 @@
+[submodule "iOS/OAuthKeys"]
+	path = iOS/OAuthKeys
+	url = git@github.com:mike011/OAuthKeys.git
