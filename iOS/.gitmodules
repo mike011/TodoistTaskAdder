@@ -1,3 +1,0 @@
-[submodule "OAuthKeys"]
-	path = OAuthKeys
-	url = git@github.com:mike011/OAuthKeys.git
