@@ -33,11 +33,6 @@ class MasterViewController: UITableViewController, SFSafariViewControllerDelegat
             let controllers = split.viewControllers
             detailViewController = (controllers.last as! UINavigationController).topViewController as? DetailViewController
         }
-
-        if StravaAPIManager.shared.hasOAuthToken() {
-            printActivities()
-            return
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -111,21 +106,6 @@ class MasterViewController: UITableViewController, SFSafariViewControllerDelegat
         }
         loadGists(urlToLoad: nil)
 
-        StravaAPIManager.shared.oAuthTokenCompletionHandler = { error in
-            guard error == nil else {
-                print(error!)
-                self.isLoading = false
-                // TODO: handle error
-                // Something went wrong, try again
-                self.showOAuthLoginView()
-                return
-            }
-            if let _ = self.safariViewController {
-                self.dismiss(animated: false) {}
-            }
-            self.printActivities()
-        }
-
         PocketAPIManager.shared.oAuthTokenCompletionHandler = { error in
             guard error == nil else {
                 print(error!)
@@ -168,24 +148,6 @@ class MasterViewController: UITableViewController, SFSafariViewControllerDelegat
         nextPageURLString = nil // so it doesn't try to append the results
         GitHubAPIManager.shared.clearCache()
         loadInitialData()
-    }
-
-    func printActivities() {
-        StravaAPIManager.shared.getActivities { (result, error) in
-            switch result {
-            case let .success(exercises):
-                exercises.first?.printColumns()
-                for exercise in exercises.reversed() {
-                    if exercise.commute {
-                        exercise.printCommute()
-                    }
-                }
-                print("Commutes Printed")
-            case let .failure(error):
-                print("Error!! \(error.localizedDescription)")
-                //self.login()
-            }
-        }
     }
 
     func loadGists(urlToLoad: String?) {
@@ -447,32 +409,6 @@ class MasterViewController: UITableViewController, SFSafariViewControllerDelegat
 
 extension MasterViewController: LoginViewDelegate {
 
-    func didTapLoginButton() {
-        dismiss(animated: false) {
-
-            guard let authURL = GitHubAPIManager.shared.convertURLToStartOAuth2Login() else {
-                let error = BackendError.authCouldNot(reason: "Could not obtain an OAuth token")
-                GitHubAPIManager.shared.oAuthTokenCompletionHandler?(error)
-                return
-            }
-            // Show web page to start OAuth
-            self.safariViewController = SFSafariViewController(url: authURL)
-            self.safariViewController?.delegate = self
-            guard let webViewController = self.safariViewController else {
-                return
-            }
-            self.present(webViewController, animated: true, completion: nil)
-
-            // Show web page to start OAuth
-            self.safariViewController = SFSafariViewController(url: authURL)
-            self.safariViewController?.delegate = self
-            guard let webViewController = self.safariViewController else {
-                return
-            }
-            self.present(webViewController, animated: true, completion: nil)
-        }
-    }
-
     func didTapPocketAuthenticateButton() {
         dismiss(animated: false) {
             PocketAPIManager.shared.requestToken { result in
@@ -493,33 +429,6 @@ extension MasterViewController: LoginViewDelegate {
             return
         }
         // Show web page to start OAuth
-        safariViewController = SFSafariViewController(url: authURL)
-        safariViewController?.delegate = self
-        guard let webViewController = self.safariViewController else {
-            return
-        }
-        present(webViewController, animated: true, completion: nil)
-    }
-}
-
-extension MasterViewController {
-    func didTapAuthenticateButton() {
-        dismiss(animated: false) {
-            guard StravaAPIManager.shared.hasOAuthToken() else {
-                self.login()
-                return
-            }
-            self.printActivities()
-        }
-    }
-
-    func login() {
-        guard let authURL = StravaAPIManager.shared.URLToStartOAuth2Login() else {
-            let error = BackendError.authCouldNot(reason: "Could not obtain an OAuth token")
-            StravaAPIManager.shared.oAuthTokenCompletionHandler?(error)
-            return
-        }
-        // Show web page to start oauth
         safariViewController = SFSafariViewController(url: authURL)
         safariViewController?.delegate = self
         guard let webViewController = self.safariViewController else {

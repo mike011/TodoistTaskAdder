@@ -83,13 +83,6 @@ class GitHubAPIManager {
         cache.removeAllCachedResponses()
     }
 
-    func printMashapeRouterRequest() {
-        AF.request(MashapeRouter.getDefinition("hipster")) .responseString { response in
-            if let result = response.value { print(result)
-            }
-        }
-    }
-
     // MARK: - OAuth flow
 
     func hasOAuthToken() -> Bool {

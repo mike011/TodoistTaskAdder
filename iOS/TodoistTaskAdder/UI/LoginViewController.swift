@@ -12,14 +12,6 @@ class LoginViewController: UIViewController {
 
     weak var delegate: LoginViewDelegate?
 
-    @IBAction func tappedLoginButton() {
-        delegate?.didTapLoginButton()
-    }
-
-    @IBAction func authenticateWithStrava() {
-        delegate?.didTapAuthenticateButton()
-    }
-
     @IBAction func pocketAuthenticate() {
         delegate?.didTapPocketAuthenticateButton()
     }

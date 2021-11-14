@@ -8,24 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		4C18BA992324854D00436C29 /* GitHubOAuthKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BA982324854D00436C29 /* GitHubOAuthKeys.swift */; };
-		4C18BA9B2324858300436C29 /* MashapeAPIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BA9A2324858300436C29 /* MashapeAPIKeys.swift */; };
-		4C18BA9D232485A000436C29 /* DarkSkyAPIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BA9C232485A000436C29 /* DarkSkyAPIKeys.swift */; };
 		4C18BAA123257B9300436C29 /* PullRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BAA023257B9300436C29 /* PullRouter.swift */; };
 		4C18BAA323257C9100436C29 /* GitHubAPIManager+Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BAA223257C9100436C29 /* GitHubAPIManager+Gist.swift */; };
 		4C18BAA523257CD100436C29 /* GitHubAPIManager+Pull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BAA423257CD100436C29 /* GitHubAPIManager+Pull.swift */; };
-		4C18BAAA23271B7100436C29 /* CircleCIAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BAA923271B7100436C29 /* CircleCIAPIManager.swift */; };
-		4C18BAAC23271B8200436C29 /* CircleCIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BAAB23271B8200436C29 /* CircleCIRouter.swift */; };
-		4C18BAAE23271C4E00436C29 /* CircleCIAPIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BAAD23271C4E00436C29 /* CircleCIAPIKeys.swift */; };
-		4C18BAB0232AD8AD00436C29 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BAAF232AD8AD00436C29 /* Project.swift */; };
 		4C18BAB223364B5900436C29 /* CreateGistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BAB123364B5900436C29 /* CreateGistViewController.swift */; };
 		4C18BAB6233789CE00436C29 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C18BAB5233789CE00436C29 /* PersistenceManager.swift */; };
 		4C4A1BCB274186BB00FB7111 /* PocketOAuthKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A1BCA274186BB00FB7111 /* PocketOAuthKeys.swift */; };
-		4C4A1BCD274186D300FB7111 /* StravaOAuthKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A1BCC274186D300FB7111 /* StravaOAuthKeys.swift */; };
-		4C4A1BD027418AA200FB7111 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4A1BCF27418AA200FB7111 /* SwiftPackageProductDependency */; };
-		4C4A1BD327418B4600FB7111 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4A1BD227418B4600FB7111 /* SwiftPackageProductDependency */; };
-		4C4A1BD727418D4F00FB7111 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4A1BD627418D4F00FB7111 /* SwiftPackageProductDependency */; };
-		4C4A1BDA27418E1000FB7111 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4A1BD927418E1000FB7111 /* SwiftPackageProductDependency */; };
-		4C4A1BDD27418E8400FB7111 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4A1BDC27418E8400FB7111 /* SwiftPackageProductDependency */; };
+		4C4A1BD027418AA200FB7111 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4A1BCF27418AA200FB7111 /* Alamofire */; };
+		4C4A1BD327418B4600FB7111 /* PINRemoteImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4A1BD227418B4600FB7111 /* PINRemoteImage */; };
+		4C4A1BD727418D4F00FB7111 /* XLForm in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4A1BD627418D4F00FB7111 /* XLForm */; };
+		4C4A1BDA27418E1000FB7111 /* BRYXBanner in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4A1BD927418E1000FB7111 /* BRYXBanner */; };
+		4C4A1BDD27418E8400FB7111 /* Locksmith in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4A1BDC27418E8400FB7111 /* Locksmith */; };
 		4C5DBFBB230FF4250082BA48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5DBFBA230FF4250082BA48 /* AppDelegate.swift */; };
 		4C5DBFBD230FF4250082BA48 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5DBFBC230FF4250082BA48 /* MasterViewController.swift */; };
 		4C5DBFBF230FF4250082BA48 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5DBFBE230FF4250082BA48 /* DetailViewController.swift */; };
@@ -37,18 +30,9 @@
 		4C5DBFD323100B140082BA48 /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5DBFD223100B140082BA48 /* Gist.swift */; };
 		4C5DBFD52310115C0082BA48 /* BackendError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5DBFD42310115C0082BA48 /* BackendError.swift */; };
 		4C5DBFD7231011FB0082BA48 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5DBFD6231011FB0082BA48 /* Networking.swift */; };
-		4C5DBFD92317E0C30082BA48 /* MashapeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5DBFD82317E0C30082BA48 /* MashapeRouter.swift */; };
 		4C5DBFDB231927E00082BA48 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5DBFDA231927E00082BA48 /* LoginViewController.swift */; };
 		4C5DBFDD231928C60082BA48 /* LoginViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5DBFDC231928C60082BA48 /* LoginViewDelegate.swift */; };
 		4C5DBFDF23192B760082BA48 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5DBFDE23192B760082BA48 /* SafariServices.framework */; };
-		4CC78931232268A500FD0532 /* Athlete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC7892E232268A500FD0532 /* Athlete.swift */; };
-		4CC78932232268A500FD0532 /* GeographyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC7892F232268A500FD0532 /* GeographyMap.swift */; };
-		4CC78933232268A500FD0532 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC78930232268A500FD0532 /* Exercise.swift */; };
-		4CC789352323A63B00FD0532 /* Exercise+Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC789342323A63B00FD0532 /* Exercise+Printer.swift */; };
-		4CC8662C231DF25A00BCD2D0 /* StravaAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC8662A231DF25A00BCD2D0 /* StravaAPIManager.swift */; };
-		4CC8662D231DF25A00BCD2D0 /* StravaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC8662B231DF25A00BCD2D0 /* StravaRouter.swift */; };
-		4CC8662F231DF45200BCD2D0 /* DarkSkyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC8662E231DF45200BCD2D0 /* DarkSkyRouter.swift */; };
-		4CC86631231DF4F500BCD2D0 /* DarkSkyAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC86630231DF4F500BCD2D0 /* DarkSkyAPIManager.swift */; };
 		4CCFF532273DEE3B00B0259A /* PocketMyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCFF531273DEE3B00B0259A /* PocketMyList.swift */; };
 		4CF266F727384801003E06B4 /* PocketAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF266F627384801003E06B4 /* PocketAPIManager.swift */; };
 		4CF266F927384822003E06B4 /* PocketRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF266F827384822003E06B4 /* PocketRouter.swift */; };
@@ -56,19 +40,12 @@
 
 /* Begin PBXFileReference section */
 		4C18BA982324854D00436C29 /* GitHubOAuthKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubOAuthKeys.swift; path = OAuthKeys/GitHubOAuthKeys.swift; sourceTree = SOURCE_ROOT; };
-		4C18BA9A2324858300436C29 /* MashapeAPIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MashapeAPIKeys.swift; path = OAuthKeys/MashapeAPIKeys.swift; sourceTree = SOURCE_ROOT; };
-		4C18BA9C232485A000436C29 /* DarkSkyAPIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DarkSkyAPIKeys.swift; path = OAuthKeys/DarkSkyAPIKeys.swift; sourceTree = SOURCE_ROOT; };
 		4C18BAA023257B9300436C29 /* PullRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRouter.swift; sourceTree = "<group>"; };
 		4C18BAA223257C9100436C29 /* GitHubAPIManager+Gist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHubAPIManager+Gist.swift"; sourceTree = "<group>"; };
 		4C18BAA423257CD100436C29 /* GitHubAPIManager+Pull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHubAPIManager+Pull.swift"; sourceTree = "<group>"; };
-		4C18BAA923271B7100436C29 /* CircleCIAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCIAPIManager.swift; sourceTree = "<group>"; };
-		4C18BAAB23271B8200436C29 /* CircleCIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCIRouter.swift; sourceTree = "<group>"; };
-		4C18BAAD23271C4E00436C29 /* CircleCIAPIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleCIAPIKeys.swift; path = OAuthKeys/CircleCIAPIKeys.swift; sourceTree = SOURCE_ROOT; };
-		4C18BAAF232AD8AD00436C29 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		4C18BAB123364B5900436C29 /* CreateGistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGistViewController.swift; sourceTree = "<group>"; };
 		4C18BAB5233789CE00436C29 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		4C4A1BCA274186BB00FB7111 /* PocketOAuthKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PocketOAuthKeys.swift; path = OAuthKeys/PocketOAuthKeys.swift; sourceTree = SOURCE_ROOT; };
-		4C4A1BCC274186D300FB7111 /* StravaOAuthKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StravaOAuthKeys.swift; path = OAuthKeys/StravaOAuthKeys.swift; sourceTree = SOURCE_ROOT; };
 		4C5DBFB7230FF4250082BA48 /* TodoistTaskAdder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoistTaskAdder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5DBFBA230FF4250082BA48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C5DBFBC230FF4250082BA48 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -82,18 +59,9 @@
 		4C5DBFD223100B140082BA48 /* Gist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
 		4C5DBFD42310115C0082BA48 /* BackendError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendError.swift; sourceTree = "<group>"; };
 		4C5DBFD6231011FB0082BA48 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		4C5DBFD82317E0C30082BA48 /* MashapeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MashapeRouter.swift; sourceTree = "<group>"; };
 		4C5DBFDA231927E00082BA48 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4C5DBFDC231928C60082BA48 /* LoginViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewDelegate.swift; sourceTree = "<group>"; };
 		4C5DBFDE23192B760082BA48 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
-		4CC7892E232268A500FD0532 /* Athlete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Athlete.swift; sourceTree = "<group>"; };
-		4CC7892F232268A500FD0532 /* GeographyMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeographyMap.swift; sourceTree = "<group>"; };
-		4CC78930232268A500FD0532 /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
-		4CC789342323A63B00FD0532 /* Exercise+Printer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exercise+Printer.swift"; sourceTree = "<group>"; };
-		4CC8662A231DF25A00BCD2D0 /* StravaAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaAPIManager.swift; sourceTree = "<group>"; };
-		4CC8662B231DF25A00BCD2D0 /* StravaRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaRouter.swift; sourceTree = "<group>"; };
-		4CC8662E231DF45200BCD2D0 /* DarkSkyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyRouter.swift; sourceTree = "<group>"; };
-		4CC86630231DF4F500BCD2D0 /* DarkSkyAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyAPIManager.swift; sourceTree = "<group>"; };
 		4CCFF531273DEE3B00B0259A /* PocketMyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketMyList.swift; sourceTree = "<group>"; };
 		4CF266F627384801003E06B4 /* PocketAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketAPIManager.swift; sourceTree = "<group>"; };
 		4CF266F827384822003E06B4 /* PocketRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketRouter.swift; sourceTree = "<group>"; };
@@ -104,12 +72,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C4A1BD727418D4F00FB7111 /* BuildFile in Frameworks */,
-				4C4A1BD327418B4600FB7111 /* BuildFile in Frameworks */,
-				4C4A1BD027418AA200FB7111 /* BuildFile in Frameworks */,
-				4C4A1BDD27418E8400FB7111 /* BuildFile in Frameworks */,
+				4C4A1BD727418D4F00FB7111 /* XLForm in Frameworks */,
+				4C4A1BD327418B4600FB7111 /* PINRemoteImage in Frameworks */,
+				4C4A1BD027418AA200FB7111 /* Alamofire in Frameworks */,
+				4C4A1BDD27418E8400FB7111 /* Locksmith in Frameworks */,
 				4C5DBFDF23192B760082BA48 /* SafariServices.framework in Frameworks */,
-				4C4A1BDA27418E1000FB7111 /* BuildFile in Frameworks */,
+				4C4A1BDA27418E1000FB7111 /* BRYXBanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,25 +96,6 @@
 				4C5DBFD223100B140082BA48 /* Gist.swift */,
 			);
 			path = Gist;
-			sourceTree = "<group>";
-		};
-		4C18BA96232481BF00436C29 /* Mashape */ = {
-			isa = PBXGroup;
-			children = (
-				4C18BA9A2324858300436C29 /* MashapeAPIKeys.swift */,
-				4C5DBFD82317E0C30082BA48 /* MashapeRouter.swift */,
-			);
-			path = Mashape;
-			sourceTree = "<group>";
-		};
-		4C18BA97232481C900436C29 /* DarkSky */ = {
-			isa = PBXGroup;
-			children = (
-				4C18BA9C232485A000436C29 /* DarkSkyAPIKeys.swift */,
-				4CC86630231DF4F500BCD2D0 /* DarkSkyAPIManager.swift */,
-				4CC8662E231DF45200BCD2D0 /* DarkSkyRouter.swift */,
-			);
-			path = DarkSky;
 			sourceTree = "<group>";
 		};
 		4C18BA9E2324863D00436C29 /* Networking */ = {
@@ -172,17 +121,6 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		4C18BAA823271B4700436C29 /* CircleCI */ = {
-			isa = PBXGroup;
-			children = (
-				4C18BAAD23271C4E00436C29 /* CircleCIAPIKeys.swift */,
-				4C18BAA923271B7100436C29 /* CircleCIAPIManager.swift */,
-				4C18BAAB23271B8200436C29 /* CircleCIRouter.swift */,
-				4C18BAAF232AD8AD00436C29 /* Project.swift */,
-			);
-			path = CircleCI;
-			sourceTree = "<group>";
-		};
 		4C5DBFAE230FF4250082BA48 = {
 			isa = PBXGroup;
 			children = (
@@ -205,11 +143,7 @@
 			children = (
 				4C18BA9F2324864600436C29 /* UI */,
 				4C18BA9E2324863D00436C29 /* Networking */,
-				4C18BA97232481C900436C29 /* DarkSky */,
-				4C18BA96232481BF00436C29 /* Mashape */,
 				4C18BA95232481AE00436C29 /* Gist */,
-				4CC7892D2322689300FD0532 /* Strava */,
-				4C18BAA823271B4700436C29 /* CircleCI */,
 				4CF266F32738478D003E06B4 /* Pocket */,
 				4C5DBFBA230FF4250082BA48 /* AppDelegate.swift */,
 				4C18BAB5233789CE00436C29 /* PersistenceManager.swift */,
@@ -217,20 +151,6 @@
 				4C5DBFC8230FF4250082BA48 /* Info.plist */,
 			);
 			path = TodoistTaskAdder;
-			sourceTree = "<group>";
-		};
-		4CC7892D2322689300FD0532 /* Strava */ = {
-			isa = PBXGroup;
-			children = (
-				4C4A1BCC274186D300FB7111 /* StravaOAuthKeys.swift */,
-				4CC7892E232268A500FD0532 /* Athlete.swift */,
-				4CC78930232268A500FD0532 /* Exercise.swift */,
-				4CC789342323A63B00FD0532 /* Exercise+Printer.swift */,
-				4CC7892F232268A500FD0532 /* GeographyMap.swift */,
-				4CC8662A231DF25A00BCD2D0 /* StravaAPIManager.swift */,
-				4CC8662B231DF25A00BCD2D0 /* StravaRouter.swift */,
-			);
-			path = Strava;
 			sourceTree = "<group>";
 		};
 		4CF266F32738478D003E06B4 /* Pocket */ = {
@@ -269,11 +189,11 @@
 			);
 			name = TodoistTaskAdder;
 			packageProductDependencies = (
-				4C4A1BCF27418AA200FB7111 /* SwiftPackageProductDependency */,
-				4C4A1BD227418B4600FB7111 /* SwiftPackageProductDependency */,
-				4C4A1BD627418D4F00FB7111 /* SwiftPackageProductDependency */,
-				4C4A1BD927418E1000FB7111 /* SwiftPackageProductDependency */,
-				4C4A1BDC27418E8400FB7111 /* SwiftPackageProductDependency */,
+				4C4A1BCF27418AA200FB7111 /* Alamofire */,
+				4C4A1BD227418B4600FB7111 /* PINRemoteImage */,
+				4C4A1BD627418D4F00FB7111 /* XLForm */,
+				4C4A1BD927418E1000FB7111 /* BRYXBanner */,
+				4C4A1BDC27418E8400FB7111 /* Locksmith */,
 			);
 			productName = TableViewWithREST;
 			productReference = 4C5DBFB7230FF4250082BA48 /* TodoistTaskAdder.app */;
@@ -304,11 +224,11 @@
 			);
 			mainGroup = 4C5DBFAE230FF4250082BA48;
 			packageReferences = (
-				4C4A1BCE27418AA200FB7111 /* RemoteSwiftPackageReference */,
-				4C4A1BD127418B4600FB7111 /* RemoteSwiftPackageReference */,
-				4C4A1BD527418D4F00FB7111 /* RemoteSwiftPackageReference */,
-				4C4A1BD827418E1000FB7111 /* RemoteSwiftPackageReference */,
-				4C4A1BDB27418E8400FB7111 /* RemoteSwiftPackageReference */,
+				4C4A1BCE27418AA200FB7111 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				4C4A1BD127418B4600FB7111 /* XCRemoteSwiftPackageReference "PINRemoteImage" */,
+				4C4A1BD527418D4F00FB7111 /* XCRemoteSwiftPackageReference "XLForm" */,
+				4C4A1BD827418E1000FB7111 /* XCRemoteSwiftPackageReference "BRYXBanner" */,
+				4C4A1BDB27418E8400FB7111 /* XCRemoteSwiftPackageReference "Locksmith" */,
 			);
 			productRefGroup = 4C5DBFB8230FF4250082BA48 /* Products */;
 			projectDirPath = "";
@@ -337,42 +257,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C18BAAE23271C4E00436C29 /* CircleCIAPIKeys.swift in Sources */,
 				4C5DBFBF230FF4250082BA48 /* DetailViewController.swift in Sources */,
 				4C5DBFCF230FF4870082BA48 /* GitHubAPIManager.swift in Sources */,
 				4C5DBFD323100B140082BA48 /* Gist.swift in Sources */,
-				4CC86631231DF4F500BCD2D0 /* DarkSkyAPIManager.swift in Sources */,
-				4CC78932232268A500FD0532 /* GeographyMap.swift in Sources */,
 				4C5DBFDB231927E00082BA48 /* LoginViewController.swift in Sources */,
 				4C4A1BCB274186BB00FB7111 /* PocketOAuthKeys.swift in Sources */,
-				4CC789352323A63B00FD0532 /* Exercise+Printer.swift in Sources */,
-				4C5DBFD92317E0C30082BA48 /* MashapeRouter.swift in Sources */,
-				4C4A1BCD274186D300FB7111 /* StravaOAuthKeys.swift in Sources */,
 				4C5DBFD7231011FB0082BA48 /* Networking.swift in Sources */,
 				4C18BAA123257B9300436C29 /* PullRouter.swift in Sources */,
 				4C5DBFD52310115C0082BA48 /* BackendError.swift in Sources */,
 				4C5DBFDD231928C60082BA48 /* LoginViewDelegate.swift in Sources */,
 				4C5DBFBD230FF4250082BA48 /* MasterViewController.swift in Sources */,
-				4C18BA9D232485A000436C29 /* DarkSkyAPIKeys.swift in Sources */,
-				4C18BAAC23271B8200436C29 /* CircleCIRouter.swift in Sources */,
-				4C18BAAA23271B7100436C29 /* CircleCIAPIManager.swift in Sources */,
-				4CC78933232268A500FD0532 /* Exercise.swift in Sources */,
-				4CC8662D231DF25A00BCD2D0 /* StravaRouter.swift in Sources */,
 				4C18BAB6233789CE00436C29 /* PersistenceManager.swift in Sources */,
 				4C18BA992324854D00436C29 /* GitHubOAuthKeys.swift in Sources */,
 				4C5DBFD1230FF5100082BA48 /* GistRouter.swift in Sources */,
-				4CC8662F231DF45200BCD2D0 /* DarkSkyRouter.swift in Sources */,
 				4C5DBFBB230FF4250082BA48 /* AppDelegate.swift in Sources */,
 				4CF266F727384801003E06B4 /* PocketAPIManager.swift in Sources */,
-				4C18BAB0232AD8AD00436C29 /* Project.swift in Sources */,
 				4C18BAB223364B5900436C29 /* CreateGistViewController.swift in Sources */,
 				4CF266F927384822003E06B4 /* PocketRouter.swift in Sources */,
-				4C18BA9B2324858300436C29 /* MashapeAPIKeys.swift in Sources */,
-				4CC8662C231DF25A00BCD2D0 /* StravaAPIManager.swift in Sources */,
 				4C18BAA523257CD100436C29 /* GitHubAPIManager+Pull.swift in Sources */,
 				4C18BAA323257C9100436C29 /* GitHubAPIManager+Gist.swift in Sources */,
 				4CCFF532273DEE3B00B0259A /* PocketMyList.swift in Sources */,
-				4CC78931232268A500FD0532 /* Athlete.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,7 +478,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4C4A1BCE27418AA200FB7111 /* RemoteSwiftPackageReference */ = {
+		4C4A1BCE27418AA200FB7111 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Alamofire/Alamofire.git";
 			requirement = {
@@ -582,7 +486,7 @@
 				kind = branch;
 			};
 		};
-		4C4A1BD127418B4600FB7111 /* RemoteSwiftPackageReference */ = {
+		4C4A1BD127418B4600FB7111 /* XCRemoteSwiftPackageReference "PINRemoteImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:pinterest/PINRemoteImage.git";
 			requirement = {
@@ -590,7 +494,7 @@
 				kind = branch;
 			};
 		};
-		4C4A1BD527418D4F00FB7111 /* RemoteSwiftPackageReference */ = {
+		4C4A1BD527418D4F00FB7111 /* XCRemoteSwiftPackageReference "XLForm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:xmartlabs/XLForm.git";
 			requirement = {
@@ -598,7 +502,7 @@
 				minimumVersion = 4.3.0;
 			};
 		};
-		4C4A1BD827418E1000FB7111 /* RemoteSwiftPackageReference */ = {
+		4C4A1BD827418E1000FB7111 /* XCRemoteSwiftPackageReference "BRYXBanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:trusk89/BRYXBanner.git";
 			requirement = {
@@ -606,7 +510,7 @@
 				kind = branch;
 			};
 		};
-		4C4A1BDB27418E8400FB7111 /* RemoteSwiftPackageReference */ = {
+		4C4A1BDB27418E8400FB7111 /* XCRemoteSwiftPackageReference "Locksmith" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/joaodforce/Locksmith";
 			requirement = {
@@ -617,29 +521,29 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4C4A1BCF27418AA200FB7111 /* SwiftPackageProductDependency */ = {
+		4C4A1BCF27418AA200FB7111 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4C4A1BCE27418AA200FB7111 /* RemoteSwiftPackageReference */;
+			package = 4C4A1BCE27418AA200FB7111 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		4C4A1BD227418B4600FB7111 /* SwiftPackageProductDependency */ = {
+		4C4A1BD227418B4600FB7111 /* PINRemoteImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4C4A1BD127418B4600FB7111 /* RemoteSwiftPackageReference */;
+			package = 4C4A1BD127418B4600FB7111 /* XCRemoteSwiftPackageReference "PINRemoteImage" */;
 			productName = PINRemoteImage;
 		};
-		4C4A1BD627418D4F00FB7111 /* SwiftPackageProductDependency */ = {
+		4C4A1BD627418D4F00FB7111 /* XLForm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4C4A1BD527418D4F00FB7111 /* RemoteSwiftPackageReference */;
+			package = 4C4A1BD527418D4F00FB7111 /* XCRemoteSwiftPackageReference "XLForm" */;
 			productName = XLForm;
 		};
-		4C4A1BD927418E1000FB7111 /* SwiftPackageProductDependency */ = {
+		4C4A1BD927418E1000FB7111 /* BRYXBanner */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4C4A1BD827418E1000FB7111 /* RemoteSwiftPackageReference */;
+			package = 4C4A1BD827418E1000FB7111 /* XCRemoteSwiftPackageReference "BRYXBanner" */;
 			productName = BRYXBanner;
 		};
-		4C4A1BDC27418E8400FB7111 /* SwiftPackageProductDependency */ = {
+		4C4A1BDC27418E8400FB7111 /* Locksmith */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4C4A1BDB27418E8400FB7111 /* RemoteSwiftPackageReference */;
+			package = 4C4A1BDB27418E8400FB7111 /* XCRemoteSwiftPackageReference "Locksmith" */;
 			productName = Locksmith;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -27,7 +27,7 @@
         <!--Detail-->
         <scene sceneID="yUG-lL-AsK">
             <objects>
-                <viewController title="Detail" id="JEX-9P-axG" customClass="DetailViewController" customModule="TableViewWithREST" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Detail" id="JEX-9P-axG" customClass="DetailViewController" customModule="TodoistTaskAdder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,7 +87,7 @@
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
             <objects>
-                <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="MasterViewController" customModule="TableViewWithREST" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="MasterViewController" customModule="TodoistTaskAdder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -101,14 +101,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="8" y="10" width="33" height="20.5"/>
+                                            <rect key="frame" x="20" y="10" width="33" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" systemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="55c-qu-Hx1">
-                                            <rect key="frame" x="8" y="31.5" width="44" height="14.5"/>
+                                            <rect key="frame" x="20" y="31.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -154,27 +154,13 @@
         <!--Login View Controller-->
         <scene sceneID="nC4-nZ-Zqu">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="k2d-1r-1Pb" customClass="LoginViewController" customModule="TableViewWithREST" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="k2d-1r-1Pb" customClass="LoginViewController" customModule="TodoistTaskAdder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="onC-RG-BDd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQU-lM-gTV">
-                                <rect key="frame" x="145.5" y="438" width="123" height="30"/>
-                                <state key="normal" title="Login with GitHub"/>
-                                <connections>
-                                    <action selector="tappedLoginButton" destination="k2d-1r-1Pb" eventType="touchUpInside" id="P79-J9-fFn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNc-df-UX9">
-                                <rect key="frame" x="141" y="508" width="132" height="30"/>
-                                <state key="normal" title="strava authenticate"/>
-                                <connections>
-                                    <action selector="authenticateWithStrava" destination="k2d-1r-1Pb" eventType="touchUpInside" id="kIZ-KO-a1F"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZfA-u7-oF8">
-                                <rect key="frame" x="138.5" y="580" width="137" height="30"/>
+                                <rect key="frame" x="138.5" y="438" width="137" height="30"/>
                                 <state key="normal" title="pocket authenticate"/>
                                 <connections>
                                     <action selector="pocketAuthenticate" destination="k2d-1r-1Pb" eventType="touchUpInside" id="aWn-ET-kNa"/>
@@ -184,11 +170,7 @@
                         <viewLayoutGuide key="safeArea" id="izS-rQ-xIG"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ZfA-u7-oF8" firstAttribute="top" secondItem="fNc-df-UX9" secondAttribute="bottom" constant="42" id="1Ev-Lp-hjt"/>
-                            <constraint firstItem="yQU-lM-gTV" firstAttribute="centerY" secondItem="izS-rQ-xIG" secondAttribute="centerY" id="BEM-Yv-2PQ"/>
-                            <constraint firstItem="yQU-lM-gTV" firstAttribute="centerX" secondItem="izS-rQ-xIG" secondAttribute="centerX" id="CCH-UU-6oh"/>
-                            <constraint firstItem="fNc-df-UX9" firstAttribute="centerX" secondItem="izS-rQ-xIG" secondAttribute="centerX" id="OpM-lf-x0n"/>
-                            <constraint firstItem="fNc-df-UX9" firstAttribute="top" secondItem="yQU-lM-gTV" secondAttribute="bottom" constant="40" id="V8P-EY-A0c"/>
+                            <constraint firstItem="ZfA-u7-oF8" firstAttribute="centerY" secondItem="izS-rQ-xIG" secondAttribute="centerY" id="5PG-SZ-wee"/>
                             <constraint firstItem="ZfA-u7-oF8" firstAttribute="centerX" secondItem="izS-rQ-xIG" secondAttribute="centerX" id="Wkw-dQ-NDo"/>
                         </constraints>
                     </view>

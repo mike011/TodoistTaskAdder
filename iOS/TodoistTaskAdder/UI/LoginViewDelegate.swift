@@ -9,7 +9,5 @@
 import Foundation
 
 protocol LoginViewDelegate: AnyObject {
-    func didTapLoginButton()
-    func didTapAuthenticateButton()
     func didTapPocketAuthenticateButton()
 }
