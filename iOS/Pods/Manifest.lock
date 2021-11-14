@@ -1,15 +1,21 @@
 PODS:
-  - Alamofire (5.0.0-beta.7)
+  - Alamofire (5.0.5)
   - BRYXBanner (0.8.4)
-  - FLAnimatedImage (1.0.12)
   - Locksmith (4.0.0)
-  - PINCache (2.3)
-  - PINRemoteImage (2.1):
-    - PINRemoteImage/FLAnimatedImage (= 2.1)
-  - PINRemoteImage/Core (2.1):
-    - PINCache (>= 2.1)
-  - PINRemoteImage/FLAnimatedImage (2.1):
-    - FLAnimatedImage (>= 1.0)
+  - PINCache (3.0.3):
+    - PINCache/Arc-exception-safe (= 3.0.3)
+    - PINCache/Core (= 3.0.3)
+  - PINCache/Arc-exception-safe (3.0.3):
+    - PINCache/Core
+  - PINCache/Core (3.0.3):
+    - PINOperation (~> 1.2.1)
+  - PINOperation (1.2.1)
+  - PINRemoteImage (3.0.3):
+    - PINRemoteImage/PINCache (= 3.0.3)
+  - PINRemoteImage/Core (3.0.3):
+    - PINOperation
+  - PINRemoteImage/PINCache (3.0.3):
+    - PINCache (~> 3.0.3)
     - PINRemoteImage/Core
   - XLForm (4.0.0)
 
@@ -17,28 +23,28 @@ DEPENDENCIES:
   - Alamofire (~> 5.0.0-beta.7)
   - BRYXBanner (= 0.8.4)
   - Locksmith (= 4.0)
-  - PINRemoteImage (= 2.1)
+  - PINRemoteImage (= 3.0.3)
   - XLForm (= 4.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
     - BRYXBanner
-    - FLAnimatedImage
     - Locksmith
     - PINCache
+    - PINOperation
     - PINRemoteImage
     - XLForm
 
 SPEC CHECKSUMS:
-  Alamofire: bd07938ceecad59d2492aeecb1f785a8f2721160
+  Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
   BRYXBanner: 4fbd266f96ce000e4c6cc9a0558c446bd88d9801
-  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
-  PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
-  PINRemoteImage: e8367ac3f5c234712f1d8c274462ec834d649940
+  PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
+  PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
+  PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
 
-PODFILE CHECKSUM: 8e7e85b6ec069fa1458a87ad5080944614c0ef57
+PODFILE CHECKSUM: ff0d2cf84b8f58735823c429e2cb464da5fbb6f1
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.9.1

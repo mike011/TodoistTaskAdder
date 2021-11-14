@@ -40,11 +40,11 @@ final class UnfairLock {
         unfairLock.deallocate()
     }
 
-    fileprivate func lock() {
+    private func lock() {
         os_unfair_lock_lock(unfairLock)
     }
 
-    fileprivate func unlock() {
+    private func unlock() {
         os_unfair_lock_unlock(unfairLock)
     }
 
@@ -147,7 +147,7 @@ extension Protector where T == Request.MutableState {
     ///
     /// - Parameter state: The `State` to attempt transition to.
     ///
-    /// - Returns:         Whether the transtion occurred.
+    /// - Returns:         Whether the transition occurred.
     func attemptToTransitionTo(_ state: Request.State) -> Bool {
         return lock.around {
             guard value.state.canTransitionTo(state) else { return false }
