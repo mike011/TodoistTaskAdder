@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C5BEF5D27513C200019E324 /* PocketError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5BEF5C27513C200019E324 /* PocketError.swift */; };
+		4C5BEF5F27513E700019E324 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4C5BEF5E27513E700019E324 /* README.md */; };
 		4C68B93527448A0F002183AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B93427448A0F002183AE /* AppDelegate.swift */; };
 		4C68B93727448A0F002183AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B93627448A0F002183AE /* SceneDelegate.swift */; };
 		4C68B93927448A0F002183AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B93827448A0F002183AE /* ViewController.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C5BEF5C27513C200019E324 /* PocketError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketError.swift; sourceTree = "<group>"; };
+		4C5BEF5E27513E700019E324 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		4C68B93127448A0F002183AE /* TodoistTaskAdder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoistTaskAdder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C68B93427448A0F002183AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C68B93627448A0F002183AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 		4C68B92827448A0F002183AE = {
 			isa = PBXGroup;
 			children = (
+				4C5BEF5E27513E700019E324 /* README.md */,
 				4C68B93327448A0F002183AE /* TodoistTaskAdder */,
 				4C68B94A27448A10002183AE /* TodoistTaskAdderTests */,
 				4C68B95427448A11002183AE /* TodoistTaskAdderUITests */,
@@ -162,6 +167,7 @@
 				4C68B97927448B05002183AE /* PocketAPIManager.swift */,
 				4C68B97A27448B05002183AE /* PocketMyList.swift */,
 				4C68B97827448B05002183AE /* PocketRouter.swift */,
+				4C5BEF5C27513C200019E324 /* PocketError.swift */,
 			);
 			path = Pocket;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 			files = (
 				4C68B94127448A10002183AE /* LaunchScreen.storyboard in Resources */,
 				4C68B93E27448A10002183AE /* Assets.xcassets in Resources */,
+				4C5BEF5F27513E700019E324 /* README.md in Resources */,
 				4C68B93C27448A0F002183AE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C5BEF5D27513C200019E324 /* PocketError.swift in Sources */,
 				4C68B98A2744A071002183AE /* BackendError.swift in Sources */,
 				4C68B9852744A003002183AE /* PocketOAuthKeys.swift in Sources */,
 				4C68B97B27448B05002183AE /* PocketRouter.swift in Sources */,
@@ -436,6 +444,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -490,6 +499,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

@@ -119,41 +119,37 @@ class PocketAPIManager {
 
     // MARK: get all the items
 
-    func getItems() {
+    func getItems(completionHandler: @escaping (Result<[PocketedItem],Error>) -> Void) {
         PocketAPIManager.shared.getUntaggedItems { result in
             switch result {
             case .success(let items):
                 if items.isEmpty {
-                    self.getAll()
+                    self.getAll(completionHandler: completionHandler)
                 } else {
-                    print("***********************")
-                    print("******** ERROR ********")
-                    print("Missing tags for:")
+                    var links = [String]()
                     for item in items {
-                        print("\(item.name) with link \(item.link)")
+                        links.append("\(item.name) with link \(item.link)")
                     }
-                    print("***********************")
+                    completionHandler(.failure(PocketError.notAllTagged(links)))
                 }
 
             case .failure(let error):
-                print(error)
+                if let afError = error.asAFError {
+                    completionHandler(.failure(PocketError.decodeIssue(afError.localizedDescription)))
+                    return
+                }
+                completionHandler(.failure(PocketError.decodeIssue(error.localizedDescription)))
             }
         }
     }
 
-    func getAll() {
+    func getAll(completionHandler: @escaping (Result<[PocketedItem],Error>) -> Void) {
         getAllItems { result in
             switch result {
             case .success(let items):
-                print("***********************")
-                print("******** LINKS ********")
-                print("Links for:")
-                for item in items {
-                    Self.printInTodoistFormat(item)
-                }
-                print("***********************")
+                completionHandler(.success(items))
             case .failure(let error):
-                print(error)
+                completionHandler(.failure(BackendError.request(error: error)))
             }
         }
     }
@@ -169,23 +165,23 @@ class PocketAPIManager {
         }
         AF.request(PocketRouter.get(token: oAuthToken))
                     .responseDecodable(of: PocketMyList.self) { response in
-                        switch response.result {
-                        case .success(let response):
-                            var pis = [PocketedItem]()
-                            for item in response.pockedItems.values {
-                                var tags = [String]()
-                                if let parsedTags = item.tags {
-                                    tags = parsedTags.map{String($0.key)}
-                                }
-                                let pi = PocketedItem(name: item.resolvedTitle, link: item.givenURL, tags: tags)
-                                pis.append(pi)
-                            }
-                            completionHandler(.success(pis))
-
-                        case .failure(let failure):
-                            completionHandler(.failure(failure))
-                        }
+            switch response.result {
+            case .success(let response):
+                var pis = [PocketedItem]()
+                for item in response.pockedItems.values {
+                    var tags = [String]()
+                    if let parsedTags = item.tags {
+                        tags = parsedTags.map{String($0.key)}
                     }
+                    let pi = PocketedItem(name: item.resolvedTitle, link: item.givenURL, tags: tags)
+                    pis.append(pi)
+                }
+                completionHandler(.success(pis))
+
+            case .failure(let failure):
+                completionHandler(.failure(failure))
+            }
+        }
     }
 
     func printIt() {

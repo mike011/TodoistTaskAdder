@@ -29,14 +29,14 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
             if let _ = self.safariViewController {
                 self.dismiss(animated: false) {}
             }
-            PocketAPIManager.shared.getItems()
+            self.getItems()
         }
 
         if (!PocketAPIManager.shared.hasOAuthToken()) {
             showOAuthLoginView()
             return
         } else {
-            PocketAPIManager.shared.getItems()
+            getItems()
         }
     }
 
@@ -47,7 +47,18 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
             case .success(let code):
                 self.handleSuccessfulRequest(code)
             case .failure(let error):
-                print(error)
+                self.present(error)
+            }
+        }
+    }
+
+    func getItems() {
+        PocketAPIManager.shared.getItems { result in
+            switch result {
+            case let .success(items):
+                self.present(items)
+            case let .failure(error):
+                self.present(error)
             }
         }
     }
@@ -67,8 +78,20 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         present(webViewController, animated: true, completion: nil)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        let x = 3
+    func present(_ items: [PocketedItem]) {
+        let alertController = UIAlertController(title: "Message", message: items[0].link, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler:nil)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func present(_ error: Error) {
+        let title = String(describing: type(of: error))
+        let message = "\(error)"
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler:nil)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
     }
 }
 
