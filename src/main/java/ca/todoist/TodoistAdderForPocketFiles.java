@@ -10,7 +10,8 @@ import ca.todoist.util.LoadFile;
 
 public class TodoistAdderForPocketFiles {
 
-	public static void main(String[] args) {
+	// deprecated
+	public static void amain(String[] args) {
 		if(args.length == 0) {
 			throw new IllegalArgumentException("Specify the pocket file to load");
 		}
