@@ -15,7 +15,8 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        doPocketMagic()
+        //doPocketMagic()
+        //TodoistAPIManager().addTask(title: "From the api")
     }
 
     private func doPocketMagic() {
@@ -79,10 +80,19 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     }
 
     func present(_ items: [PocketedItem]) {
+        addLinksToPasteBaord(items)
         let alertController = UIAlertController(title: "Message", message: items[0].link, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler:nil)
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
+    }
+
+    fileprivate func addLinksToPasteBaord(_ items: [PocketedItem]) {
+        var contents = ""
+        for item in items {
+            contents += TodoistTaskCreator(pocketedItem: item).convert().description + "\n"
+        }
+        UIPasteboard.general.string = contents
     }
 
     func present(_ error: Error) {

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C1F1B66275D6674000F1957 /* TodoistAPIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F1B65275D6674000F1957 /* TodoistAPIKeys.swift */; };
+		4C1F1B68275D66DC000F1957 /* TodoistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F1B67275D66DC000F1957 /* TodoistRouter.swift */; };
+		4C1F1B6A275D696A000F1957 /* TodoistAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F1B69275D696A000F1957 /* TodoistAPIManager.swift */; };
+		4C1F1B6C275D7111000F1957 /* TodoistProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F1B6B275D7111000F1957 /* TodoistProject.swift */; };
 		4C5BEF5D27513C200019E324 /* PocketError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5BEF5C27513C200019E324 /* PocketError.swift */; };
 		4C5BEF5F27513E700019E324 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4C5BEF5E27513E700019E324 /* README.md */; };
 		4C68B93527448A0F002183AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B93427448A0F002183AE /* AppDelegate.swift */; };
@@ -46,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C1F1B65275D6674000F1957 /* TodoistAPIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoistAPIKeys.swift; path = ../../../OAuthKeys/TodoistAPIKeys.swift; sourceTree = "<group>"; };
+		4C1F1B67275D66DC000F1957 /* TodoistRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistRouter.swift; sourceTree = "<group>"; };
+		4C1F1B69275D696A000F1957 /* TodoistAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistAPIManager.swift; sourceTree = "<group>"; };
+		4C1F1B6B275D7111000F1957 /* TodoistProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistProject.swift; sourceTree = "<group>"; };
 		4C5BEF5C27513C200019E324 /* PocketError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketError.swift; sourceTree = "<group>"; };
 		4C5BEF5E27513E700019E324 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		4C68B93127448A0F002183AE /* TodoistTaskAdder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoistTaskAdder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +105,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C1F1B64275D65EE000F1957 /* Todoist */ = {
+			isa = PBXGroup;
+			children = (
+				4C1F1B65275D6674000F1957 /* TodoistAPIKeys.swift */,
+				4C1F1B69275D696A000F1957 /* TodoistAPIManager.swift */,
+				4C1F1B67275D66DC000F1957 /* TodoistRouter.swift */,
+				4C1F1B6B275D7111000F1957 /* TodoistProject.swift */,
+			);
+			path = Todoist;
+			sourceTree = "<group>";
+		};
 		4C68B92827448A0F002183AE = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +142,7 @@
 			children = (
 				4C68B98B2744A098002183AE /* TodoistTaskAdder.entitlements */,
 				4C68B9862744A060002183AE /* Networking */,
+				4C1F1B64275D65EE000F1957 /* Todoist */,
 				4C68B96B27448A64002183AE /* Pocket */,
 				4C68B96427448A20002183AE /* UI */,
 				4C68B93427448A0F002183AE /* AppDelegate.swift */,
@@ -322,11 +342,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C5BEF5D27513C200019E324 /* PocketError.swift in Sources */,
+				4C1F1B68275D66DC000F1957 /* TodoistRouter.swift in Sources */,
 				4C68B98A2744A071002183AE /* BackendError.swift in Sources */,
 				4C68B9852744A003002183AE /* PocketOAuthKeys.swift in Sources */,
 				4C68B97B27448B05002183AE /* PocketRouter.swift in Sources */,
+				4C1F1B6C275D7111000F1957 /* TodoistProject.swift in Sources */,
 				4C68B97C27448B05002183AE /* PocketAPIManager.swift in Sources */,
 				4C68B9892744A071002183AE /* Networking.swift in Sources */,
+				4C1F1B66275D6674000F1957 /* TodoistAPIKeys.swift in Sources */,
+				4C1F1B6A275D696A000F1957 /* TodoistAPIManager.swift in Sources */,
 				4C68B93927448A0F002183AE /* ViewController.swift in Sources */,
 				4C68B97D27448B05002183AE /* PocketMyList.swift in Sources */,
 				4C68B93527448A0F002183AE /* AppDelegate.swift in Sources */,
@@ -444,7 +468,6 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -499,7 +522,6 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

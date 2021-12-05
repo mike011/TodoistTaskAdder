@@ -154,11 +154,6 @@ class PocketAPIManager {
         }
     }
 
-    static private func printInTodoistFormat(_ pi: PocketedItem) {
-        let creator = TodoistTaskCreator(pocketedItem: pi)
-        print(creator.convert())
-    }
-
     func getAllItems(completionHandler: @escaping (Result<[PocketedItem],Error>) -> Void) {
         guard let oAuthToken = oAuthToken else {
             return
@@ -208,7 +203,7 @@ class PocketAPIManager {
         guard let oAuthToken = oAuthToken else {
             return
         }
-        printIt()
+//        printIt()
         AF.request(PocketRouter.get(token: oAuthToken, tagType: "_untagged_"))
                     .responseDecodable(of: UnTaggedPocketMyList.self) { response in
                         switch response.result {
@@ -219,6 +214,27 @@ class PocketAPIManager {
                                     let pi = PocketedItem(name: item.resolvedTitle, link: item.givenURL, tags: [String]())
                                     pis.append(pi)
                                 }
+                            }
+                            completionHandler(.success(pis))
+
+                        case .failure(_):
+                            self.tryOtherFormat(completionHandler: completionHandler)
+                        }
+                    }
+    }
+
+    func tryOtherFormat(completionHandler: @escaping (Result<[PocketedItem],Error>) -> Void) {
+        guard let oAuthToken = oAuthToken else {
+            return
+        }
+        AF.request(PocketRouter.get(token: oAuthToken, tagType: "_untagged_"))
+                    .responseDecodable(of: PocketMyList.self) { response in
+                        switch response.result {
+                        case .success(let result):
+                            var pis = [PocketedItem]()
+                            for item in result.pockedItems.values {
+                                let pi = PocketedItem(name: item.resolvedTitle, link: item.givenURL, tags: [String]())
+                                pis.append(pi)
                             }
                             completionHandler(.success(pis))
 

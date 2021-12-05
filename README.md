@@ -4,11 +4,11 @@ Convert items stored in Pocket to Todoist
 
 # Release
 
-# 1.0 (current - doesnt' work)
+# 1.0 (current - doesn't work)
 - In Java from Pocket it reads the items from the xml and emails all the tasks to Todoist
 - xml export is not longer supported so this is no long works.
 
-# 1.0 (Work Around)
+# 1.0 (Work around - doesn't work because of 2fa)
  - Using https://github.com/mike011/TableViewWithREST (iOS App) 
  - Download the tasks from Pocket
  - Print pocket tasks in `TodoistAdderForLists` format

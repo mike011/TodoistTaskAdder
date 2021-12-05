@@ -25,15 +25,15 @@ enum PocketRouter: URLRequestConvertible {
         let url: URL = {
             switch self {
             case .request:
-                var url = URL(string: PocketRouter.baseURLString)!
+                var url = URL(string: Self.baseURLString)!
                 url.appendPathComponent("oauth/request")
                 return url
             case .authorize:
-                var url = URL(string: PocketRouter.baseURLString)!
+                var url = URL(string: Self.baseURLString)!
                 url.appendPathComponent("oauth/authorize")
                 return url
             case .get:
-                var url = URL(string: PocketRouter.baseURLString)!
+                var url = URL(string: Self.baseURLString)!
                 url.appendPathComponent("get")
                 return url
             }
@@ -42,13 +42,13 @@ enum PocketRouter: URLRequestConvertible {
         let params: ([String: Any]?) = {
             switch self {
             case .request:
-                return ["consumer_key": PocketRouter.consumerKey,
+                return ["consumer_key": Self.consumerKey,
                         "redirect_uri": "pocket://localhost"]
             case .authorize(let code):
-                return ["consumer_key": PocketRouter.consumerKey,
+                return ["consumer_key": Self.consumerKey,
                         "code": code]
             case .get(let token, let tagType):
-                var getParams = ["consumer_key": PocketRouter.consumerKey,
+                var getParams = ["consumer_key": Self.consumerKey,
                                   "access_token": token,
                                   "detailType": "complete",
                                   "sort": "oldest"]
