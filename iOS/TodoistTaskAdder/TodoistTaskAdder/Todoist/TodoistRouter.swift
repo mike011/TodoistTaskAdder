@@ -13,14 +13,14 @@ enum TodoistRouter: URLRequestConvertible {
     private static let apiKey = TodoistAPIKeys.api
 
     case projects
-    case addTask(content: String)
+    case addTask(projectID: Int, content: String, due: Date?)
 
     func asURLRequest() throws -> URLRequest {
         var method: HTTPMethod {
             switch self {
             case .projects:
                 return .get
-            case .addTask(_):
+            case .addTask(_, _, _):
                 return .post
             }
         }
@@ -42,9 +42,15 @@ enum TodoistRouter: URLRequestConvertible {
             switch self {
             case .projects:
                 return nil
-            case .addTask(let content):
+            case .addTask(let projectID, let content, let due):
                 var params = [String: Any]()
+                params["project_id"] = projectID
                 params["content"] = content
+                var dueDictionary = [String:Any]()
+                params["due"] = dueDictionary
+                dueDictionary["string"] = "mon 9pm"
+                dueDictionary["date"] = "2021-12-15"
+                dueDictionary["recuring"] = false
                 return params
             }
         }()
@@ -55,5 +61,12 @@ enum TodoistRouter: URLRequestConvertible {
 
         let encoding = URLEncoding.default
         return try encoding.encode(urlRequest, with: params)
+    }
+}
+
+private extension Date {
+    func toString() -> String {
+        let formatter = ISO8601DateFormatter()
+        return formatter.string(from: self)
     }
 }

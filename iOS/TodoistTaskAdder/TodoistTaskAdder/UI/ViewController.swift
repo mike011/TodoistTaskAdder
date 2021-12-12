@@ -15,11 +15,29 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //doPocketMagic()
-        //TodoistAPIManager().addTask(title: "From the api")
+
+        getPocketIems { items in
+            self.present(items)
+//            var todoistTasks = [TodoistTaskToAdd]()
+//            for item in items {
+//                let ttc = TodoistTaskConverter(pocketedItem: item)
+//                todoistTasks.append(ttc.getTodoistTask())
+//
+//                // only add one <- testing
+//                break
+//            }
+//            TodoistAPIManager.shared.add(tasks: todoistTasks) { result in
+//                switch result {
+//                case .success(let project):
+//                    print(project)
+//                case .failure(let error):
+//                    self.present(error)
+//                }
+//            }
+        }
     }
 
-    private func doPocketMagic() {
+    private func getPocketIems(completionHandler: @escaping ([PocketedItem]) -> Void) {
         PocketAPIManager.shared.oAuthTokenCompletionHandler = { error in
             guard error == nil else {
                 print(error!)
@@ -30,14 +48,14 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
             if let _ = self.safariViewController {
                 self.dismiss(animated: false) {}
             }
-            self.getItems()
+            self.getItems(completionHandler: completionHandler)
         }
 
         if (!PocketAPIManager.shared.hasOAuthToken()) {
             showOAuthLoginView()
             return
         } else {
-            getItems()
+            self.getItems(completionHandler: completionHandler)
         }
     }
 
@@ -53,12 +71,12 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         }
     }
 
-    func getItems() {
+    fileprivate func getItems(completionHandler: @escaping ([PocketedItem]) -> Void) {
         PocketAPIManager.shared.getItems { result in
             switch result {
-            case let .success(items):
-                self.present(items)
-            case let .failure(error):
+            case .success(let items):
+                completionHandler(items)
+            case .failure(let error):
                 self.present(error)
             }
         }
@@ -90,7 +108,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     fileprivate func addLinksToPasteBaord(_ items: [PocketedItem]) {
         var contents = ""
         for item in items {
-            contents += TodoistTaskCreator(pocketedItem: item).convert().description + "\n"
+            contents += TodoistTaskConverter(pocketedItem: item).convert().description + "\n"
         }
         UIPasteboard.general.string = contents
     }

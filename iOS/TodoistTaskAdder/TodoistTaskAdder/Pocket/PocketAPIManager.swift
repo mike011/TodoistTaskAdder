@@ -251,13 +251,20 @@ struct PocketedItem {
     let tags: [String]
 }
 
-struct TodoistTaskCreator {
+struct TodoistTaskConverter {
     let pocketedItem: PocketedItem
 
-    func convert() -> TodoistTask {
+    func convert() -> TodoistTaskPrinter {
         let project = getProject()
         let labels = getLabels()
-        let task = TodoistTask(name: pocketedItem.name, link: pocketedItem.link, project: project, labels: labels)
+        let task = TodoistTaskPrinter(name: pocketedItem.link, project: project, labels: labels)
+        return task
+    }
+
+    func getTodoistTask() -> TodoistTaskToAdd {
+        let project = getProject()
+        let labels = getLabels()
+        let task = TodoistTaskToAdd(project: project, title: pocketedItem.link)
         return task
     }
 
@@ -274,9 +281,8 @@ struct TodoistTaskCreator {
     }
 }
 
-struct TodoistTask: CustomStringConvertible {
+struct TodoistTaskPrinter: CustomStringConvertible {
     let name: String
-    let link: String
     let project: String
     let dueDate: String = ""
     let note: String = ""
@@ -285,7 +291,7 @@ struct TodoistTask: CustomStringConvertible {
     var description: String {
         // String name, String project, String dueDate, String note, String... labels
         return """
-                links.add(new ItemTask("\(link)", "\(project)", "\(dueDate)", "\(note)", "\(labels.joined(separator: ", "))"));
+                links.add(new ItemTask("\(name)", "\(project)", "\(dueDate)", "\(note)", "\(labels.joined(separator: ", "))"));
                 """
     }
 }
