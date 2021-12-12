@@ -171,7 +171,9 @@ class PocketAPIManager {
                     let pi = PocketedItem(name: item.resolvedTitle, link: item.givenURL, tags: tags)
                     pis.append(pi)
                 }
-                completionHandler(.success(pis))
+                completionHandler(.success(pis.sorted(by: { first, second in
+                    return first.name.compare(second.name) == ComparisonResult.orderedAscending
+                })))
 
             case .failure(let failure):
                 completionHandler(.failure(failure))
@@ -251,35 +253,7 @@ struct PocketedItem {
     let tags: [String]
 }
 
-struct TodoistTaskConverter {
-    let pocketedItem: PocketedItem
 
-    func convert() -> TodoistTaskPrinter {
-        let project = getProject()
-        let labels = getLabels()
-        let task = TodoistTaskPrinter(name: pocketedItem.link, project: project, labels: labels)
-        return task
-    }
-
-    func getTodoistTask() -> TodoistTaskToAdd {
-        let project = getProject()
-        let labels = getLabels()
-        let task = TodoistTaskToAdd(project: project, title: pocketedItem.link)
-        return task
-    }
-
-    func getProject() -> String {
-        return pocketedItem.tags.filter { tag in
-            return !tag.contains("@")
-        }.first!
-    }
-
-    func getLabels() -> [String] {
-        return pocketedItem.tags.filter { tag in
-            return tag.contains("@")
-        }
-    }
-}
 
 struct TodoistTaskPrinter: CustomStringConvertible {
     let name: String

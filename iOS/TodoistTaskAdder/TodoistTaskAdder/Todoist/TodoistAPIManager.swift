@@ -12,8 +12,11 @@ class TodoistAPIManager {
     static let shared = TodoistAPIManager()
 
     private var projects: [TodoistProject]?
+    private var labels: [TodoistLabel]?
 
     private init() {}
+
+    // MARK: - Projects
 
     func getProjects(completionHandler: @escaping (Result<[TodoistProject],Error>) -> Void) {
         AF.request(TodoistRouter.projects)
@@ -28,29 +31,13 @@ class TodoistAPIManager {
         }
     }
 
-    func add(tasks: [TodoistTaskToAdd], completionHandler: @escaping (Result<TodoistTask,Error>) -> Void) {
-        for task in tasks {
-            getProjectId(from: task.project) { result in
-                switch result {
-                case .success(let id):
-                    self.addTask(projectID: id, title: task.title, due: Date(), completionHandler: completionHandler)
-                case .failure(let failure):
-                    completionHandler(.failure(failure))
-                }
-            }
-            break
-        }
-    }
-
     private func getProjectId(from project: String, completionHandler: @escaping (Result<Int,Error>) -> Void) {
-        //task.projectID
         if projects == nil {
             getProjects {  response in
                 switch response {
                 case .success(let projects):
                     self.projects = projects
                     if let project = projects.first( where: { $0.name == project } ) {
-                        //return project.id
                         completionHandler(.success(project.id))
                     }
                 case .failure(let failure):
@@ -59,21 +46,34 @@ class TodoistAPIManager {
             }
         } else {
             if let project = projects!.first( where: { $0.name == project } ) {
-                //return project.id
                 completionHandler(.success(project.id))
             }
         }
-
-//        return 0
     }
 
+    // MARK: - Tasks
+
+    func add(tasks: [TodoistTaskToAdd], completionHandler: @escaping (Result<TodoistTask,Error>) -> Void) {
+        for task in tasks {
+            self.getProjectId(from: task.projectName) { result in
+                switch result {
+                case .success(let id):
+                    self.addTask(projectID: id, task: task, completionHandler: completionHandler)
+                case .failure(let failure):
+                    completionHandler(.failure(failure))
+                }
+            }
+            break
+        }
+    }
 
     func addTask(projectName: String, title: String, due: Date?, completionHandler: @escaping (Result<TodoistTask,Error>) -> Void) {
         getProjects { response in
             switch response {
             case .success(let projects):
                 if let project = projects.first( where: { $0.name == projectName } ) {
-                    self.addTask(project: project, title: title, due: due, completionHandler: completionHandler)
+                    let task = TodoistTaskToAdd(projectName: project.name, title: title, labelIDs: [Int]())
+                    self.addTask(projectID: project.id, task: task, completionHandler: completionHandler)
                 } else {
                     completionHandler(.failure(TodoistError.projectNameNotFound(name: title)))
                 }
@@ -83,13 +83,9 @@ class TodoistAPIManager {
         }
     }
 
-    func addTask(project: TodoistProject, title: String, due: Date?, completionHandler: @escaping (Result<TodoistTask,Error>) -> Void) {
-        addTask(projectID: project.id, title: title, due: due, completionHandler: completionHandler)
-    }
-
-    func addTask(projectID: Int, title: String, due: Date?, completionHandler: @escaping (Result<TodoistTask,Error>) -> Void) {
-        AF.request(TodoistRouter.addTask(projectID: projectID, content: title, due: due))
-            .validate(statusCode: 200..<300)
+    func addTask(projectID: Int, task: TodoistTaskToAdd, completionHandler: @escaping (Result<TodoistTask,Error>) -> Void) {
+        AF.request(TodoistRouter.add(id: projectID, task: task))
+            .validate()
             .responseDecodable(of: TodoistTask.self) { response in
             switch response.result {
             case .success(let project):
@@ -97,6 +93,25 @@ class TodoistAPIManager {
             case .failure(let failure):
                 completionHandler(.failure(failure))
             }
+        }
+    }
+
+    // MARK: - Labels
+    func getLabels(completionHandler: @escaping (Result<[TodoistLabel],Error>) -> Void) {
+        if labels == nil {
+            AF.request(TodoistRouter.labels)
+                .validate()
+                .responseDecodable(of: [TodoistLabel].self) { response in
+                    switch response.result {
+                    case .success(let labels):
+                        self.labels = labels
+                        completionHandler(.success(labels))
+                    case .failure(let failure):
+                        completionHandler(.failure(failure))
+                    }
+                }
+        } else {
+            completionHandler(.success(labels!))
         }
     }
 }

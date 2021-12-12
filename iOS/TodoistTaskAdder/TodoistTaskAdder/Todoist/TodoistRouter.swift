@@ -12,16 +12,24 @@ enum TodoistRouter: URLRequestConvertible {
     private static let baseURLString = "https://api.todoist.com/rest/v1/"
     private static let apiKey = TodoistAPIKeys.api
 
+    /// Gets all the projects
     case projects
-    case addTask(projectID: Int, content: String, due: Date?)
+
+    // Adds a task to Todoist
+    case add(id: Int, task: TodoistTaskToAdd)
+
+    /// Gets all the labels
+    case labels
 
     func asURLRequest() throws -> URLRequest {
         var method: HTTPMethod {
             switch self {
             case .projects:
                 return .get
-            case .addTask(_, _, _):
+            case .add:
                 return .post
+            case .labels:
+                return .get
             }
         }
 
@@ -31,9 +39,13 @@ enum TodoistRouter: URLRequestConvertible {
                 var url = URL(string: Self.baseURLString)!
                 url.appendPathComponent("projects")
                 return url
-            case .addTask:
+            case .add:
                 var url = URL(string: Self.baseURLString)!
                 url.appendPathComponent("tasks")
+                return url
+            case .labels:
+                var url = URL(string: Self.baseURLString)!
+                url.appendPathComponent("labels")
                 return url
             }
         }()
@@ -42,16 +54,21 @@ enum TodoistRouter: URLRequestConvertible {
             switch self {
             case .projects:
                 return nil
-            case .addTask(let projectID, let content, let due):
+            case let .add(id, task):
                 var params = [String: Any]()
-                params["project_id"] = projectID
-                params["content"] = content
-                var dueDictionary = [String:Any]()
-                params["due"] = dueDictionary
-                dueDictionary["string"] = "mon 9pm"
-                dueDictionary["date"] = "2021-12-15"
-                dueDictionary["recuring"] = false
+                params["project_id"] = id
+                params["content"] = task.title
+                if !task.labelIDs.isEmpty {
+                    params["label_ids"] = task.labelIDs
+                }
+//                var dueDictionary = [String:Any]()
+//                params["due"] = dueDictionary
+//                dueDictionary["string"] = "mon 9pm"
+//                dueDictionary["date"] = "2021-12-15"
+//                dueDictionary["recuring"] = false
                 return params
+            case .labels:
+                return nil
             }
         }()
 

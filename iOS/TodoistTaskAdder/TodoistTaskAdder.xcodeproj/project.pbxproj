@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C1AA5302766A19A00950D5B /* TodoistTaskConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1AA52F2766A19A00950D5B /* TodoistTaskConverter.swift */; };
+		4C1AA5322766A38E00950D5B /* TodoistLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1AA5312766A38E00950D5B /* TodoistLabel.swift */; };
 		4C1F1B66275D6674000F1957 /* TodoistAPIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F1B65275D6674000F1957 /* TodoistAPIKeys.swift */; };
 		4C1F1B68275D66DC000F1957 /* TodoistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F1B67275D66DC000F1957 /* TodoistRouter.swift */; };
 		4C1F1B6A275D696A000F1957 /* TodoistAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F1B69275D696A000F1957 /* TodoistAPIManager.swift */; };
@@ -53,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C1AA52F2766A19A00950D5B /* TodoistTaskConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistTaskConverter.swift; sourceTree = "<group>"; };
+		4C1AA5312766A38E00950D5B /* TodoistLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistLabel.swift; sourceTree = "<group>"; };
 		4C1F1B65275D6674000F1957 /* TodoistAPIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoistAPIKeys.swift; path = ../../../OAuthKeys/TodoistAPIKeys.swift; sourceTree = "<group>"; };
 		4C1F1B67275D66DC000F1957 /* TodoistRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistRouter.swift; sourceTree = "<group>"; };
 		4C1F1B69275D696A000F1957 /* TodoistAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistAPIManager.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 				4C1F1B6D275D8BFB000F1957 /* TodoistError.swift */,
 				4C1F1B6F275D9161000F1957 /* TodoistTask.swift */,
 				4C1F1B73275DB393000F1957 /* TodoistTaskToAdd.swift */,
+				4C1AA5312766A38E00950D5B /* TodoistLabel.swift */,
 			);
 			path = Todoist;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 				4C68B97A27448B05002183AE /* PocketMyList.swift */,
 				4C68B97827448B05002183AE /* PocketRouter.swift */,
 				4C5BEF5C27513C200019E324 /* PocketError.swift */,
+				4C1AA52F2766A19A00950D5B /* TodoistTaskConverter.swift */,
 			);
 			path = Pocket;
 			sourceTree = "<group>";
@@ -353,6 +359,7 @@
 				4C1F1B74275DB393000F1957 /* TodoistTaskToAdd.swift in Sources */,
 				4C5BEF5D27513C200019E324 /* PocketError.swift in Sources */,
 				4C1F1B68275D66DC000F1957 /* TodoistRouter.swift in Sources */,
+				4C1AA5322766A38E00950D5B /* TodoistLabel.swift in Sources */,
 				4C68B98A2744A071002183AE /* BackendError.swift in Sources */,
 				4C68B9852744A003002183AE /* PocketOAuthKeys.swift in Sources */,
 				4C68B97B27448B05002183AE /* PocketRouter.swift in Sources */,
@@ -361,6 +368,7 @@
 				4C68B97C27448B05002183AE /* PocketAPIManager.swift in Sources */,
 				4C68B9892744A071002183AE /* Networking.swift in Sources */,
 				4C1F1B66275D6674000F1957 /* TodoistAPIKeys.swift in Sources */,
+				4C1AA5302766A19A00950D5B /* TodoistTaskConverter.swift in Sources */,
 				4C1F1B6A275D696A000F1957 /* TodoistAPIManager.swift in Sources */,
 				4C1F1B6E275D8BFB000F1957 /* TodoistError.swift in Sources */,
 				4C68B93927448A0F002183AE /* ViewController.swift in Sources */,

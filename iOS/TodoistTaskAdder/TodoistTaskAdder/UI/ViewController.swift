@@ -16,24 +16,48 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getPocketIems { items in
-            self.present(items)
-//            var todoistTasks = [TodoistTaskToAdd]()
-//            for item in items {
-//                let ttc = TodoistTaskConverter(pocketedItem: item)
-//                todoistTasks.append(ttc.getTodoistTask())
-//
-//                // only add one <- testing
-//                break
-//            }
-//            TodoistAPIManager.shared.add(tasks: todoistTasks) { result in
-//                switch result {
-//                case .success(let project):
-//                    print(project)
-//                case .failure(let error):
-//                    self.present(error)
-//                }
-//            }
+        getTodoistLabels { labels in
+            self.getPocketIems { items in
+                var todoistTasks = [TodoistTaskToAdd]()
+                var errorFound = false
+                for item in items {
+                    let ttc = TodoistTaskConverter(pocketedItem: item, todoistLabels: labels)
+                    do {
+                        let task = try ttc.getTodoistTask()
+                        todoistTasks.append(task)
+                    } catch {
+                        errorFound = true
+                        self.present(error)
+                    }
+
+                    // only add one <- testing
+                    break
+                }
+
+                if errorFound {
+                    return
+                }
+                TodoistAPIManager.shared.add(tasks: todoistTasks) { result in
+                    switch result {
+                    case .success(let project):
+                        print(project)
+                    case .failure(let error):
+                        self.present(error)
+                    }
+                }
+            }
+        }
+    }
+
+    private func getTodoistLabels(completionHandler: @escaping ([TodoistLabel]) -> Void) {
+        TodoistAPIManager.shared.getLabels {  result in
+            switch result {
+            case .success(let labels):
+                completionHandler(labels)
+            case .failure(let error):
+                self.present(error)
+            }
+
         }
     }
 
@@ -97,21 +121,21 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         present(webViewController, animated: true, completion: nil)
     }
 
-    func present(_ items: [PocketedItem]) {
-        addLinksToPasteBaord(items)
-        let alertController = UIAlertController(title: "Message", message: items[0].link, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default, handler:nil)
-        alertController.addAction(alertAction)
-        present(alertController, animated: true, completion: nil)
-    }
-
-    fileprivate func addLinksToPasteBaord(_ items: [PocketedItem]) {
-        var contents = ""
-        for item in items {
-            contents += TodoistTaskConverter(pocketedItem: item).convert().description + "\n"
-        }
-        UIPasteboard.general.string = contents
-    }
+//    func present(_ items: [PocketedItem]) {
+//        addLinksToPasteBaord(items)
+//        let alertController = UIAlertController(title: "Message", message: items[0].link, preferredStyle: .alert)
+//        let alertAction = UIAlertAction(title: "OK", style: .default, handler:nil)
+//        alertController.addAction(alertAction)
+//        present(alertController, animated: true, completion: nil)
+//    }
+//
+//    fileprivate func addLinksToPasteBaord(_ items: [PocketedItem]) {
+//        var contents = ""
+//        for item in items {
+//            contents += try TodoistTaskConverter(pocketedItem: item).convert().description + "\n"
+//        }
+//        UIPasteboard.general.string = contents
+//    }
 
     func present(_ error: Error) {
         let title = String(describing: type(of: error))

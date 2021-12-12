@@ -9,7 +9,8 @@ import Foundation
 
 struct TodoistTaskToAdd {
     let projectID: Int? = nil
-    let project: String
+    let projectName: String
     let title: String
+    let labelIDs: [Int]
     let dueDate: Date? = nil
 }
