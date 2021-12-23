@@ -39,6 +39,8 @@ class TodoistAPIManager {
                     self.projects = projects
                     if let project = projects.first( where: { $0.name == project } ) {
                         completionHandler(.success(project.id))
+                    } else {
+                        completionHandler(.failure(TodoistError.projectNameNotFound(name: project)))
                     }
                 case .failure(let failure):
                     completionHandler(.failure(failure))
@@ -53,17 +55,14 @@ class TodoistAPIManager {
 
     // MARK: - Tasks
 
-    func add(tasks: [TodoistTaskToAdd], completionHandler: @escaping (Result<TodoistTask,Error>) -> Void) {
-        for task in tasks {
-            self.getProjectId(from: task.projectName) { result in
-                switch result {
-                case .success(let id):
-                    self.addTask(projectID: id, task: task, completionHandler: completionHandler)
-                case .failure(let failure):
-                    completionHandler(.failure(failure))
-                }
+    func add(task: TodoistTaskToAdd, completionHandler: @escaping (Result<TodoistTask,Error>) -> Void) {
+        getProjectId(from: task.projectName) { result in
+            switch result {
+            case .success(let id):
+                self.addTask(projectID: id, task: task, completionHandler: completionHandler)
+            case .failure(let failure):
+                completionHandler(.failure(failure))
             }
-            break
         }
     }
 

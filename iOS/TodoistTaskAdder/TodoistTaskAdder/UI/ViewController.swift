@@ -18,32 +18,38 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
 
         getTodoistLabels { labels in
             self.getPocketIems { items in
-                var todoistTasks = [TodoistTaskToAdd]()
                 var errorFound = false
                 for item in items {
                     let ttc = TodoistTaskConverter(pocketedItem: item, todoistLabels: labels)
                     do {
                         let task = try ttc.getTodoistTask()
-                        todoistTasks.append(task)
+                        TodoistAPIManager.shared.add(task: task) { result in
+                            switch result {
+                            case let .success(project):
+                                print("added \(project.content)")
+//                                PocketAPIManager.shared.archiveItem(itemID: item.id) { result in
+//                                    switch result {
+//                                    case .success(let archived):
+//                                        print("archived \(archived)")
+//                                    case .failure(let error):
+//                                        self.present(error)
+//                                    }
+//                                }
+                            case .failure(let error):
+                                self.present(error)
+                            }
+                        }
                     } catch {
                         errorFound = true
                         self.present(error)
                     }
 
                     // only add one <- testing
-                    break
+//                    break
                 }
 
                 if errorFound {
                     return
-                }
-                TodoistAPIManager.shared.add(tasks: todoistTasks) { result in
-                    switch result {
-                    case .success(let project):
-                        print(project)
-                    case .failure(let error):
-                        self.present(error)
-                    }
                 }
             }
         }

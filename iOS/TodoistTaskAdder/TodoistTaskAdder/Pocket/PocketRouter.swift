@@ -16,6 +16,7 @@ enum PocketRouter: URLRequestConvertible {
     case request
     case authorize(code: String)
     case get(token: String, tagType: String? = nil)
+    case archive(itemID: Int)
 
     func asURLRequest() throws -> URLRequest {
         var method: HTTPMethod {
@@ -23,20 +24,18 @@ enum PocketRouter: URLRequestConvertible {
         }
 
         let url: URL = {
+            var url = URL(string: Self.baseURLString)!
             switch self {
             case .request:
-                var url = URL(string: Self.baseURLString)!
                 url.appendPathComponent("oauth/request")
-                return url
             case .authorize:
-                var url = URL(string: Self.baseURLString)!
                 url.appendPathComponent("oauth/authorize")
-                return url
             case .get:
-                var url = URL(string: Self.baseURLString)!
                 url.appendPathComponent("get")
-                return url
+            case .archive:
+                url.appendPathComponent("send")
             }
+            return url
         }()
 
         let params: ([String: Any]?) = {
@@ -56,13 +55,29 @@ enum PocketRouter: URLRequestConvertible {
                     getParams["tag"] = tagType
                 }
                 return getParams
+            case let .archive(itemID):
+                return ["action": "archive",
+                        "item_id": itemID]
+            }
+        }()
+
+        let contentType: String? = {
+            switch self {
+            case .archive:
+                return "application/json"
+            default:
+                return nil
             }
         }()
 
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
+        if let contentType = contentType {
+            urlRequest.setValue(contentType, forHTTPHeaderField: "Content-Type")
+        }
 
-        let encoding = URLEncoding.default
-        return try encoding.encode(urlRequest, with: params)
+        let encoding = JSONEncoding.default
+        let uRLRequest = try encoding.encode(urlRequest, with: params)
+        return uRLRequest
     }
 }

@@ -34,23 +34,28 @@ enum TodoistRouter: URLRequestConvertible {
         }
 
         let url: URL = {
+            var url = URL(string: Self.baseURLString)!
             switch self {
             case .projects:
-                var url = URL(string: Self.baseURLString)!
                 url.appendPathComponent("projects")
-                return url
             case .add:
-                var url = URL(string: Self.baseURLString)!
                 url.appendPathComponent("tasks")
-                return url
             case .labels:
-                var url = URL(string: Self.baseURLString)!
                 url.appendPathComponent("labels")
-                return url
+            }
+            return url
+        }()
+
+        let contentType: String? = {
+            switch self {
+            case .add:
+                return "application/json"
+            default:
+                return nil
             }
         }()
 
-        let params: ([String: Any]?) = {
+        let params: (Parameters?) = {
             switch self {
             case .projects:
                 return nil
@@ -58,9 +63,7 @@ enum TodoistRouter: URLRequestConvertible {
                 var params = [String: Any]()
                 params["project_id"] = id
                 params["content"] = task.title
-                if !task.labelIDs.isEmpty {
-                    params["label_ids"] = task.labelIDs
-                }
+                params["label_ids"] = task.labelIDs
 //                var dueDictionary = [String:Any]()
 //                params["due"] = dueDictionary
 //                dueDictionary["string"] = "mon 9pm"
@@ -74,10 +77,14 @@ enum TodoistRouter: URLRequestConvertible {
 
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
+        if let contentType = contentType {
+            urlRequest.setValue(contentType, forHTTPHeaderField: "Content-Type")
+        }
         urlRequest.setValue("Bearer \(Self.apiKey)", forHTTPHeaderField: "Authorization")
 
-        let encoding = URLEncoding.default
-        return try encoding.encode(urlRequest, with: params)
+        let encoding = JSONEncoding.default
+        let request = try encoding.encode(urlRequest, with: params)
+        return request
     }
 }
 

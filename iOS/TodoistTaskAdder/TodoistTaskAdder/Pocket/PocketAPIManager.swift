@@ -168,7 +168,7 @@ class PocketAPIManager {
                     if let parsedTags = item.tags {
                         tags = parsedTags.map{String($0.key)}
                     }
-                    let pi = PocketedItem(name: item.resolvedTitle, link: item.givenURL, tags: tags)
+                    let pi = PocketedItem(name: item.resolvedTitle, link: item.givenURL, tags: tags, id: item.itemID)
                     pis.append(pi)
                 }
                 completionHandler(.success(pis.sorted(by: { first, second in
@@ -213,7 +213,10 @@ class PocketAPIManager {
                             var pis = [PocketedItem]()
                             if let items = result.pockedItems {
                                 for item in items {
-                                    let pi = PocketedItem(name: item.resolvedTitle, link: item.givenURL, tags: [String]())
+                                    let pi = PocketedItem(name: item.resolvedTitle,
+                                                          link: item.givenURL,
+                                                          tags: [String](),
+                                                          id: item.itemID)
                                     pis.append(pi)
                                 }
                             }
@@ -235,7 +238,7 @@ class PocketAPIManager {
                         case .success(let result):
                             var pis = [PocketedItem]()
                             for item in result.pockedItems.values {
-                                let pi = PocketedItem(name: item.resolvedTitle, link: item.givenURL, tags: [String]())
+                                let pi = PocketedItem(name: item.resolvedTitle, link: item.givenURL, tags: [String](), id: item.itemID)
                                 pis.append(pi)
                             }
                             completionHandler(.success(pis))
@@ -245,28 +248,32 @@ class PocketAPIManager {
                         }
                     }
     }
+
+    func archiveItem(itemID: String, completionHandler: @escaping (Result<PocketArchiveResponse,Error>) -> Void) {
+        AF.request(PocketRouter.archive(itemID: Int(itemID)!))
+            .responseData(completionHandler: { response in
+                switch response.result {
+                case .success(let data):
+                    let stringData = String(decoding: data, as: UTF8.self)
+                    print(stringData)
+                case .failure(let failure):
+                    completionHandler(.failure(BackendError.request(error: failure)))
+                }
+//            .responseDecodable(of: PocketArchiveResponse.self) { response in
+//                switch response.result {
+//                case .success(let archivedObject):
+//                    completionHandler(.success(archivedObject))
+//                case .failure(let failure):
+//                    completionHandler(.failure(failure))
+//                }
+        })
+    }
+
 }
 
 struct PocketedItem {
     let name: String
     let link: String
     let tags: [String]
+    let id: String
 }
-
-
-
-struct TodoistTaskPrinter: CustomStringConvertible {
-    let name: String
-    let project: String
-    let dueDate: String = ""
-    let note: String = ""
-    let labels: [String]
-
-    var description: String {
-        // String name, String project, String dueDate, String note, String... labels
-        return """
-                links.add(new ItemTask("\(name)", "\(project)", "\(dueDate)", "\(note)", "\(labels.joined(separator: ", "))"));
-                """
-    }
-}
-

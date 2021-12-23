@@ -11,13 +11,6 @@ struct TodoistTaskConverter {
     let pocketedItem: PocketedItem
     let todoistLabels: [TodoistLabel]
 
-//    func convert() throws -> TodoistTaskPrinter {
-//        let project = try getTodoistProjectName()
-//        let labels = getLabels()
-//        let task = TodoistTaskPrinter(name: pocketedItem.link, project: project, labelIDs: labels)
-//        return task
-//    }
-
     func getTodoistTask() throws -> TodoistTaskToAdd {
         let project = try getTodoistProjectName()
         let labels = try getLabels()
@@ -40,9 +33,20 @@ struct TodoistTaskConverter {
     }
 
     func lookUpTodoistProject(from key: String) -> String? {
-        var mapping = [String:String]()
-        mapping["dev"] = "Dev"
-        return mapping[key]
+        return pocketTodoistMapping[key]
+    }
+
+    private var pocketTodoistMapping: [String:String] {
+        var pocketToTodoist = [String:String]()
+        pocketToTodoist["cycling"] = "Cycling"
+        pocketToTodoist["dev"] = "Dev"
+        pocketToTodoist["exercise"] = "Exercise"
+        pocketToTodoist["ios"] = "ios"
+        pocketToTodoist["personal"] = "Personal"
+        pocketToTodoist["rouvy"] = "Rouvy"
+        pocketToTodoist["runkeeper"] = "Runkeeper"
+        pocketToTodoist["running"] = "Running"
+        return pocketToTodoist
     }
 
     func getLabels() throws -> [Int] {

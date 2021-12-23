@@ -15,7 +15,7 @@ struct TodoistTask: Codable {
     let content: String
     let todoistTaskDescription: String
     let completed: Bool
-    let labelIDS: [String]
+    let labelIDS: [Int]
     let priority: Int
     let commentCount: Int
     let creator: Int
