@@ -46,6 +46,7 @@ struct TodoistTaskConverter {
         pocketToTodoist["rouvy"] = "Rouvy"
         pocketToTodoist["runkeeper"] = "Runkeeper"
         pocketToTodoist["running"] = "Running"
+        pocketToTodoist["arduino"] = "Arduino"
         return pocketToTodoist
     }
 
