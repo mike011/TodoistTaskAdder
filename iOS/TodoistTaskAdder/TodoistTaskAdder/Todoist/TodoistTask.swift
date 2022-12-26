@@ -7,31 +7,26 @@ import Foundation
 
 // MARK: - TodoistTask
 struct TodoistTask: Codable {
-    let id: Int
-    let assigner: Int
-    let projectID: Int
-    let sectionID: Int
+    let id: String
+    let projectID: String
     let order: Int
     let content: String
     let todoistTaskDescription: String
     let completed: Bool
-    let labelIDS: [Int]
+    let labelIDS: [String]
     let priority: Int
     let commentCount: Int
-    let creator: Int
-    let created: String
     let url: String
 
     enum CodingKeys: String, CodingKey {
-        case id, assigner
+        case id
         case projectID = "project_id"
-        case sectionID = "section_id"
         case order, content
         case todoistTaskDescription = "description"
-        case completed
-        case labelIDS = "label_ids"
+        case completed = "is_completed"
+        case labelIDS = "labels"
         case priority
         case commentCount = "comment_count"
-        case creator, created, url
+        case url
     }
 }

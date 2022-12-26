@@ -9,8 +9,8 @@ import Foundation
 
 // MARK: - TodoistLabel
 struct TodoistLabel: Codable {
-    let id: Int
+    let id: String
     let name: String
+    let color: String
     let order: Int
-    let favorite: Bool
 }

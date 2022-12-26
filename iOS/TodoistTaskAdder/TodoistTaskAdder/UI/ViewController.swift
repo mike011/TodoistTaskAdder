@@ -18,15 +18,33 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
 
         getTodoistLabels { labels in
             self.getPocketItems { items in
-                var errorFound = false
-                for item in items {
-                    let ttc = TodoistTaskConverter(pocketedItem: item, todoistLabels: labels)
-                    do {
-                        let task = try ttc.getTodoistTask()
-                        TodoistAPIManager.shared.add(task: task) { result in
-                            switch result {
-                            case let .success(project):
-                                print("added \(project.content)")
+                let errorFound = self.handlePocketItems(items: items, withLabels: labels);
+                if errorFound {
+                    return
+                }
+                print("<<< done >>>")
+            }
+        }
+    }
+
+    private func handlePocketItems(items: [PocketedItem], withLabels labels: [TodoistLabel]) -> Bool {
+        for item in items {
+            if !(handlePocketItem(item: item, withLabels: labels)) {
+                return false
+            }
+            break
+        }
+        return false
+    }
+
+    private func handlePocketItem(item: PocketedItem, withLabels labels: [TodoistLabel]) -> Bool {
+        let ttc = TodoistTaskConverter(pocketedItem: item, todoistLabels: labels)
+        do {
+            let task = try ttc.getTodoistTask()
+            TodoistAPIManager.shared.add(task: task) { result in
+                switch result {
+                case let .success(project):
+                    print("added \(project.content)")
 //                                PocketAPIManager.shared.archiveItem(itemID: item.id) { result in
 //                                    switch result {
 //                                    case .success(let archived):
@@ -35,25 +53,18 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
 //                                        self.present(error)
 //                                    }
 //                                }
-                            case .failure(let error):
-                                self.present(error)
-                            }
-                        }
-                    } catch {
-                        errorFound = true
-                        self.present(error)
-                    }
-
-                    // only add one <- testing
-//                    break
-                }
-
-                if errorFound {
-                    return
+                case .failure(let error):
+                    self.present(error)
                 }
             }
+        } catch {
+            self.present(error)
+            return true
         }
+        return false
     }
+
+
 
     private func getTodoistLabels(completionHandler: @escaping ([TodoistLabel]) -> Void) {
         PocketAPIManager.shared.oAuthTokenCompletionHandler = { error in

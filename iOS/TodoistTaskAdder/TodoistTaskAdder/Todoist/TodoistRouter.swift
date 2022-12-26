@@ -9,14 +9,14 @@ import Alamofire
 import Foundation
 
 enum TodoistRouter: URLRequestConvertible {
-    private static let baseURLString = "https://api.todoist.com/rest/v1/"
+    private static let baseURLString = "https://api.todoist.com/rest/v2/"
     private static let apiKey = TodoistAPIKeys.api
 
     /// Gets all the projects
     case projects
 
-    // Adds a task to Todoist
-    case add(id: Int, task: TodoistTaskToAdd)
+    /// Adds a task to Todoist
+    case add(id: String, task: TodoistTaskToAdd)
 
     /// Gets all the labels
     case labels
@@ -63,7 +63,7 @@ enum TodoistRouter: URLRequestConvertible {
                 var params = [String: Any]()
                 params["project_id"] = id
                 params["content"] = task.title
-                params["label_ids"] = task.labelIDs
+                params["labels"] = task.labelIDs
 //                var dueDictionary = [String:Any]()
 //                params["due"] = dueDictionary
 //                dueDictionary["string"] = "mon 9pm"

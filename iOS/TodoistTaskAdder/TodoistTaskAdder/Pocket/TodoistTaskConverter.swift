@@ -33,11 +33,11 @@ struct TodoistTaskConverter {
     }
 
     func lookUpTodoistProject(from key: String) -> String? {
-        return pocketTodoistMapping[key]
+        return pocketTodoistProjectMapping[key]
     }
 
-    private var pocketTodoistMapping: [String:String] {
-        var pocketToTodoist = [String:String]()
+    private var pocketTodoistProjectMapping: [String: String] {
+        var pocketToTodoist = [String: String]()
         pocketToTodoist["cycling"] = "Cycling"
         pocketToTodoist["dev"] = "Dev"
         pocketToTodoist["exercise"] = "Exercise"
@@ -47,10 +47,18 @@ struct TodoistTaskConverter {
         pocketToTodoist["runkeeper"] = "Runkeeper"
         pocketToTodoist["running"] = "Running"
         pocketToTodoist["arduino"] = "Arduino"
+        pocketToTodoist["race"] = "Signed up for Races"
+        pocketToTodoist["races"] = "Signed up for Races"
+        pocketToTodoist["racing"] = "Signed up for Races"
+        pocketToTodoist["refactoring"] = "Refactoring"
+        pocketToTodoist["food"] = "Food"
+        pocketToTodoist["family"] = "Family"
+        pocketToTodoist["family"] = "Family"
+        pocketToTodoist["italy"] = "Italy 2023"
         return pocketToTodoist
     }
 
-    func getLabels() throws -> [Int] {
+    func getLabels() throws -> [String] {
         let pocketLabels = getPocketLabels()
         let todoistIDs = try lookUpInTodoist(pocketedlabels: pocketLabels)
         return todoistIDs
@@ -64,8 +72,8 @@ struct TodoistTaskConverter {
         }
     }
 
-    func lookUpInTodoist(pocketedlabels: [String]) throws -> [Int] {
-        var ids = [Int]()
+    func lookUpInTodoist(pocketedlabels: [String]) throws -> [String] {
+        var ids = [String]()
         for label in pocketedlabels {
             let filteredLabels = todoistLabels.filter({ todoistLabel in
                 todoistLabel.name == label
@@ -73,7 +81,7 @@ struct TodoistTaskConverter {
             if filteredLabels.count != 1 {
                 throw PocketError.todoistLabelNotFound(label)
             } else {
-                ids.append(filteredLabels.first!.id)
+                ids.append(filteredLabels.first!.name)
             }
         }
         return ids

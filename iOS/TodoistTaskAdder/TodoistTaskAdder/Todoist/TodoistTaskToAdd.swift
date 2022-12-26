@@ -8,17 +8,17 @@
 import Foundation
 
 struct TodoistTaskToAdd {
-    let projectID: Int? = nil
+    let projectID: String? = nil
     let projectName: String
     let title: String
-    let labelIDs: [Int]
+    var labelIDs: [String]
     let dueDate: Date? = nil
 
     enum CodingKeys: String, CodingKey {
         case projectID = "project_id"
         case projectName
         case title
-        case labelIDS = "label_ids"
+        case labelIDS = "labels"
         case dueDate = "due_date"
     }
 }

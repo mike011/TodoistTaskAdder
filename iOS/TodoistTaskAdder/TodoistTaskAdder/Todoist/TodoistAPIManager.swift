@@ -31,7 +31,7 @@ class TodoistAPIManager {
         }
     }
 
-    private func getProjectId(from project: String, completionHandler: @escaping (Result<Int,Error>) -> Void) {
+    private func getProjectId(from project: String, completionHandler: @escaping (Result<String,Error>) -> Void) {
         if projects == nil {
             getProjects {  response in
                 switch response {
@@ -71,7 +71,7 @@ class TodoistAPIManager {
             switch response {
             case .success(let projects):
                 if let project = projects.first( where: { $0.name == projectName } ) {
-                    let task = TodoistTaskToAdd(projectName: project.name, title: title, labelIDs: [Int]())
+                    let task = TodoistTaskToAdd(projectName: project.name, title: title, labelIDs: [String]())
                     self.addTask(projectID: project.id, task: task, completionHandler: completionHandler)
                 } else {
                     completionHandler(.failure(TodoistError.projectNameNotFound(name: title)))
@@ -82,8 +82,9 @@ class TodoistAPIManager {
         }
     }
 
-    func addTask(projectID: Int, task: TodoistTaskToAdd, completionHandler: @escaping (Result<TodoistTask,Error>) -> Void) {
-        AF.request(TodoistRouter.add(id: projectID, task: task))
+    func addTask(projectID: String, task: TodoistTaskToAdd, completionHandler: @escaping (Result<TodoistTask,Error>) -> Void) {
+        let convertible = TodoistRouter.add(id: projectID, task: task)
+        AF.request(convertible)
             .validate()
             .responseDecodable(of: TodoistTask.self) { response in
             switch response.result {
