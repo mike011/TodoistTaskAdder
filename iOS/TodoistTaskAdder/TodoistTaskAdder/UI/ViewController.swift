@@ -32,7 +32,6 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
             if !(handlePocketItem(item: item, withLabels: labels)) {
                 return false
             }
-            break
         }
         return false
     }
