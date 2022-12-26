@@ -18,25 +18,27 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
 
         getTodoistLabels { labels in
             self.getPocketItems { items in
-                let errorFound = self.handlePocketItems(items: items, withLabels: labels);
-                if errorFound {
-                    return
+                do {
+                    try self.handlePocketItems(items: items, withLabels: labels);
+                } catch {
+                    print("<<< error thrown >>>")
                 }
                 print("<<< done >>>")
             }
         }
     }
 
-    private func handlePocketItems(items: [PocketedItem], withLabels labels: [TodoistLabel]) -> Bool {
+    private func handlePocketItems(items: [PocketedItem], withLabels labels: [TodoistLabel]) throws {
         for item in items {
-            if !(handlePocketItem(item: item, withLabels: labels)) {
-                return false
+            do {
+                try handlePocketItem(item: item, withLabels: labels)
+            } catch {
+                throw error
             }
         }
-        return false
     }
 
-    private func handlePocketItem(item: PocketedItem, withLabels labels: [TodoistLabel]) -> Bool {
+    private func handlePocketItem(item: PocketedItem, withLabels labels: [TodoistLabel]) throws {
         let ttc = TodoistTaskConverter(pocketedItem: item, todoistLabels: labels)
         do {
             let task = try ttc.getTodoistTask()
@@ -58,9 +60,8 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
             }
         } catch {
             self.present(error)
-            return true
+            throw error
         }
-        return false
     }
 
 
