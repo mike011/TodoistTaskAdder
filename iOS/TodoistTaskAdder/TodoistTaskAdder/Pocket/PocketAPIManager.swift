@@ -122,16 +122,16 @@ class PocketAPIManager {
     func getItems(completionHandler: @escaping (Result<[PocketedItem],Error>) -> Void) {
         PocketAPIManager.shared.getUntaggedItems { result in
             switch result {
-            case .success(let items):
-                if items.isEmpty {
+            case .success:
+//                if items.isEmpty {
                     self.getAll(completionHandler: completionHandler)
-                } else {
-                    var links = [String]()
-                    for item in items {
-                        links.append("\(item.name) with link \(item.link)")
-                    }
-                    completionHandler(.failure(PocketError.notAllTagged(links)))
-                }
+//                } else {
+//                    var links = [String]()
+//                    for item in items {
+//                        links.append("\(item.name) with link \(item.link)")
+//                    }
+//                    completionHandler(.failure(PocketError.notAllTagged(links)))
+//                }
 
             case .failure(let error):
                 if let afError = error.asAFError {
@@ -167,6 +167,15 @@ class PocketAPIManager {
                     var tags = [String]()
                     if let parsedTags = item.tags {
                         tags = parsedTags.map{String($0.key)}
+                    }
+                    if item.givenURL.contains("blog.randonneursontario.ca") {
+                        tags.append("cycling")
+                        tags.append("@blog")
+                    } else if item.givenURL.contains("youtube") {
+                        tags.append("Inbox")
+                        tags.append("@audio/video")
+                    } else if tags.isEmpty {
+                        tags.append("Inbox")
                     }
                     let pi = PocketedItem(name: item.resolvedTitle, link: item.givenURL, tags: tags, id: item.itemID)
                     pis.append(pi)
@@ -215,7 +224,7 @@ class PocketAPIManager {
                                 for item in items {
                                     let pi = PocketedItem(name: item.resolvedTitle,
                                                           link: item.givenURL,
-                                                          tags: [String](),
+                                                          tags: ["Inbox"],
                                                           id: item.itemID)
                                     pis.append(pi)
                                 }
@@ -238,7 +247,7 @@ class PocketAPIManager {
                         case .success(let result):
                             var pis = [PocketedItem]()
                             for item in result.pockedItems.values {
-                                let pi = PocketedItem(name: item.resolvedTitle, link: item.givenURL, tags: [String](), id: item.itemID)
+                                let pi = PocketedItem(name: item.resolvedTitle, link: item.givenURL, tags: ["Inbox"], id: item.itemID)
                                 pis.append(pi)
                             }
                             completionHandler(.success(pis))

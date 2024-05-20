@@ -22,6 +22,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
                     try self.handlePocketItems(items: items, withLabels: labels);
                 } catch {
                     print("<<< error thrown >>>")
+                    print(error)
                 }
                 print("<<< done >>>")
             }

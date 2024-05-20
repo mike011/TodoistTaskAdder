@@ -23,10 +23,11 @@ struct TodoistTaskConverter {
         if let projectName = lookUpTodoistProject(from: pocketProjectName) {
             return projectName
         }
-        throw PocketError.todoistProjectNotFound(pocketProjectName)
+        print(PocketError.todoistProjectNotFound(pocketProjectName))
+        return "Inbox"
     }
 
-    func getPocketProjectName() -> String {
+    func getPocketProjectName() -> String { 
         return pocketedItem.tags.filter { tag in
             return !tag.contains("@")
         }.first!
@@ -55,6 +56,8 @@ struct TodoistTaskConverter {
         pocketToTodoist["family"] = "Family"
         pocketToTodoist["family"] = "Family"
         pocketToTodoist["italy"] = "Italy 2023"
+        pocketToTodoist["work"] = "Work"
+        pocketToTodoist["Inbox"] = "Inbox"
         return pocketToTodoist
     }
 
