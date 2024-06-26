@@ -15,7 +15,11 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // addItemsFromPocket()
+        addCustomItems()
+    }
 
+    fileprivate func addItemsFromPocket() {
         getTodoistLabels { labels in
             self.getPocketItems { items in
                 do {
@@ -26,6 +30,13 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
                 }
                 print("<<< done >>>")
             }
+        }
+    }
+
+    fileprivate func addCustomItems() {
+        for task in CustomTodoistAdder.getTasks() {
+            addTodoistTask(task)
+            break
         }
     }
 
@@ -43,25 +54,21 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         let ttc = TodoistTaskConverter(pocketedItem: item, todoistLabels: labels)
         do {
             let task = try ttc.getTodoistTask()
-            TodoistAPIManager.shared.add(task: task) { result in
-                switch result {
-                case let .success(project):
-                    print("added \(project.content)")
-//                                PocketAPIManager.shared.archiveItem(itemID: item.id) { result in
-//                                    switch result {
-//                                    case .success(let archived):
-//                                        print("archived \(archived)")
-//                                    case .failure(let error):
-//                                        self.present(error)
-//                                    }
-//                                }
-                case .failure(let error):
-                    self.present(error)
-                }
-            }
+            addTodoistTask(task)
         } catch {
             self.present(error)
             throw error
+        }
+    }
+
+    fileprivate func addTodoistTask(_ task: TodoistTaskToAdd) {
+        TodoistAPIManager.shared.add(task: task) { result in
+            switch result {
+            case let .success(project):
+                print("added \(project.content)")
+            case .failure(let error):
+                self.present(error)
+            }
         }
     }
 

@@ -16,6 +16,7 @@
 		4C1F1B6E275D8BFB000F1957 /* TodoistError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F1B6D275D8BFB000F1957 /* TodoistError.swift */; };
 		4C1F1B70275D9161000F1957 /* TodoistTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F1B6F275D9161000F1957 /* TodoistTask.swift */; };
 		4C1F1B74275DB393000F1957 /* TodoistTaskToAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F1B73275DB393000F1957 /* TodoistTaskToAdd.swift */; };
+		4C2344D92C2C962A00787B6B /* CustomTodoistAdder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2344D82C2C962A00787B6B /* CustomTodoistAdder.swift */; };
 		4C5BEF5D27513C200019E324 /* PocketError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5BEF5C27513C200019E324 /* PocketError.swift */; };
 		4C5BEF5F27513E700019E324 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4C5BEF5E27513E700019E324 /* README.md */; };
 		4C68B93527448A0F002183AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B93427448A0F002183AE /* AppDelegate.swift */; };
@@ -65,6 +66,7 @@
 		4C1F1B6D275D8BFB000F1957 /* TodoistError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistError.swift; sourceTree = "<group>"; };
 		4C1F1B6F275D9161000F1957 /* TodoistTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistTask.swift; sourceTree = "<group>"; };
 		4C1F1B73275DB393000F1957 /* TodoistTaskToAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistTaskToAdd.swift; sourceTree = "<group>"; };
+		4C2344D82C2C962A00787B6B /* CustomTodoistAdder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTodoistAdder.swift; sourceTree = "<group>"; };
 		4C5BEF5C27513C200019E324 /* PocketError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketError.swift; sourceTree = "<group>"; };
 		4C5BEF5E27513E700019E324 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		4C68B93127448A0F002183AE /* TodoistTaskAdder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoistTaskAdder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +130,7 @@
 				4C1F1B6F275D9161000F1957 /* TodoistTask.swift */,
 				4C1F1B73275DB393000F1957 /* TodoistTaskToAdd.swift */,
 				4C1AA5312766A38E00950D5B /* TodoistLabel.swift */,
+				4C2344D82C2C962A00787B6B /* CustomTodoistAdder.swift */,
 			);
 			path = Todoist;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				4C68B9892744A071002183AE /* Networking.swift in Sources */,
 				4C1F1B66275D6674000F1957 /* TodoistAPIKeys.swift in Sources */,
 				4C1AA5302766A19A00950D5B /* TodoistTaskConverter.swift in Sources */,
+				4C2344D92C2C962A00787B6B /* CustomTodoistAdder.swift in Sources */,
 				4C1F1B6A275D696A000F1957 /* TodoistAPIManager.swift in Sources */,
 				4C1F1B6E275D8BFB000F1957 /* TodoistError.swift in Sources */,
 				4C68B93927448A0F002183AE /* ViewController.swift in Sources */,
