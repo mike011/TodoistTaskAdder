@@ -15,8 +15,8 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // addItemsFromPocket()
-        addCustomItems()
+         addItemsFromPocket()
+//        addCustomItems()
     }
 
     fileprivate func addItemsFromPocket() {
@@ -34,9 +34,8 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     }
 
     fileprivate func addCustomItems() {
-        for task in CustomTodoistAdder.getTasks() {
+        for (_,task) in CustomTodoistAdder.getTasks().enumerated() {
             addTodoistTask(task)
-            break
         }
     }
 

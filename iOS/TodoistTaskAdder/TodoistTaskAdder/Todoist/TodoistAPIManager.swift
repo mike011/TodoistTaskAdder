@@ -9,7 +9,7 @@ import Alamofire
 import Foundation
 
 class TodoistAPIManager {
-    static let shared = TodoistAPIManager()
+    @MainActor static let shared = TodoistAPIManager()
 
     private var projects: [TodoistProject]?
     private var labels: [TodoistLabel]?

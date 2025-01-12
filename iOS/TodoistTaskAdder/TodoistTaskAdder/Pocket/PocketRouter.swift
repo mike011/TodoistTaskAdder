@@ -47,10 +47,11 @@ enum PocketRouter: URLRequestConvertible {
                 return ["consumer_key": Self.consumerKey,
                         "code": code]
             case .get(let token, let tagType):
-                var getParams = ["consumer_key": Self.consumerKey,
-                                  "access_token": token,
-                                  "detailType": "complete",
-                                  "sort": "oldest"]
+                var getParams = ["state": "unread",
+                                 "consumer_key": Self.consumerKey,
+                                 "access_token": token,
+                                 "detailType": "complete",
+                                 "sort": "oldest"]
                 if let tagType = tagType {
                     getParams["tag"] = tagType
                 }

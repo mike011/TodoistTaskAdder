@@ -11,7 +11,7 @@ import PINRemoteImage
 import SafariServices
 import UIKit
 
-class MasterViewController: UITableViewController, SFSafariViewControllerDelegate {
+class MasterViewController: UITableViewController, @preconcurrency SFSafariViewControllerDelegate {
 
     // MARK: - Outlets
     @IBOutlet var gistSegmentedControl: UISegmentedControl!
@@ -407,7 +407,7 @@ class MasterViewController: UITableViewController, SFSafariViewControllerDelegat
         }
 }
 
-extension MasterViewController: LoginViewDelegate {
+extension MasterViewController: @preconcurrency LoginViewDelegate {
 
     func didTapPocketAuthenticateButton() {
         dismiss(animated: false) {

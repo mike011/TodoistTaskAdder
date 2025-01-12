@@ -9,14 +9,14 @@
 import Alamofire
 import Foundation
 
-enum PullRouter: URLRequestConvertible {
+enum PullRouter: @preconcurrency URLRequestConvertible {
     static let baseURLString = "https://api.github.com/"
 
     case pull(owner: String, repo: String, number: Int)
     case pulls(owner: String, repo: String)
     case merge(owner: String, repo: String, number: Int)
 
-    func asURLRequest() throws -> URLRequest {
+    @MainActor func asURLRequest() throws -> URLRequest {
         var method: HTTPMethod {
             switch self {
             case .merge:

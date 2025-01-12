@@ -9,7 +9,7 @@
 import Alamofire
 import Foundation
 
-enum GistRouter: URLRequestConvertible {
+enum GistRouter: @preconcurrency URLRequestConvertible {
     static let baseURLString = "https://api.github.com/"
 
     case create(Data)
@@ -22,7 +22,7 @@ enum GistRouter: URLRequestConvertible {
     case star(id: String)
     case unstar(id: String)
 
-    func asURLRequest() throws -> URLRequest {
+    @MainActor func asURLRequest() throws -> URLRequest {
         var method: HTTPMethod {
             switch self {
             case .create:
@@ -48,7 +48,7 @@ enum GistRouter: URLRequestConvertible {
 
         let url: URL = {
             switch self {
-            case let .create:
+            case .create:
                 return createURL(withPath: "gists")
             case let .delete(id):
                 return createURL(withPath: "gists/\(id)")

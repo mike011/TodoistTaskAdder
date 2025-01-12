@@ -88,7 +88,7 @@ extension DetailViewController {
 
     func showNotConnectedErrorBanner(title: String, message: String) {
         errorBanner = Banner(title: title, subtitle: message, image: nil, backgroundColor: .orange, didTapBlock: nil)
-        self.errorBanner?.dismissesOnSwipe
+        _ = self.errorBanner?.dismissesOnSwipe
         self.errorBanner?.show(nil, duration: nil)
     }
 

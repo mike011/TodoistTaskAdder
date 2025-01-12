@@ -13,7 +13,7 @@ extension GitHubAPIManager {
 
     // MARK: - Basic Auth
     func printPullRequests() {
-        AF.request(PullRouter.pulls(owner: "mike011", repo: "TapMe"))
+        _ = AF.request(PullRouter.pulls(owner: "mike011", repo: "TapMe"))
             .responseJSON { response in
                 switch response.result {
                 case .success(let data):
@@ -26,7 +26,7 @@ extension GitHubAPIManager {
     }
 
     func mergePullRequest() {
-        AF.request(PullRouter.merge(owner: "mike011", repo: "TapMe", number: 5))
+        _ = AF.request(PullRouter.merge(owner: "mike011", repo: "TapMe", number: 5))
             .responseJSON { response in
 
             switch response.result {

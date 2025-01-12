@@ -10,7 +10,7 @@ import Alamofire
 import Foundation
 import Locksmith
 
-class PocketAPIManager {
+final class PocketAPIManager: @unchecked Sendable {
     static let shared = PocketAPIManager()
     var isLoadingOAuthToken = false
     private var requestToken: String?
@@ -165,9 +165,9 @@ class PocketAPIManager {
                 var pis = [PocketedItem]()
                 for item in response.pockedItems.values {
                     var tags = [String]()
-                    if let parsedTags = item.tags {
-                        tags = parsedTags.map{String($0.key)}
-                    }
+//                    if let parsedTags = item.tags {
+//                        tags = parsedTags.map{String($0.key)}
+//                    }
                     if item.givenURL.contains("blog.randonneursontario.ca") {
                         tags.append("cycling")
                         tags.append("@blog")
@@ -216,22 +216,21 @@ class PocketAPIManager {
         }
 //        printIt()
         AF.request(PocketRouter.get(token: oAuthToken, tagType: "_untagged_"))
-                    .responseDecodable(of: UnTaggedPocketMyList.self) { response in
+                    .responseDecodable(of: PocketMyList.self) { response in
                         switch response.result {
                         case .success(let result):
                             var pis = [PocketedItem]()
-                            if let items = result.pockedItems {
-                                for item in items {
-                                    let pi = PocketedItem(name: item.resolvedTitle,
-                                                          link: item.givenURL,
-                                                          tags: ["Inbox"],
-                                                          id: item.itemID)
-                                    pis.append(pi)
-                                }
+                            for item in result.pockedItems.values {
+                                let pi = PocketedItem(name: item.resolvedTitle,
+                                                      link: item.givenURL,
+                                                      tags: ["Inbox"],
+                                                      id: item.itemID)
+                                pis.append(pi)
                             }
                             completionHandler(.success(pis))
 
-                        case .failure(_):
+                        case .failure(let error):
+                            print(error)
                             self.tryOtherFormat(completionHandler: completionHandler)
                         }
                     }
@@ -242,7 +241,7 @@ class PocketAPIManager {
             return
         }
         AF.request(PocketRouter.get(token: oAuthToken, tagType: "_untagged_"))
-                    .responseDecodable(of: PocketMyList.self) { response in
+            .responseDecodable(of: PocketMyList.self) { response in
                         switch response.result {
                         case .success(let result):
                             var pis = [PocketedItem]()

@@ -11,7 +11,7 @@ import Foundation
 import Locksmith
 
 class PocketAPIManager {
-    static let shared = PocketAPIManager()
+    @MainActor static let shared = PocketAPIManager()
     var isLoadingOAuthToken = false
     private var requestToken: String?
 
@@ -118,7 +118,7 @@ class PocketAPIManager {
 
     // MARK: get all the items
 
-    func getItems() {
+    @MainActor func getItems() {
         PocketAPIManager.shared.getUntaggedItems { result in
             switch result {
             case .success(let items):

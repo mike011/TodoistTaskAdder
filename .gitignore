@@ -6,3 +6,4 @@ target
 src/main/java/ca/todoist/TodoistAdderForLists.java
 src/user.properties
 **/xcuserdata/michael.xcuserdatad/
+iOS/TodoistTaskAdder/TodoistTaskAdder.xcodeproj

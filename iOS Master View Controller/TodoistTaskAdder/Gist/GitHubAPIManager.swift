@@ -12,7 +12,7 @@ import Locksmith
 import UIKit
 
 class GitHubAPIManager {
-    static let shared = GitHubAPIManager()
+    @MainActor static let shared = GitHubAPIManager()
     var isLoadingOAuthToken = false
 
     // handler for the OAuth process
@@ -143,7 +143,7 @@ class GitHubAPIManager {
                            "client_secret": GitHubOAuthKeys.clientSecret,
                            "code": code]
         let jsonHeader = HTTPHeaders(["Accept": "application/json"])
-        AF.request(
+        _ = AF.request(
             getTokenPath,
             method: .post,
             parameters: tokenParams,
