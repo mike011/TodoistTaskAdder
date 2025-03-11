@@ -15,8 +15,8 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-         addItemsFromPocket()
-//        addCustomItems()
+        addItemsFromPocket()
+        addCustomItems()
     }
 
     fileprivate func addItemsFromPocket() {
