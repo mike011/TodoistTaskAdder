@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C1AA5302766A19A00950D5B /* TodoistTaskConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1AA52F2766A19A00950D5B /* TodoistTaskConverter.swift */; };
 		4C1AA5322766A38E00950D5B /* TodoistLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1AA5312766A38E00950D5B /* TodoistLabel.swift */; };
 		4C1F1B66275D6674000F1957 /* TodoistAPIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F1B65275D6674000F1957 /* TodoistAPIKeys.swift */; };
 		4C1F1B68275D66DC000F1957 /* TodoistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F1B67275D66DC000F1957 /* TodoistRouter.swift */; };
@@ -17,7 +16,6 @@
 		4C1F1B70275D9161000F1957 /* TodoistTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F1B6F275D9161000F1957 /* TodoistTask.swift */; };
 		4C1F1B74275DB393000F1957 /* TodoistTaskToAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F1B73275DB393000F1957 /* TodoistTaskToAdd.swift */; };
 		4C2344D92C2C962A00787B6B /* CustomTodoistAdder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2344D82C2C962A00787B6B /* CustomTodoistAdder.swift */; };
-		4C5BEF5D27513C200019E324 /* PocketError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5BEF5C27513C200019E324 /* PocketError.swift */; };
 		4C5BEF5F27513E700019E324 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4C5BEF5E27513E700019E324 /* README.md */; };
 		4C68B93527448A0F002183AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B93427448A0F002183AE /* AppDelegate.swift */; };
 		4C68B93727448A0F002183AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B93627448A0F002183AE /* SceneDelegate.swift */; };
@@ -28,15 +26,10 @@
 		4C68B94C27448A10002183AE /* TodoistTaskAdderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B94B27448A10002183AE /* TodoistTaskAdderTests.swift */; };
 		4C68B95627448A11002183AE /* TodoistTaskAdderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B95527448A11002183AE /* TodoistTaskAdderUITests.swift */; };
 		4C68B95827448A11002183AE /* TodoistTaskAdderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B95727448A11002183AE /* TodoistTaskAdderUITestsLaunchTests.swift */; };
-		4C68B97B27448B05002183AE /* PocketRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B97827448B05002183AE /* PocketRouter.swift */; };
-		4C68B97C27448B05002183AE /* PocketAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B97927448B05002183AE /* PocketAPIManager.swift */; };
-		4C68B97D27448B05002183AE /* PocketMyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B97A27448B05002183AE /* PocketMyList.swift */; };
 		4C68B98027448B24002183AE /* Locksmith in Frameworks */ = {isa = PBXBuildFile; productRef = 4C68B97F27448B24002183AE /* Locksmith */; };
 		4C68B98327449FC0002183AE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4C68B98227449FC0002183AE /* Alamofire */; };
-		4C68B9852744A003002183AE /* PocketOAuthKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B9842744A003002183AE /* PocketOAuthKeys.swift */; };
 		4C68B9892744A071002183AE /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B9872744A070002183AE /* Networking.swift */; };
 		4C68B98A2744A071002183AE /* BackendError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68B9882744A070002183AE /* BackendError.swift */; };
-		4CECE27C2774EE23001745AB /* PocketArchiveResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECE27B2774EE23001745AB /* PocketArchiveResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4C1AA52F2766A19A00950D5B /* TodoistTaskConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistTaskConverter.swift; sourceTree = "<group>"; };
 		4C1AA5312766A38E00950D5B /* TodoistLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistLabel.swift; sourceTree = "<group>"; };
 		4C1F1B65275D6674000F1957 /* TodoistAPIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoistAPIKeys.swift; path = ../../../OAuthKeys/TodoistAPIKeys.swift; sourceTree = "<group>"; };
 		4C1F1B67275D66DC000F1957 /* TodoistRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistRouter.swift; sourceTree = "<group>"; };
@@ -67,7 +59,6 @@
 		4C1F1B6F275D9161000F1957 /* TodoistTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistTask.swift; sourceTree = "<group>"; };
 		4C1F1B73275DB393000F1957 /* TodoistTaskToAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistTaskToAdd.swift; sourceTree = "<group>"; };
 		4C2344D82C2C962A00787B6B /* CustomTodoistAdder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTodoistAdder.swift; sourceTree = "<group>"; };
-		4C5BEF5C27513C200019E324 /* PocketError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketError.swift; sourceTree = "<group>"; };
 		4C5BEF5E27513E700019E324 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		4C68B93127448A0F002183AE /* TodoistTaskAdder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoistTaskAdder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C68B93427448A0F002183AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,14 +73,9 @@
 		4C68B95127448A11002183AE /* TodoistTaskAdderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoistTaskAdderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C68B95527448A11002183AE /* TodoistTaskAdderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistTaskAdderUITests.swift; sourceTree = "<group>"; };
 		4C68B95727448A11002183AE /* TodoistTaskAdderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoistTaskAdderUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		4C68B97827448B05002183AE /* PocketRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PocketRouter.swift; sourceTree = "<group>"; };
-		4C68B97927448B05002183AE /* PocketAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PocketAPIManager.swift; sourceTree = "<group>"; };
-		4C68B97A27448B05002183AE /* PocketMyList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PocketMyList.swift; sourceTree = "<group>"; };
-		4C68B9842744A003002183AE /* PocketOAuthKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PocketOAuthKeys.swift; path = ../../../OAuthKeys/PocketOAuthKeys.swift; sourceTree = "<group>"; };
 		4C68B9872744A070002183AE /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		4C68B9882744A070002183AE /* BackendError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendError.swift; sourceTree = "<group>"; };
 		4C68B98B2744A098002183AE /* TodoistTaskAdder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodoistTaskAdder.entitlements; sourceTree = "<group>"; };
-		4CECE27B2774EE23001745AB /* PocketArchiveResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketArchiveResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +148,6 @@
 				4C68B98B2744A098002183AE /* TodoistTaskAdder.entitlements */,
 				4C68B9862744A060002183AE /* Networking */,
 				4C1F1B64275D65EE000F1957 /* Todoist */,
-				4C68B96B27448A64002183AE /* Pocket */,
 				4C68B96427448A20002183AE /* UI */,
 				4C68B93427448A0F002183AE /* AppDelegate.swift */,
 				4C68B93D27448A10002183AE /* Assets.xcassets */,
@@ -197,20 +182,6 @@
 				4C68B93F27448A10002183AE /* LaunchScreen.storyboard */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		4C68B96B27448A64002183AE /* Pocket */ = {
-			isa = PBXGroup;
-			children = (
-				4C68B9842744A003002183AE /* PocketOAuthKeys.swift */,
-				4C68B97927448B05002183AE /* PocketAPIManager.swift */,
-				4C68B97A27448B05002183AE /* PocketMyList.swift */,
-				4C68B97827448B05002183AE /* PocketRouter.swift */,
-				4C5BEF5C27513C200019E324 /* PocketError.swift */,
-				4C1AA52F2766A19A00950D5B /* TodoistTaskConverter.swift */,
-				4CECE27B2774EE23001745AB /* PocketArchiveResponse.swift */,
-			);
-			path = Pocket;
 			sourceTree = "<group>";
 		};
 		4C68B9862744A060002183AE /* Networking */ = {
@@ -290,7 +261,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1620;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					4C68B93027448A0F002183AE = {
 						CreatedOnToolsVersion = 13.1;
@@ -363,26 +334,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C1F1B74275DB393000F1957 /* TodoistTaskToAdd.swift in Sources */,
-				4C5BEF5D27513C200019E324 /* PocketError.swift in Sources */,
 				4C1F1B68275D66DC000F1957 /* TodoistRouter.swift in Sources */,
 				4C1AA5322766A38E00950D5B /* TodoistLabel.swift in Sources */,
 				4C68B98A2744A071002183AE /* BackendError.swift in Sources */,
-				4C68B9852744A003002183AE /* PocketOAuthKeys.swift in Sources */,
-				4C68B97B27448B05002183AE /* PocketRouter.swift in Sources */,
 				4C1F1B70275D9161000F1957 /* TodoistTask.swift in Sources */,
 				4C1F1B6C275D7111000F1957 /* TodoistProject.swift in Sources */,
-				4C68B97C27448B05002183AE /* PocketAPIManager.swift in Sources */,
 				4C68B9892744A071002183AE /* Networking.swift in Sources */,
 				4C1F1B66275D6674000F1957 /* TodoistAPIKeys.swift in Sources */,
-				4C1AA5302766A19A00950D5B /* TodoistTaskConverter.swift in Sources */,
 				4C2344D92C2C962A00787B6B /* CustomTodoistAdder.swift in Sources */,
 				4C1F1B6A275D696A000F1957 /* TodoistAPIManager.swift in Sources */,
 				4C1F1B6E275D8BFB000F1957 /* TodoistError.swift in Sources */,
 				4C68B93927448A0F002183AE /* ViewController.swift in Sources */,
-				4C68B97D27448B05002183AE /* PocketMyList.swift in Sources */,
 				4C68B93527448A0F002183AE /* AppDelegate.swift in Sources */,
 				4C68B93727448A0F002183AE /* SceneDelegate.swift in Sources */,
-				4CECE27C2774EE23001745AB /* PocketArchiveResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +406,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -473,6 +438,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = CY96495443;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -495,6 +461,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -504,6 +471,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -535,6 +503,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = CY96495443;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -550,6 +519,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -565,7 +535,8 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CY96495443;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TodoistTaskAdder/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -599,7 +570,8 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CY96495443;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TodoistTaskAdder/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -630,7 +602,6 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CY96495443;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -658,7 +629,6 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CY96495443;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -685,7 +655,6 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CY96495443;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -711,7 +680,6 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CY96495443;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
